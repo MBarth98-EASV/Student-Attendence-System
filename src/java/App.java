@@ -11,8 +11,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/MyTunesView.fxml")));
-            primaryStage.setTitle("MyTunes");
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/signIn.fxml")));
+            primaryStage.setTitle("Attendance Checker");
             primaryStage.setScene(new Scene(root, 1200, 600));
             primaryStage.show();
         }
