@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="800.0" prefWidth="360.0" styleClass="root" stylesheets="@../styles/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="root" stylesheets="@../styles/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
 
-</AnchorPane>
+</BorderPane>

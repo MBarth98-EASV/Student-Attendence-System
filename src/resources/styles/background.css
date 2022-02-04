@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: linear-gradient(rgb(141, 118, 187) 0.5%, rgba(136, 123, 204, 1) 15%, #7564FA 60%, rgb(150, 100, 250) 100%);
+    -fx-background-color: linear-gradient(rgb(141, 118, 187) 0.5%, rgba(136, 123, 204, 1) 15%, #7564FA 60%, rgba(150, 100, 250, 2) 100%);
 
 
 }
