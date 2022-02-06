@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="root" stylesheets="@../styles/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
+<BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="root4" stylesheets="@../styles/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
    <top>
       <GridPane prefHeight="235.0" prefWidth="360.0" BorderPane.alignment="CENTER">
         <columnConstraints>
