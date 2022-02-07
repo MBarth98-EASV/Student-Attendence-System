@@ -20,6 +20,6 @@
 
 .root5 {
     -fx-background-color:  #7564FA, linear-gradient(to left bottom, rgba(202, 227, 48, 0.2) 28.71%, rgba(202, 197, 88, 0) 75.29%), linear-gradient(to left bottom, rgba(235, 68, 68, 0.2) 16.75%, rgba(240, 0, 0, 0) 64.2%);
-    filter: blur(8px);
+    /*-fx-effect: innershadow( gaussian, rgba(117, 100, 250, 0.2), 200, 0, 0, 0);*/
 }
 
