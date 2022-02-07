@@ -22,4 +22,30 @@ public class CalenderEntityController implements Initializable
     {
 
     }
+
+    public void setLblStartTime(String startTime) {
+        lblStartTime.setText(startTime);
+    }
+
+    public void setLblEndTime(String endTime) {
+        lblEndTime.setText(endTime);
+    }
+
+    public void setCourseName(String name){
+        lblCourseName.setText(name);
+    }
+
+    public void setLocation(String location){
+        lblLocation.setText(location);
+    }
+
+
+    public ProgressBar getBarStatus() {
+        return barStatus;
+    }
+
+    public void setBarStatus(ProgressBar barStatus) {
+        this.barStatus = barStatus;
+    }
+
 }

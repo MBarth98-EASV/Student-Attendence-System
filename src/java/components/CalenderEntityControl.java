@@ -3,6 +3,7 @@ package components;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import util.EnumCourseStatus;
 
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class CalenderEntityControl extends Pane
     private Node view;
     private CalenderEntityController controller;
 
-    public CalenderEntityControl()
+    public CalenderEntityControl(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("views\\CalenderEntity.fxml"));
 
@@ -26,6 +27,18 @@ public class CalenderEntityControl extends Pane
         catch (IOException ignored) {}
 
         getChildren().add(view);
+        controller.setLblStartTime(startTime);
+        controller.setLblEndTime(endTime);
+        controller.setCourseName(courseName);
+        controller.setLocation(courseLocation);
+
+        switch (status){
+            case ATTENDED -> controller.getBarStatus().setStyle("-fx-background-color: green");
+            case ABSENT -> controller.getBarStatus().setStyle("-fx-background-color: red");
+            case PARTIAL -> controller.getBarStatus().setStyle("-fx-background-color: yellow");
+            case NOT_STARTED -> controller.getBarStatus().setStyle("-fx-background-color: grey");
+            default -> controller.getBarStatus().setOpacity(0);
+        }
     }
 
     private URL getResource(String s)

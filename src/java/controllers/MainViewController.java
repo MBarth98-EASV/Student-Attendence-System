@@ -4,6 +4,8 @@ import components.CalenderEntityControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -26,15 +28,30 @@ public class MainViewController implements Initializable {
     @FXML AnchorPane anchorPaneAttend;
     @FXML Button btnAttendLeave;
     @FXML Slider sliderAttendLeave;
-    Pane coursePane;
+    TilePane coursePane;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        coursePane = new Pane();
+        coursePane = new TilePane();
+        coursePane.setAlignment(Pos.CENTER);
+        coursePane.setOrientation(Orientation.VERTICAL);
+        coursePane.setHgap(10);
+        coursePane.setVgap(10);
+
+        coursePane.getChildren().add(new CalenderEntityControl("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
+        coursePane.getChildren().add(new CalenderEntityControl("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
+
+        coursePane.getChildren().add(new CalenderEntityControl("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
+
+        coursePane.getChildren().add(new CalenderEntityControl("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
+        coursePane.getChildren().add(new CalenderEntityControl("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
         scrollPaneCourses.setContent(coursePane);
-        coursePane.getChildren().add(new CalenderEntityControl());
+
+
+
+
     }
 
 
