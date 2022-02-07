@@ -2,12 +2,19 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
+import util.Course;
+import util.EnumCourseStatus;
 
-public class MainViewController {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    @FXML ScrollPane scrollPaneCourses;
+public class MainViewController implements Initializable {
+
+    @FXML TilePane scrollPaneCourses;
     @FXML Label lblDay;
     @FXML Button btnNextDay;
     @FXML Button btnPrevDay;
@@ -19,6 +26,12 @@ public class MainViewController {
     @FXML Slider sliderAttendLeave;
 
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        scrollPaneCourses.getChildren().add(new Course("none","none","none","none", EnumCourseStatus.ATTENDED));
+
+    }
 
 
     public void onMainView(ActionEvent event) {

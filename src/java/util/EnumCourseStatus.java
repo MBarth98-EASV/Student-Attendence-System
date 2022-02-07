@@ -1,5 +1,5 @@
 package util;
 
 public enum EnumCourseStatus {
-    ATTENDED, ABSENT, PARTIAL
+    ATTENDED, ABSENT, PARTIAL, NOT_STARTED, NONE
 }
