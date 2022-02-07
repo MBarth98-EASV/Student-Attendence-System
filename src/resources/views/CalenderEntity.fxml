@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="components.CalenderEntityController">
-    <VBox>
-        <Label>
-            start tid
-        </Label>
-        <Label>
-            slut tid
-        </Label>
+<HBox prefHeight="100.0" prefWidth="330.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="components.CalenderEntityController">
+    <VBox prefHeight="106.0" prefWidth="52.0" style="-fx-border-width: 0 2 0 0; -fx-border-color: #f8f8f8;">
+        <Label fx:id="lblStartTime" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="40.0" text="start">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Line endX="-65.50711822509766" endY="-0.20711973309516907" startX="-100.0">
+         <VBox.margin>
+            <Insets left="5.0" top="2.0" />
+         </VBox.margin>
+      </Line>
+        <Label fx:id="lblEndTime" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="40.0" text="slut">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></Label>
     </VBox>
+   <VBox prefHeight="100.0" prefWidth="275.0" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 20;">
+      <children>
+         <Label fx:id="lblCourseName" prefHeight="31.0" prefWidth="230.0" text="Course Name">
+            <VBox.margin>
+               <Insets left="10.0" top="5.0" />
+            </VBox.margin>
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblLocation" text="Room">
+            <VBox.margin>
+               <Insets left="10.0" top="5.0" />
+            </VBox.margin>
+         </Label>
+         <ProgressBar fx:id="barStatus" prefHeight="9.0" prefWidth="248.0" progress="0.0">
+            <VBox.margin>
+               <Insets left="10.0" top="25.0" />
+            </VBox.margin>
+         </ProgressBar>
+      </children>
+      <HBox.margin>
+         <Insets left="5.0" />
+      </HBox.margin>
+   </VBox>
 </HBox>

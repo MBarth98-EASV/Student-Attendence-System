@@ -33,4 +33,8 @@ public class CalenderEntityControl extends Pane
         return getClass().getClassLoader().getResource(s);
     }
 
+    public CalenderEntityController getController(){
+        return controller;
+    }
+
 }
