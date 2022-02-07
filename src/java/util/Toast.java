@@ -15,6 +15,13 @@ import javafx.util.Duration;
 
 /**
  * Author: alcoolis
+ *
+ * Make a toast with the following code:
+ *      String toastMsg = "some text...";
+ *      int toastMsgTime = 3500; //3.5 seconds
+ *      int fadeInTime = 500; //0.5 seconds
+ *      int fadeOutTime= 500; //0.5 seconds
+ *      Toast.makeText(primarystage, toastMsg, toastMsgTime, fadeInTime, fadeOutTime);
  */
 public final class Toast
 {
