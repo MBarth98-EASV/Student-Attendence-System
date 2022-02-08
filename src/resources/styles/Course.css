@@ -1,11 +1,10 @@
 @font-face {
     src: url('fonts/Roboto-Regular.ttf');
-    -fx-font-family: "Roboto-Regular";
 }
 
 #lblCourseName {
     -fx-font-size: 18;
-    -fx-font-family: "Roboto-Regular";
+    -fx-font-family: "Roboto";
     -fx-text-fill: #f8f8f8;
     -fx-font-weight: bold;
 
@@ -13,19 +12,19 @@
 
 #lblLocation {
     -fx-font-size: 14;
-    -fx-font-family: "Roboto-Regular";
+    -fx-font-family: "Roboto";
     -fx-text-fill: #f8f8f8;
 }
 
 #lblStartTime {
     -fx-font-size: 14;
-    -fx-font-family: "Roboto-Regular";
+    -fx-font-family: "Roboto";
     -fx-text-fill: #f8f8f8;
 }
 
 #lblEndTime {
     -fx-font-size: 12;
-    -fx-font-family: "Roboto-Regular";
+    -fx-font-family: "Roboto";
     -fx-text-fill: #f8f8f8;
 }
 
