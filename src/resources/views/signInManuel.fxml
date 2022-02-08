@@ -54,8 +54,14 @@
             </VBox>
             <HBox>
                <children>
-                  <Label styleClass="InputHeader" text="Remember me" textFill="#d6d6d6d9" />
-                  <CheckBox mnemonicParsing="false" styleClass="RememberCheck" textFill="#e4e4e4" />
+                  <Label styleClass="InputHeader" text="Remember me" textFill="#d6d6d6d9">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <CheckBox mnemonicParsing="false" styleClass="RememberCheck" textFill="#e4e4e4">
+                     <HBox.margin>
+                        <Insets left="3.0" top="4.0" />
+                     </HBox.margin></CheckBox>
                </children>
                <padding>
                   <Insets top="15.0" />
@@ -86,7 +92,7 @@
       </VBox>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" styleClass="SubmitButton" text="Sign In" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Button fx:id="btnSignIn" mnemonicParsing="false" onAction="#onSignIn" styleClass="SubmitButton" text="Sign In" textFill="WHITE" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="150.0" />
          </BorderPane.margin>
