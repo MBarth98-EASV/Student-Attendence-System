@@ -10,6 +10,8 @@
     -fx-indeterminate-bar-animation-time: 2;
     -fx-background-radius: 30;
 }
+
+
 .progress-bar > .bar {
     -fx-background-color: -fx-fill;
     -fx-border-width: 0 2 0 0;

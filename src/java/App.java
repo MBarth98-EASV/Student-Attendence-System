@@ -12,7 +12,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
             Parent root;
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/MainAttendanceView.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/signInManuel.fxml")));
             //root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("styles/course.css").toExternalForm()));
             primaryStage.setTitle("Attendance Checker");
             primaryStage.setScene(new Scene(root, 1200, 600));
