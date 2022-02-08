@@ -18,16 +18,14 @@ public class CalenderEntityControl extends Pane
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("views\\CalenderEntity.fxml"));
 
-        //this.getStylesheets().add(this.getClass().getResource(".../styles/CourseEntity.css").toExternalForm());
+        //this.getStylesheets().add(this.getClass().getResource("styles/CourseEntity.css").toExternalForm());
         //this.getStylesheets().add(this.getClass().getResource("resources/styles/CourseEntity.css").toExternalForm());
 
         fxmlLoader.setControllerFactory(param -> controller = new CalenderEntityController());
 
-        try
-        {
+        try {
             view = fxmlLoader.load();
-        }
-        catch (IOException ignored) {}
+        } catch (IOException ignored) {}
 
         getChildren().add(view);
         controller.setLblStartTime(startTime);

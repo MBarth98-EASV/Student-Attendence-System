@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="100.0" prefWidth="330.0" styleClass="RootBackground" stylesheets="@../styles/CourseEntity.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="components.CalenderEntityController">
-    <VBox prefHeight="106.0" prefWidth="52.0" styleClass="TimeBackground" stylesheets="@../styles/CourseEntity.css">
-        <Label fx:id="lblStartTime" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="40.0" styleClass="TimeStart" stylesheets="@../styles/CourseEntity.css" text="start">
+<HBox fx:id="rootHBox" prefHeight="100.0" prefWidth="330.0" stylesheets="@../styles/Course.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="components.CalenderEntityController">
+    <VBox fx:id="timeVBox" prefHeight="106.0" prefWidth="52.0">
+        <Label fx:id="lblStartTime" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="40.0" text="start">
          <VBox.margin>
             <Insets top="11.0" />
          </VBox.margin>
@@ -22,14 +22,14 @@
             <Insets left="5.0" top="5.0" />
          </VBox.margin>
       </Line>
-        <Label fx:id="lblEndTime" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="40.0" styleClass="TimeEnd" stylesheets="@../styles/CourseEntity.css" text="end">
+        <Label fx:id="lblEndTime" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="40.0" text="end">
          <VBox.margin>
             <Insets />
          </VBox.margin></Label>
     </VBox>
-   <VBox prefHeight="100.0" prefWidth="275.0" styleClass="Background" stylesheets="@../styles/CourseEntity.css">
+   <VBox fx:id="courseVBox" prefHeight="100.0" prefWidth="275.0">
       <children>
-         <Label fx:id="lblCourseName" prefHeight="31.0" prefWidth="230.0" styleClass="Title" stylesheets="@../styles/CourseEntity.css" text="Course Name">
+         <Label fx:id="lblCourseName" prefHeight="31.0" prefWidth="230.0" text="Course Name">
             <VBox.margin>
                <Insets left="10.0" top="5.0" />
             </VBox.margin>
@@ -37,12 +37,12 @@
                <Font name="System Bold" size="18.0" />
             </font>
          </Label>
-         <Label fx:id="lblLocation" styleClass="Location" stylesheets="@../styles/CourseEntity.css" text="Room">
+         <Label fx:id="lblLocation" text="Room">
             <VBox.margin>
                <Insets left="10.0" />
             </VBox.margin>
          </Label>
-         <ProgressBar fx:id="barStatus" prefHeight="9.0" prefWidth="248.0" progress="0.53" stylesheets="@../styles/ProgressBarGreen.css">
+         <ProgressBar fx:id="barStatus" prefHeight="9.0" prefWidth="248.0" progress="0.53">
             <VBox.margin>
                <Insets left="10.0" top="28.0" />
             </VBox.margin>
