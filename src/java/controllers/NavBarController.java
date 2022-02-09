@@ -1,5 +1,7 @@
 package controllers;
 
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.action.ActionTrigger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,8 +13,13 @@ import java.util.ResourceBundle;
 
 public class NavBarController implements Initializable {
 
+    @ActionTrigger("mainview")
     @FXML public ToggleButton tglBtnMainView;
+
+    @ActionTrigger("stats")
     @FXML public ToggleButton tglBtnStats;
+
+    @ActionTrigger("user")
     @FXML public ToggleButton tglBtnUser;
 
     @Override
@@ -20,10 +27,13 @@ public class NavBarController implements Initializable {
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().addAll(tglBtnMainView, tglBtnStats, tglBtnUser);
         tglBtnMainView.fire();
+
+
     }
 
+
     public void onMainView(ActionEvent event) {
-        
+
     }
 
     public void onShowStats(ActionEvent event) {

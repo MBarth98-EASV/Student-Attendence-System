@@ -9,5 +9,7 @@
     </content>
     <orderEntry type="jdk" jdkName="liberica-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="io.datafx.flow" level="project" />
+    <orderEntry type="library" name="io.datafx.core" level="project" />
   </component>
 </module>
