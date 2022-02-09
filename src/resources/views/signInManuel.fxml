@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="root6" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInManualController">
+<BorderPane fx:id="signInManRoot" prefHeight="800.0" prefWidth="360.0" styleClass="root6" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInManualController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="TOP_CENTER">
          <children>
