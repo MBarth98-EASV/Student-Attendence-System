@@ -22,9 +22,6 @@ public class MainViewController implements Initializable {
     @FXML Label lblDay;
     @FXML Button btnNextDay;
     @FXML Button btnPrevDay;
-    @FXML ToggleButton tglBtnMainView;
-    @FXML ToggleButton tglBtnStats;
-    @FXML ToggleButton tglBtnUser;
     @FXML AnchorPane anchorPaneAttend;
     @FXML Button btnAttendLeave;
     @FXML Slider sliderAttendLeave;
