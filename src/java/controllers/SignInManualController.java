@@ -37,7 +37,7 @@ public class SignInManualController implements Initializable {
     }
 
     public void onSignIn(ActionEvent event) {
-        Stage stage = (Stage) btnSignIn.getScene().getWindow();
+       /* Stage stage = (Stage) btnSignIn.getScene().getWindow();
         try {
             Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/MainAttendanceView.fxml")));
 
@@ -65,15 +65,18 @@ public class SignInManualController implements Initializable {
 
     }
 
+        */
 
-/*
+
+
         try {
+            Stage stage = (Stage) btnSignIn.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(
                     getClass().getResource("/views/MainAttendanceView.fxml"))), stage.getHeight(), stage.getWidth()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
- */
+
     }
 }
