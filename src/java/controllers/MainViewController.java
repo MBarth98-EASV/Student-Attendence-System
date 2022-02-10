@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -54,6 +55,24 @@ public class MainViewController implements Initializable {
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
             viewBodyContainer.getChildren().remove(mainViewBody);
+        });
+        timeline.play();
+    }
+
+    private void loadScene(String fxml, Node component, Pane container, Node body, double duration) throws IOException
+    {
+        Parent root = FXMLLoader.load(getClass().getResource(fxml));
+        Scene scene = component.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        container.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(duration), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            container.getChildren().remove(body);
         });
         timeline.play();
     }
