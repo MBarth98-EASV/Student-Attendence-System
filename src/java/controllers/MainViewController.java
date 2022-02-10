@@ -16,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
-import util.Course;
 import util.EnumCourseStatus;
 
 import java.io.IOException;
