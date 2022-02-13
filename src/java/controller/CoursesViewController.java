@@ -2,6 +2,7 @@ package controller;
 
 import component.CourseEntity;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,11 @@ public class CoursesViewController implements Initializable {
     @FXML FlowPane coursePane;
 
     private ObjectProperty<CourseEntity> selectedCourse;
+    private static CoursesViewController instance;
+
+    public CoursesViewController() {
+        instance = this;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,16 +57,29 @@ public class CoursesViewController implements Initializable {
 
         scrollPaneCourses.setContent(coursePane);
 
-        ControllerPassthroughModel.getInstance().setSelectedCourse(courses.get(0));
+        /*ControllerPassthroughModel.getInstance().setSelectedCourse(courses.get(0));
         selectedCourse = ControllerPassthroughModel.getInstance().getSelectedCourse();
         selectedCourse.bind(ControllerPassthroughModel.getInstance().getSelectedCourse());
+         */
+
+        selectedCourse = new SimpleObjectProperty<>(courses.get(0));
 
         selectedCourse.addListener((observable, oldValue, newValue) -> {
             if (oldValue != null){
-                oldValue.getController().getCourseVBox().setStyle("-fx-border-width: 0; -fx-border-color: transparent");
+                oldValue.getController().getCourseVBox().setStyle("" +
+                        "-fx-border-width: 0; " +
+                        "-fx-border-color: transparent; " +
+                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                        "-fx-background-radius: 10; " +
+                        "-fx-border-radius: 10;");
             }
             if (newValue != null) {
-                newValue.getController().getCourseVBox().setStyle("-fx-border-width: 2; -fx-border-color: #5145AD");
+                newValue.getController().getCourseVBox().setStyle("" +
+                        "-fx-border-width: 2; " +
+                        "-fx-border-color: #5145AD; " +
+                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                        "-fx-background-radius: 10; " +
+                        "-fx-border-radius: 10;");
             }
         });
     }
@@ -74,4 +93,13 @@ public class CoursesViewController implements Initializable {
     }
 
 
+    public static CoursesViewController getInstance(){
+
+        if (instance == null)
+        {
+            instance = new CoursesViewController();
+        }
+
+        return instance;
+    }
 }

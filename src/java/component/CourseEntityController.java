@@ -1,6 +1,7 @@
 package component;
 
 import controller.ControllerPassthroughModel;
+import controller.CoursesViewController;
 import controller.MainController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,7 +37,7 @@ public class CourseEntityController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        courseVBox.setOnMouseClicked(event -> ControllerPassthroughModel.getInstance().setSelectedCourse(course));
+        courseVBox.setOnMouseClicked(event -> CoursesViewController.getInstance().setSelectedCourse(course));
         initStyle();
     }
 
