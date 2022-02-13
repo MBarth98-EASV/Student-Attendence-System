@@ -1,5 +1,7 @@
 package component;
 
+import controller.ControllerPassthroughModel;
+import controller.MainController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -27,14 +29,15 @@ public class CourseEntityController implements Initializable
 
     private CourseEntity course;
 
-
+    public CourseEntityController() {
+        
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        courseVBox.setOnMouseClicked(event -> System.out.println(course));
-
-    initStyle();
+        courseVBox.setOnMouseClicked(event -> ControllerPassthroughModel.getInstance().setSelectedCourse(course));
+        initStyle();
     }
 
     private void initStyle(){
