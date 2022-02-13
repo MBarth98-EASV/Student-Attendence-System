@@ -1,0 +1,42 @@
+
+#lblCourseName {
+    -fx-font-size: 18;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: #f8f8f8;
+    -fx-font-weight: bold;
+
+}
+
+#lblLocation {
+    -fx-font-size: 14;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: #f8f8f8;
+}
+
+#lblStartTime {
+    -fx-font-size: 14;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: #f8f8f8;
+}
+
+#lblEndTime {
+    -fx-font-size: 12;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: #f8f8f8;
+}
+
+
+#courseVBox {
+    -fx-background-color: rgba(248, 248, 248, 0.5);
+    -fx-background-radius: 10;
+}
+
+#timeVBox {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: #f8f8f8;
+}
+
+#rootHBox {
+    -fx-background-color: transparent;
+}
