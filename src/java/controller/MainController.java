@@ -36,16 +36,6 @@ public class MainController implements Initializable {
     private Parent statView;
     private Parent userView;
 
-    public static MainController getInstance(){
-
-        if (instance == null)
-        {
-            instance = new MainController();
-        }
-
-        return instance;
-    }
-
 
     public MainController(){
         instance = this;
@@ -57,6 +47,16 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+    public static MainController getInstance(){
+
+        if (instance == null)
+        {
+            instance = new MainController();
+        }
+
+        return instance;
     }
 
     @Override

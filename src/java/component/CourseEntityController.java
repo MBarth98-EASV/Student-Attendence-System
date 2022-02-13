@@ -7,13 +7,13 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CourseEntityController implements Initializable
 {
-
 
     @FXML private VBox courseVBox;
     @FXML VBox timeVBox;
@@ -22,17 +22,23 @@ public class CourseEntityController implements Initializable
     @FXML private Label lblEndTime;
     @FXML private Label lblCourseName;
     @FXML private Label lblLocation;
-
-
     @FXML Circle circleStatus;
+
+
+    private CourseEntity course;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        courseVBox.setOnMouseClicked(event -> System.out.println(course));
+
     initStyle();
     }
 
     private void initStyle(){
+        lblCourseName.setFont(Font.font("roboto"));
         lblCourseName.setStyle("-fx-font-size: 18;\n" +
                 "    -fx-font-family: \"Roboto\";\n" +
                 "    -fx-text-fill: #f8f8f8;\n" +
@@ -106,6 +112,14 @@ public class CourseEntityController implements Initializable
 
     public void setCircleStatus(Circle circleStatus) {
         this.circleStatus = circleStatus;
+    }
+
+    public CourseEntity getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseEntity course) {
+        this.course = course;
     }
 
 

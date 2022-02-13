@@ -29,6 +29,8 @@ public class CourseEntity extends Pane
         controller.setCourseName(courseName);
         controller.setLocation(courseLocation);
 
+        controller.setCourse(this);
+
         switch (status){
             case ATTENDED -> controller.getCircleStatus().setStyle("    -fx-fill: green;    -fx-stroke-width: 0;");
             case ABSENT -> controller.getCircleStatus().setStyle("      -fx-fill: red;      -fx-stroke-width: 0;");
