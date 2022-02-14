@@ -32,6 +32,26 @@
 
 }
 
+.check-box .box {
+
+    -fx-background-color: transparent;
+    -fx-border-color:#f8f8f8;
+    -fx-border-width: 2;
+    -fx-border-radius:4px;
+
+}
+
+.check-box:selected .mark {
+
+    -fx-background-color: #f8f8f8;
+
+}
+
+.check-box:selected .box {
+
+    -fx-background-color: transparent;
+}
+
 .SubmitButton
 {
     -fx-background-color: #5145AD;

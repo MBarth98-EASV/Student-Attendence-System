@@ -1,21 +1,36 @@
 
 .CourseTglButton {
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 9pt;
-    -fx-text-fill: #d5d4d4;
-    -fx-font-weight: bold;
+    -fx-background-image: url(../img/courseicon1.png);;
     -fx-content-display: CENTER;
-    -fx-border-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
     -fx-background-color: transparent;
+    -fx-background-size: 25;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10;
+    -fx-background-radius: 30;
 }
 
 .CourseTglButton:hover {
-    -fx-background-color: transparent;
+    -fx-background-color: #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
+
 }
 
 .CourseTglButton:pressed {
-    -fx-background-color: transparent;
-    -fx-text-fill: #8592c0;
+    -fx-background-color:  #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
     -fx-background-radius: 30;
 }
 
@@ -25,14 +40,24 @@
 }
 
 .CourseTglButton:selected {
-    -fx-background-color: transparent;
-    -fx-border-color: #4678c5;
-    -fx-text-fill: #4678c5;
+    -fx-background-color: #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color:#7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
 }
 
 .CourseTglButton:selected:focused {
-    -fx-background-color: transparent;
-    -fx-border-color: #4678c5;
+    -fx-background-color: #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
 
 }
 
@@ -40,23 +65,38 @@
 /* ----------------------------------------------------------------- */
 
 
+
+
 .StatTglButton {
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 9pt;
-    -fx-text-fill: #d5d4d4;
-    -fx-font-weight: bold;
+    -fx-background-image: url(../img/staticon1.png);
     -fx-content-display: CENTER;
-    -fx-border-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
     -fx-background-color: transparent;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8;
+    -fx-background-radius: 30;
 }
 
 .StatTglButton:hover {
-    -fx-background-color: transparent;
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
 }
 
 .StatTglButton:pressed {
-    -fx-background-color: transparent;
-    -fx-text-fill: #8592c0;
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
     -fx-background-radius: 30;
 }
 
@@ -66,14 +106,23 @@
 }
 
 .StatTglButton:selected {
-    -fx-background-color: transparent;
-    -fx-border-color: #4678c5;
-    -fx-text-fill: #4678c5;
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
 }
 
 .StatTglButton:selected:focused {
-    -fx-background-color: transparent;
-    -fx-border-color: #4678c5;
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
 
 }
 
@@ -81,40 +130,62 @@
 /* ----------------------------------------------------------------- */
 
 
-.StatTglButton {
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 9pt;
-    -fx-text-fill: #d5d4d4;
-    -fx-font-weight: bold;
+.UserTglButton {
+    -fx-background-image: url(../img/usericon1.png);
     -fx-content-display: CENTER;
-    -fx-border-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
     -fx-background-color: transparent;
-}
-
-.StatTglButton:hover {
-    -fx-background-color: transparent;
-}
-
-.StatTglButton:pressed {
-    -fx-background-color: transparent;
-    -fx-text-fill: #8592c0;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8;
     -fx-background-radius: 30;
 }
 
-.StatTglButton:disabled {
+.UserTglButton:hover {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.UserTglButton:pressed {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.UserTglButton:disabled {
     -fx-opacity: 0.4;
 
 }
 
-.StatTglButton:selected {
-    -fx-background-color: transparent;
-    -fx-border-color: #4678c5;
-    -fx-text-fill: #4678c5;
+.UserTglButton:selected {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
 }
 
-.StatTglButton:selected:focused {
-    -fx-background-color: transparent;
-    -fx-border-color: #4678c5;
+.UserTglButton:selected:focused {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
 
 }
 
