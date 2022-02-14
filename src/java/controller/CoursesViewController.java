@@ -53,12 +53,12 @@ public class CoursesViewController implements Initializable {
         courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
 
         coursePane.getChildren().addAll(courses);
-
-
         scrollPaneCourses.setContent(coursePane);
-
-
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
+
+
+
+
 
         selectedCourse.addListener((observable, oldValue, newValue) -> {
             if (oldValue != null){
