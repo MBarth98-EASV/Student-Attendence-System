@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -9,7 +8,7 @@
 
 <BorderPane prefHeight="800.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <bottom>
-      <GridPane prefHeight="66.0" prefWidth="360.0" style="-fx-background-color: rgba(81, 69, 173, 0.8);" styleClass="background" stylesheets="@../css/background.css" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="60.0" prefWidth="360.0" style="-fx-background-color: #5C5498FF;" styleClass="background" stylesheets="@../css/background.css" BorderPane.alignment="CENTER">
           <columnConstraints>
               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -19,9 +18,9 @@
               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           </rowConstraints>
           <children>
-              <ToggleButton fx:id="tglBtnMainView" mnemonicParsing="false" onAction="#onMainView" text="ToggleButton" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-              <ToggleButton fx:id="tglBtnStats" mnemonicParsing="false" onAction="#onShowStats" text="ToggleButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-              <ToggleButton fx:id="tglBtnUser" mnemonicParsing="false" onAction="#onShowUser" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+              <ToggleButton fx:id="tglBtnMainView" mnemonicParsing="false" onAction="#onMainView" prefHeight="45.0" prefWidth="45.0" styleClass="CourseTglButton" stylesheets="@../css/NavBar.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+              <ToggleButton fx:id="tglBtnStats" mnemonicParsing="false" onAction="#onShowStats" prefHeight="45.0" prefWidth="45.0" styleClass="StatTglButton" stylesheets="@../css/NavBar.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+              <ToggleButton fx:id="tglBtnUser" mnemonicParsing="false" onAction="#onShowUser" prefHeight="45.0" prefWidth="45.0" styleClass="UserTglButton" stylesheets="@../css/NavBar.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
           </children>
       </GridPane>
    </bottom>
