@@ -1,5 +1,6 @@
 package controller;
 
+import bll.DataManager;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
@@ -19,6 +21,9 @@ public class SignInController {
 
     @FXML BorderPane signInRoot;
     @FXML Button btnSignIn;
+    @FXML TextInputControl usernameField;
+    @FXML TextInputControl passwordField;
+
     private ControllerPassthroughModel passthroughModel;
 
     public SignInController(){
@@ -27,7 +32,9 @@ public class SignInController {
 
     public void onSignIn(ActionEvent event) {
         try {
-            loadNext();
+            //if (usernameField.getText().equals(DataManager.getInstance().getUserLogin()) && passwordField.getText().equals(DataManager.getInstance().getUserPassword())) {
+                loadNext();
+            //}
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -45,7 +45,7 @@ public class CoursesViewController implements Initializable {
 
 
         List<CourseEntity> courses = new ArrayList<>();
-        courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ABSENT));
+        courses.add(new CourseEntity("08:15", "0000", "SCO", "Room 30C", EnumCourseStatus.ABSENT));
         courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.NOT_STARTED));
         courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.NONE));
         courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.PARTIAL));
