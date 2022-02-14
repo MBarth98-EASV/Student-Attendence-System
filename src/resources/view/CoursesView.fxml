@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CoursesViewController">
    <top>
@@ -24,17 +25,27 @@
           <opaqueInsets>
               <Insets />
           </opaqueInsets>
-          <Label fx:id="lblDay" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="230.0" text="Today" textAlignment="CENTER" textFill="#f8f8f8" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+          <Label fx:id="lblDay" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="230.0" text="Today" textAlignment="CENTER" textFill="#f8f8f8" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
               <font>
                   <Font size="24.0" />
               </font>
+            <effect>
+               <Shadow height="6.34" radius="1.085" width="0.0">
+                  <color>
+                     <Color red="1.0" green="1.0" blue="1.0" />
+                  </color>
+               </Shadow>
+            </effect>
+            <GridPane.margin>
+               <Insets top="4.0" />
+            </GridPane.margin>
           </Label>
-          <Button fx:id="btnPrevDay" mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="Button" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+          <Button fx:id="btnPrevDay" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" styleClass="BackButton" stylesheets="@../css/CourseViewButtons.css" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
               <GridPane.margin>
                   <Insets left="10.0" />
               </GridPane.margin>
           </Button>
-          <Button fx:id="btnNextDay" mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="Button" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+          <Button fx:id="btnNextDay" mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" styleClass="BackButton" stylesheets="@../css/CourseViewButtons.css" text="&gt;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
               <GridPane.margin>
                   <Insets right="10.0" />
               </GridPane.margin>

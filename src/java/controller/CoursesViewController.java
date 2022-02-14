@@ -57,10 +57,6 @@ public class CoursesViewController implements Initializable {
 
         scrollPaneCourses.setContent(coursePane);
 
-        /*ControllerPassthroughModel.getInstance().setSelectedCourse(courses.get(0));
-        selectedCourse = ControllerPassthroughModel.getInstance().getSelectedCourse();
-        selectedCourse.bind(ControllerPassthroughModel.getInstance().getSelectedCourse());
-         */
 
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
 

@@ -1,0 +1,120 @@
+
+.CourseTglButton {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: #d5d4d4;
+    -fx-font-weight: bold;
+    -fx-content-display: CENTER;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.CourseTglButton:hover {
+    -fx-background-color: transparent;
+}
+
+.CourseTglButton:pressed {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8592c0;
+    -fx-background-radius: 30;
+}
+
+.CourseTglButton:disabled {
+    -fx-opacity: 0.4;
+
+}
+
+.CourseTglButton:selected {
+    -fx-background-color: transparent;
+    -fx-border-color: #4678c5;
+    -fx-text-fill: #4678c5;
+}
+
+.CourseTglButton:selected:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: #4678c5;
+
+}
+
+
+/* ----------------------------------------------------------------- */
+
+
+.StatTglButton {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: #d5d4d4;
+    -fx-font-weight: bold;
+    -fx-content-display: CENTER;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.StatTglButton:hover {
+    -fx-background-color: transparent;
+}
+
+.StatTglButton:pressed {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8592c0;
+    -fx-background-radius: 30;
+}
+
+.StatTglButton:disabled {
+    -fx-opacity: 0.4;
+
+}
+
+.StatTglButton:selected {
+    -fx-background-color: transparent;
+    -fx-border-color: #4678c5;
+    -fx-text-fill: #4678c5;
+}
+
+.StatTglButton:selected:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: #4678c5;
+
+}
+
+
+/* ----------------------------------------------------------------- */
+
+
+.StatTglButton {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: #d5d4d4;
+    -fx-font-weight: bold;
+    -fx-content-display: CENTER;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.StatTglButton:hover {
+    -fx-background-color: transparent;
+}
+
+.StatTglButton:pressed {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8592c0;
+    -fx-background-radius: 30;
+}
+
+.StatTglButton:disabled {
+    -fx-opacity: 0.4;
+
+}
+
+.StatTglButton:selected {
+    -fx-background-color: transparent;
+    -fx-border-color: #4678c5;
+    -fx-text-fill: #4678c5;
+}
+
+.StatTglButton:selected:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: #4678c5;
+
+}
+
