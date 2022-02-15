@@ -50,8 +50,8 @@ public class SignInController {
         passthroughModel.getViewContainer().getChildren().add(root);
 
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.LINEAR);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.35), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
             passthroughModel.getViewContainer().getChildren().remove(signInRoot);

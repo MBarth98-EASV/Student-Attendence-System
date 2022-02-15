@@ -39,14 +39,6 @@ public class MainController implements Initializable {
 
     public MainController(){
         instance = this;
-        try {
-            courseView = FXMLLoader.load(getClass().getResource("/view/CoursesView.fxml"));
-            statView = FXMLLoader.load(getClass().getResource("/view/Statistics.fxml"));
-            userView = FXMLLoader.load(getClass().getResource("/view/UserSettings.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     public static MainController getInstance(){
@@ -67,7 +59,7 @@ public class MainController implements Initializable {
 
     public void onMainView(ActionEvent event) {
         try {
-            loadSecond(courseView);
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/CoursesView.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,7 +67,7 @@ public class MainController implements Initializable {
 
     public void onShowStats(ActionEvent event) {
         try {
-            loadSecond(statView);
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/Statistics.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +75,7 @@ public class MainController implements Initializable {
 
     public void onShowUser(ActionEvent event) {
         try {
-            loadSecond(userView);
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/UserSettings.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,8 +106,8 @@ public class MainController implements Initializable {
         viewContainer.getChildren().add(newView);
 
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(newView.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        KeyValue kv = new KeyValue(newView.translateYProperty(), 0, Interpolator.LINEAR);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.35), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
             viewContainer.getChildren().remove(viewPane);
