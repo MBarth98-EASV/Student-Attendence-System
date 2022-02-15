@@ -78,6 +78,7 @@ public class CoursesViewController implements Initializable {
                         "-fx-border-radius: 10;");
             }
         });
+        scrollPaneCourses.setOnMouseClicked(event -> selectedCourse.set(null));
     }
 
     public CourseEntity getSelectedCourse() {

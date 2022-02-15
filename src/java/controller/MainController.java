@@ -32,10 +32,6 @@ public class MainController implements Initializable {
 
     private static MainController instance = null;
 
-    private Parent courseView;
-    private Parent statView;
-    private Parent userView;
-
 
     public MainController(){
         instance = this;
