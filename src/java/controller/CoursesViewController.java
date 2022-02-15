@@ -31,11 +31,9 @@ public class CoursesViewController implements Initializable {
 
     private ObjectProperty<CourseEntity> selectedCourse;
     private static CoursesViewController instance;
-    private CourseEntity emptyCourse;
 
     public CoursesViewController() {
         instance = this;
-        emptyCourse = new CourseEntity("N/A", "N/A","N/A","N/A",EnumCourseStatus.NONE);
     }
 
     @Override
@@ -70,6 +68,8 @@ public class CoursesViewController implements Initializable {
                         "-fx-background-color: rgba(248, 248, 248, 0.5); " +
                         "-fx-background-radius: 10; " +
                         "-fx-border-radius: 10;");
+                oldValue.setSelected(false);
+                
             }
             if (newValue != null) {
                 newValue.getController().getCourseVBox().setStyle("" +
@@ -78,8 +78,10 @@ public class CoursesViewController implements Initializable {
                         "-fx-background-color: rgba(248, 248, 248, 0.5); " +
                         "-fx-background-radius: 10; " +
                         "-fx-border-radius: 10;");
+                newValue.setSelected(true);
+                return;
             }
-            if (newValue == emptyCourse) {
+            if (newValue.isSelected()) {
                 oldValue.getController().getCourseVBox().setStyle("" +
                         "-fx-border-width: 0; " +
                         "-fx-border-color: transparent; " +
@@ -103,8 +105,8 @@ public class CoursesViewController implements Initializable {
     }
 
     public void setSelectedCourse(CourseEntity selectedCourse) {
-        if (selectedCourse == null){
-            this.selectedCourse.set(emptyCourse);
+        if (selectedCourse.equals(this.selectedCourse)){
+            selectedCourse.setSelected(true);
         }
         this.selectedCourse.set(selectedCourse);
     }

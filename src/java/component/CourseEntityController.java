@@ -28,7 +28,7 @@ public class CourseEntityController implements Initializable
     @FXML private Label lblLocation;
     @FXML Circle circleStatus;
 
-
+    /** The Course tied to this instance of a controller. */
     private CourseEntity course;
 
     public CourseEntityController() {
@@ -39,9 +39,6 @@ public class CourseEntityController implements Initializable
     public void initialize(URL location, ResourceBundle resources)
     {
         courseVBox.setOnMouseClicked(event -> {
-            if (CoursesViewController.getInstance().getSelectedCourse() == course){
-                CoursesViewController.getInstance().setSelectedCourse(null);
-            }
             CoursesViewController.getInstance().setSelectedCourse(course);
         });
         initStyle();

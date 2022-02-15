@@ -13,6 +13,8 @@ public class CourseEntity extends Pane
     private Node view;
     private CourseEntityController controller;
 
+    private boolean selected;
+
 
 
     public CourseEntity(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
@@ -50,6 +52,14 @@ public class CourseEntity extends Pane
 
     public CourseEntityController getController(){
         return controller;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
 }
