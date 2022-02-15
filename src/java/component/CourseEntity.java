@@ -13,6 +13,8 @@ public class CourseEntity extends Pane
     private Node view;
     private CourseEntityController controller;
 
+
+
     public CourseEntity(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
@@ -38,6 +40,7 @@ public class CourseEntity extends Pane
             case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: grey;     -fx-stroke-width: 0;");
             default -> controller.getCircleStatus().setOpacity(0);
         }
+
     }
 
     private URL getResource(String s)

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
@@ -37,7 +38,12 @@ public class CourseEntityController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        courseVBox.setOnMouseClicked(event -> CoursesViewController.getInstance().setSelectedCourse(course));
+        courseVBox.setOnMouseClicked(event -> {
+            if (CoursesViewController.getInstance().getSelectedCourse() == course){
+                CoursesViewController.getInstance().setSelectedCourse(null);
+            }
+            CoursesViewController.getInstance().setSelectedCourse(course);
+        });
         initStyle();
     }
 

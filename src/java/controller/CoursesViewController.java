@@ -31,9 +31,11 @@ public class CoursesViewController implements Initializable {
 
     private ObjectProperty<CourseEntity> selectedCourse;
     private static CoursesViewController instance;
+    private CourseEntity emptyCourse;
 
     public CoursesViewController() {
         instance = this;
+        emptyCourse = new CourseEntity("N/A", "N/A","N/A","N/A",EnumCourseStatus.NONE);
     }
 
     @Override
@@ -56,10 +58,10 @@ public class CoursesViewController implements Initializable {
         scrollPaneCourses.setContent(coursePane);
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
 
+        initListeners();
+    }
 
-
-
-
+    private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> {
             if (oldValue != null){
                 oldValue.getController().getCourseVBox().setStyle("" +
@@ -77,15 +79,33 @@ public class CoursesViewController implements Initializable {
                         "-fx-background-radius: 10; " +
                         "-fx-border-radius: 10;");
             }
+            if (newValue == emptyCourse) {
+                oldValue.getController().getCourseVBox().setStyle("" +
+                        "-fx-border-width: 0; " +
+                        "-fx-border-color: transparent; " +
+                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                        "-fx-background-radius: 10; " +
+                        "-fx-border-radius: 10;");
+
+                newValue.getController().getCourseVBox().setStyle("" +
+                        "-fx-border-width: 0; " +
+                        "-fx-border-color: transparent; " +
+                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                        "-fx-background-radius: 10; " +
+                        "-fx-border-radius: 10;");
+            }
         });
-        
     }
+
 
     public CourseEntity getSelectedCourse() {
         return selectedCourse.get();
     }
 
     public void setSelectedCourse(CourseEntity selectedCourse) {
+        if (selectedCourse == null){
+            this.selectedCourse.set(emptyCourse);
+        }
         this.selectedCourse.set(selectedCourse);
     }
 
