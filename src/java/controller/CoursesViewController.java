@@ -59,6 +59,9 @@ public class CoursesViewController implements Initializable {
         initListeners();
     }
 
+    //TODO: Make deselection happen if the same course is selected twice.
+    //TODO: Make a dynamic attend/leave button, that functions similarly to Toast.java
+
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> {
             if (oldValue != null){
@@ -69,7 +72,7 @@ public class CoursesViewController implements Initializable {
                         "-fx-background-radius: 10; " +
                         "-fx-border-radius: 10;");
                 oldValue.setSelected(false);
-                
+
             }
             if (newValue != null) {
                 newValue.getController().getCourseVBox().setStyle("" +
