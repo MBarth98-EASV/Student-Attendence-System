@@ -59,47 +59,56 @@ public class CoursesViewController implements Initializable {
         initListeners();
     }
 
-    //TODO: Make deselection happen if the same course is selected twice.
+    //TODO: Make deselection happen if the same course is selected twice
     //TODO: Make a dynamic attend/leave button, that functions similarly to Toast.java
+    //TODO: Indicator for currently active course
 
     private void initListeners(){
-        selectedCourse.addListener((observable, oldValue, newValue) -> {
-            if (oldValue != null){
-                oldValue.getController().getCourseVBox().setStyle("" +
-                        "-fx-border-width: 0; " +
-                        "-fx-border-color: transparent; " +
-                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                        "-fx-background-radius: 10; " +
-                        "-fx-border-radius: 10;");
-                oldValue.setSelected(false);
+        selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));
+    }
 
-            }
-            if (newValue != null) {
-                newValue.getController().getCourseVBox().setStyle("" +
-                        "-fx-border-width: 2; " +
-                        "-fx-border-color: #5145AD; " +
-                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                        "-fx-background-radius: 10; " +
-                        "-fx-border-radius: 10;");
-                newValue.setSelected(true);
-                return;
-            }
-            if (newValue.isSelected()) {
-                oldValue.getController().getCourseVBox().setStyle("" +
-                        "-fx-border-width: 0; " +
-                        "-fx-border-color: transparent; " +
-                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                        "-fx-background-radius: 10; " +
-                        "-fx-border-radius: 10;");
+    
+    private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){
+        if (oldValue != null){
+            oldValue.getController().getCourseVBox().setStyle("" +
+                    "-fx-border-width: 0; " +
+                    "-fx-border-color: transparent; " +
+                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                    "-fx-background-radius: 10; " +
+                    "-fx-border-radius: 10;");
+            oldValue.setSelected(false);
 
-                newValue.getController().getCourseVBox().setStyle("" +
-                        "-fx-border-width: 0; " +
-                        "-fx-border-color: transparent; " +
-                        "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                        "-fx-background-radius: 10; " +
-                        "-fx-border-radius: 10;");
-            }
-        });
+        }
+        if (newValue != null) {
+            newValue.getController().getCourseVBox().setStyle("" +
+                    "-fx-border-width: 2; " +
+                    "-fx-border-color: #5145AD; " +
+                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                    "-fx-background-radius: 10; " +
+                    "-fx-border-radius: 10;");
+            newValue.setSelected(true);
+            return;
+        }
+    }
+
+    private void deselectAll(CourseEntity oldValue, CourseEntity newValue){
+        if (newValue.isSelected() == true) {
+            oldValue.getController().getCourseVBox().setStyle("" +
+                    "-fx-border-width: 0; " +
+                    "-fx-border-color: transparent; " +
+                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                    "-fx-background-radius: 10; " +
+                    "-fx-border-radius: 10;");
+            oldValue.setSelected(false);
+
+            newValue.getController().getCourseVBox().setStyle("" +
+                    "-fx-border-width: 0; " +
+                    "-fx-border-color: transparent; " +
+                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
+                    "-fx-background-radius: 10; " +
+                    "-fx-border-radius: 10;");
+            newValue.setSelected(false);
+        }
     }
 
 
@@ -108,8 +117,12 @@ public class CoursesViewController implements Initializable {
     }
 
     public void setSelectedCourse(CourseEntity selectedCourse) {
-        if (selectedCourse.equals(this.selectedCourse)){
-            selectedCourse.setSelected(true);
+        if (selectedCourse.equals(getSelectedCourse())){
+            if (selectedCourse.equals(getSelectedCourse()) && !selectedCourse.isSelected())
+            {
+                selectDeselectStyle(null, this.selectedCourse.get());
+            }
+            deselectAll(this.selectedCourse.get(), selectedCourse);
         }
         this.selectedCourse.set(selectedCourse);
     }
