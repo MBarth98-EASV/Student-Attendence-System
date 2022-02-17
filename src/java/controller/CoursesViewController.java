@@ -14,7 +14,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 import util.EnumCourseStatus;
+import util.Toast;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -65,6 +67,7 @@ public class CoursesViewController implements Initializable {
 
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));
+        selectedCourse.addListener((observable, oldValue, newValue) -> attendLeaveBtn(oldValue, newValue));
     }
 
     
@@ -90,6 +93,13 @@ public class CoursesViewController implements Initializable {
             return;
         }
     }
+
+    private void attendLeaveBtn(CourseEntity oldValue, CourseEntity newValue) {
+        if (newValue.isSelected()) {
+            Toast.makeText((Stage) scrollPaneCourses.getScene().getWindow(), "btn", 1000, 1000, 1000);
+        }
+    }
+
 
     private void deselectAll(CourseEntity oldValue, CourseEntity newValue){
         if (newValue.isSelected() == true) {
@@ -118,9 +128,11 @@ public class CoursesViewController implements Initializable {
 
     public void setSelectedCourse(CourseEntity selectedCourse) {
         if (selectedCourse.equals(getSelectedCourse())){
-            if (selectedCourse.equals(getSelectedCourse()) && !selectedCourse.isSelected())
+            if (!selectedCourse.isSelected())
             {
                 selectDeselectStyle(null, this.selectedCourse.get());
+                this.selectedCourse.set(selectedCourse);
+                return;
             }
             deselectAll(this.selectedCourse.get(), selectedCourse);
         }
