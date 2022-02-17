@@ -15,17 +15,22 @@ import javafx.util.Duration;
 
 public final class AttendButton {
 
+private Stage btnStage;
+private Stage ownerStage;
 
 
-        public static void makeText(Stage ownerStage, int toastDelay, int fadeInDelay, int fadeOutDelay)
-        {
-            Stage toastStage = new Stage();
-            toastStage.initOwner(ownerStage);
-            toastStage.setResizable(false);
-            toastStage.initStyle(StageStyle.TRANSPARENT);
+    public AttendButton(Stage ownerStage){
+        this.ownerStage = ownerStage;
+        btnStage = new Stage();
+        btnStage.initOwner(ownerStage);
+        btnStage.setResizable(false);
+        btnStage.initStyle(StageStyle.TRANSPARENT);
 
+    }
+
+    public void showButton(int fadeInDelay, CourseEntity selectedCourse) {
             Button btn = new Button();
-            btn.setFont(Font.font("Verdana", 40));
+            btn.setFont(Font.font("Roboto", 40));
             btn.setTextFill(Color.WHITE);
 
             StackPane root = new StackPane(btn);
@@ -34,34 +39,34 @@ public final class AttendButton {
 
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
-            toastStage.setScene(scene);
-            toastStage.show();
+            btnStage.setScene(scene);
+            btnStage.show();
 
             Timeline fadeInTimeline = new Timeline();
-            KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(toastStage.getScene().getRoot().opacityProperty(), 1));
-            fadeInTimeline.getKeyFrames().add(fadeInKey1);
-            
-            fadeInTimeline.play();
-        }
+            KeyFrame fadeInKey = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(btnStage.getScene().getRoot().opacityProperty(), 1));
+            fadeInTimeline.getKeyFrames().add(fadeInKey);
 
-        public static void hideButton(int fadeOutDelayMs, int toastDelay, Stage toastStage){
-                new Thread(() -> {
-                    try
-                    {
-                        Thread.sleep(toastDelay);
-                    }
-                    catch (InterruptedException e)
-                    {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    Timeline fadeOutTimeline = new Timeline();
-                    KeyFrame fadeOutKey1 = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue (toastStage.getScene().getRoot().opacityProperty(), 0));
-                    fadeOutTimeline.getKeyFrames().add(fadeOutKey1);
-                    fadeOutTimeline.setOnFinished((aeb) -> toastStage.close());
-                    fadeOutTimeline.play();
-                }).start();
-        }
+            fadeInTimeline.play();
+    }
+
+    public void hideButton(int fadeOutDelayMs, int toastDelay){
+        new Thread(() -> {
+            try
+            {
+                Thread.sleep(toastDelay);
+            }
+            catch (InterruptedException e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Timeline fadeOutTimeline = new Timeline();
+            KeyFrame fadeOutKey = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue (btnStage.getScene().getRoot().opacityProperty(), 0));
+            fadeOutTimeline.getKeyFrames().add(fadeOutKey);
+            fadeOutTimeline.setOnFinished((aeb) -> btnStage.close());
+            fadeOutTimeline.play();
+        }).start();
+    }
 
 
 }

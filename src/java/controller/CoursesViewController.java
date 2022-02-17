@@ -1,5 +1,6 @@
 package controller;
 
+import component.AttendButton;
 import component.CourseEntity;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -57,7 +58,6 @@ public class CoursesViewController implements Initializable {
         coursePane.getChildren().addAll(courses);
         scrollPaneCourses.setContent(coursePane);
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
-
         initListeners();
     }
 
@@ -95,8 +95,12 @@ public class CoursesViewController implements Initializable {
     }
 
     private void attendLeaveBtn(CourseEntity oldValue, CourseEntity newValue) {
+        AttendButton attendButton = new AttendButton((Stage) scrollPaneCourses.getScene().getWindow());
         if (newValue.isSelected()) {
-            Toast.makeText((Stage) scrollPaneCourses.getScene().getWindow(), "btn", 1000, 1000, 1000);
+            attendButton.showButton(1000, newValue);
+        }
+        if (!newValue.isSelected()) {
+            attendButton.hideButton(100, 100);
         }
     }
 
