@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
@@ -32,6 +33,7 @@ public class CoursesViewController implements Initializable {
     @FXML Button btnNextDay;
     @FXML Button btnPrevDay;
     @FXML FlowPane coursePane;
+    @FXML BorderPane courseBorderPaneRoot;
 
     private ObjectProperty<CourseEntity> selectedCourse;
     private static CoursesViewController instance;
@@ -48,6 +50,7 @@ public class CoursesViewController implements Initializable {
         coursePane.setHgap(10);
         coursePane.setVgap(10);
 
+        //courseBorderPaneRoot.setBottom(attendButton);
 
         List<CourseEntity> courses = new ArrayList<>();
         courses.add(new CourseEntity("08:15", "0000", "SCO", "Room 30C", EnumCourseStatus.ABSENT));

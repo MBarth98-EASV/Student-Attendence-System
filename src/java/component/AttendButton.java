@@ -40,8 +40,8 @@ private Stage ownerStage;
 
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
-            btnStage.setY(ownerStage.getHeight() / 1.5);
-            btnStage.setX((ownerStage.getWidth() / 2) - btnStage.getWidth());
+            btnStage.setY(ownerStage.getY());
+            btnStage.setX(ownerStage.getX());
             btnStage.setScene(scene);
             btnStage.show();
 
