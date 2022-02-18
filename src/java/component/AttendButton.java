@@ -29,6 +29,7 @@ private Stage ownerStage;
     }
 
     public void showButton(int fadeInDelay, CourseEntity selectedCourse) {
+
             Button btn = new Button();
             btn.setFont(Font.font("Roboto", 40));
             btn.setTextFill(Color.WHITE);
@@ -39,6 +40,8 @@ private Stage ownerStage;
 
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
+            btnStage.setY(ownerStage.getHeight() / 1.5);
+            btnStage.setX((ownerStage.getWidth() / 2) - btnStage.getWidth());
             btnStage.setScene(scene);
             btnStage.show();
 

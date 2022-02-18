@@ -2,6 +2,7 @@ package controller;
 
 import component.AttendButton;
 import component.CourseEntity;
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ public class CoursesViewController implements Initializable {
 
     private ObjectProperty<CourseEntity> selectedCourse;
     private static CoursesViewController instance;
+    private AttendButton attendButton;
 
     public CoursesViewController() {
         instance = this;
@@ -59,6 +61,8 @@ public class CoursesViewController implements Initializable {
         scrollPaneCourses.setContent(coursePane);
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
         initListeners();
+
+        Platform.runLater(this::initButton);
     }
 
     //TODO: Make deselection happen if the same course is selected twice
@@ -70,6 +74,9 @@ public class CoursesViewController implements Initializable {
         selectedCourse.addListener((observable, oldValue, newValue) -> attendLeaveBtn(oldValue, newValue));
     }
 
+    public void initButton(){
+        this.attendButton = new AttendButton((Stage) scrollPaneCourses.getScene().getWindow());
+    }
     
     private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){
         if (oldValue != null){
@@ -95,7 +102,6 @@ public class CoursesViewController implements Initializable {
     }
 
     private void attendLeaveBtn(CourseEntity oldValue, CourseEntity newValue) {
-        AttendButton attendButton = new AttendButton((Stage) scrollPaneCourses.getScene().getWindow());
         if (newValue.isSelected()) {
             attendButton.showButton(1000, newValue);
         }
