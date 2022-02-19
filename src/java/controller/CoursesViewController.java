@@ -1,5 +1,6 @@
 package controller;
 
+import bll.DataManager;
 import component.AttendButton;
 import component.CourseEntity;
 import javafx.application.Platform;
@@ -52,13 +53,7 @@ public class CoursesViewController implements Initializable {
 
         //courseBorderPaneRoot.setBottom(attendButton);
 
-        List<CourseEntity> courses = new ArrayList<>();
-        courses.add(new CourseEntity("08:15", "0000", "SCO", "Room 30C", EnumCourseStatus.ABSENT));
-        courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.NOT_STARTED));
-        courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.NONE));
-        courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.PARTIAL));
-        courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
-        courses.add(new CourseEntity("0000", "0000", "COURSE 1", "Here", EnumCourseStatus.ATTENDED));
+        List<CourseEntity> courses = new ArrayList<>(DataManager.getInstance().getUserCourses());
 
         coursePane.getChildren().addAll(courses);
         scrollPaneCourses.setContent(coursePane);

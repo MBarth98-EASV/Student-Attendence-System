@@ -4,7 +4,11 @@
 
 package bll;
 
+import be.User;
+import component.CourseEntity;
 import dal.DataMock;
+
+import java.util.List;
 
 public class DataManager {
 
@@ -24,6 +28,11 @@ public class DataManager {
         return instance;
     }
 
+
+    public List<CourseEntity> getUserCourses() {
+        return data.getUserCourses(getUser());
+    }
+
     public DataManager()
     {
         data = new DataMock();
@@ -39,7 +48,7 @@ public class DataManager {
         return data.userPassword();
     }
 
-    public String getUser()
+    public User getUser()
     {
         return data.User();
     }
