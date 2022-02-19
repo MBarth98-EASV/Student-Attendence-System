@@ -3,6 +3,7 @@ package component;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -12,14 +13,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import util.EnumCourseStatus;
 
-public final class AttendButton {
+public final class AttendButton extends Node {
 
 private Stage btnStage;
 private Stage ownerStage;
+private EnumCourseStatus status;
 
 
     public AttendButton(Stage ownerStage){
+
+
         this.ownerStage = ownerStage;
         btnStage = new Stage();
         btnStage.initOwner(ownerStage);
