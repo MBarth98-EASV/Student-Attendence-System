@@ -73,7 +73,9 @@ public class CoursesViewController implements Initializable {
     }
 
     public void initButton(){
-        this.attendButton = new AttendButton((Stage) scrollPaneCourses.getScene().getWindow());
+        this.attendButton = new AttendButton();
+        courseBorderPaneRoot.setBottom(attendButton.getAsNode());
+        courseBorderPaneRoot.getBottom().setOpacity(1);
     }
     
     private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){

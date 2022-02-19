@@ -1,11 +1,14 @@
 package component;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -15,50 +18,77 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import util.EnumCourseStatus;
 
-public final class AttendButton extends Node {
+public final class AttendButton {
 
-private Stage btnStage;
-private Stage ownerStage;
+
 private EnumCourseStatus status;
+private Button btn;
+private AnchorPane root;
 
 
-    public AttendButton(Stage ownerStage){
+    public AttendButton(){
+        btn = new Button();
+        btn.setFont(Font.font("Roboto", 40));
+        btn.setTextFill(Color.WHITE);
+
+        root = new AnchorPane(btn);
+        root.setStyle("-fx-background-radius: 20; -fx-background-color: rgba(0, 0, 0, 0.1); -fx-padding: 10px;");
+        root.setOpacity(0);
+
+    }
+
+    public Button getBtn(){
+        return btn;
+    }
+
+    public AnchorPane getAsNode(){
+        return root;
+    }
 
 
-        this.ownerStage = ownerStage;
-        btnStage = new Stage();
-        btnStage.initOwner(ownerStage);
-        btnStage.setResizable(false);
-        btnStage.initStyle(StageStyle.TRANSPARENT);
+    private void toggleUI(boolean show)
+    {
+        if (show)
+        {
+            FadeTransition fadeTransition = new FadeTransition(
+                    Duration.millis(200), root);
+            fadeTransition.setFromValue(0.0);
+            fadeTransition.setToValue(1.0);
+            fadeTransition.play();
+        }
+        else
+        {
+            Timeline timeLine = new Timeline(new KeyFrame(
+                    Duration.millis(100), event ->
+            {
+                FadeTransition fadeTransition = new FadeTransition(
+                        Duration.millis(500), root);
+                fadeTransition.setFromValue(1.0);
+                fadeTransition.setToValue(0.0);
+                fadeTransition.play();
+            }));
+            timeLine.play();
+        }
 
     }
 
     public void showButton(int fadeInDelay, CourseEntity selectedCourse) {
 
-            Button btn = new Button();
-            btn.setFont(Font.font("Roboto", 40));
-            btn.setTextFill(Color.WHITE);
 
-            StackPane root = new StackPane(btn);
-            root.setStyle("-fx-background-radius: 20; -fx-background-color: rgba(0, 0, 0, 0.1); -fx-padding: 10px;");
-            root.setOpacity(0);
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            btnStage.setY(ownerStage.getY());
-            btnStage.setX(ownerStage.getX());
-            btnStage.setScene(scene);
-            btnStage.show();
-
-            Timeline fadeInTimeline = new Timeline();
-            KeyFrame fadeInKey = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(btnStage.getScene().getRoot().opacityProperty(), 1));
+           /* Timeline fadeInTimeline = new Timeline();
+            KeyFrame fadeInKey = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(VALUE, 1));
             fadeInTimeline.getKeyFrames().add(fadeInKey);
 
             fadeInTimeline.play();
+
+            */
     }
 
     public void hideButton(int fadeOutDelayMs, int toastDelay){
-        new Thread(() -> {
+
+
+
+        /*new Thread(() -> {
             try
             {
                 Thread.sleep(toastDelay);
@@ -74,6 +104,8 @@ private EnumCourseStatus status;
             fadeOutTimeline.setOnFinished((aeb) -> btnStage.close());
             fadeOutTimeline.play();
         }).start();
+
+         */
     }
 
 
