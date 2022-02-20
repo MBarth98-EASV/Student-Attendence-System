@@ -45,32 +45,6 @@ private AnchorPane root;
         return root;
     }
 
-    private void toggleUI(boolean show)
-    {
-        if (show)
-        {
-            FadeTransition fadeTransition = new FadeTransition(
-                    Duration.millis(200), root);
-            fadeTransition.setFromValue(0.0);
-            fadeTransition.setToValue(1.0);
-            fadeTransition.play();
-        }
-        else
-        {
-            Timeline timeLine = new Timeline(new KeyFrame(
-                    Duration.millis(100), event ->
-            {
-                FadeTransition fadeTransition = new FadeTransition(
-                        Duration.millis(500), root);
-                fadeTransition.setFromValue(1.0);
-                fadeTransition.setToValue(0.0);
-                fadeTransition.play();
-            }));
-            timeLine.play();
-        }
-
-    }
-
     public void showButton(int fadeInDelay, CourseEntity selectedCourse) {
         Double height = root.getHeight();
         height.intValue();
@@ -93,31 +67,17 @@ private AnchorPane root;
 
     public void hideButton(int fadeOutDelayMs, int toastDelay){
 
-        /*  new Thread(() -> {
-            try
-            {
-                Thread.sleep(toastDelay);
-            }
-            catch (InterruptedException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-         */
         Timeline fadeOutTimeline = new Timeline();
         KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.prefHeightProperty(), 0));
         KeyFrame minHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.minHeightProperty(), 0));
         KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.maxHeightProperty(), 0));
-        
+
         fadeOutTimeline.getKeyFrames().add(prefHeight);
         fadeOutTimeline.getKeyFrames().add(minHeight);
         fadeOutTimeline.getKeyFrames().add(maxHeight);
 
         fadeOutTimeline.setOnFinished((aeb) -> root.setOpacity(0));
         fadeOutTimeline.play();
-        //}).start();
-
 
     }
 
