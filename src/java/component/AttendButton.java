@@ -45,7 +45,6 @@ private AnchorPane root;
         return root;
     }
 
-
     private void toggleUI(boolean show)
     {
         if (show)
@@ -73,22 +72,28 @@ private AnchorPane root;
     }
 
     public void showButton(int fadeInDelay, CourseEntity selectedCourse) {
+        Double height = root.getHeight();
+        height.intValue();
+        root.setOpacity(1);
+
+        Timeline fadeInTimeline = new Timeline();
+
+        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), 40));
+        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), 40));
+        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), 40));
+
+        fadeInTimeline.getKeyFrames().add(prefHeight);
+        fadeInTimeline.getKeyFrames().add(minHeight);
+        fadeInTimeline.getKeyFrames().add(maxHeight);
+
+        fadeInTimeline.play();
 
 
-           /* Timeline fadeInTimeline = new Timeline();
-            KeyFrame fadeInKey = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(VALUE, 1));
-            fadeInTimeline.getKeyFrames().add(fadeInKey);
-
-            fadeInTimeline.play();
-
-            */
     }
 
     public void hideButton(int fadeOutDelayMs, int toastDelay){
 
-
-
-        /*new Thread(() -> {
+        /*  new Thread(() -> {
             try
             {
                 Thread.sleep(toastDelay);
@@ -98,14 +103,22 @@ private AnchorPane root;
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            Timeline fadeOutTimeline = new Timeline();
-            KeyFrame fadeOutKey = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue (btnStage.getScene().getRoot().opacityProperty(), 0));
-            fadeOutTimeline.getKeyFrames().add(fadeOutKey);
-            fadeOutTimeline.setOnFinished((aeb) -> btnStage.close());
-            fadeOutTimeline.play();
-        }).start();
 
          */
+        Timeline fadeOutTimeline = new Timeline();
+        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.prefHeightProperty(), 0));
+        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.minHeightProperty(), 0));
+        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.maxHeightProperty(), 0));
+        
+        fadeOutTimeline.getKeyFrames().add(prefHeight);
+        fadeOutTimeline.getKeyFrames().add(minHeight);
+        fadeOutTimeline.getKeyFrames().add(maxHeight);
+
+        fadeOutTimeline.setOnFinished((aeb) -> root.setOpacity(0));
+        fadeOutTimeline.play();
+        //}).start();
+
+
     }
 
 

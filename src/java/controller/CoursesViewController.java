@@ -60,7 +60,10 @@ public class CoursesViewController implements Initializable {
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
         initListeners();
 
-        Platform.runLater(this::initButton);
+        initButton();
+
+        btnNextDay.setOnAction(event -> attendLeaveBtn(selectedCourse.get(), selectedCourse.get()));
+        btnPrevDay.setOnAction(event -> {attendButton.getAsNode().setPrefSize(0,0); attendButton.getAsNode().setMinSize(0, 0); attendButton.getAsNode().setMaxSize(0,0);});
     }
 
     //TODO: Make deselection happen if the same course is selected twice
@@ -75,7 +78,6 @@ public class CoursesViewController implements Initializable {
     public void initButton(){
         this.attendButton = new AttendButton();
         courseBorderPaneRoot.setBottom(attendButton.getAsNode());
-        courseBorderPaneRoot.getBottom().setOpacity(1);
     }
     
     private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){
