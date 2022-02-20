@@ -13,6 +13,12 @@ public class CourseEntity extends Pane
     private Node view;
     private CourseEntityController controller;
 
+    /** A separate indicator for selection is needed within the course object itself, as the ChangeListener in the
+     * controller, will not respond unless the actual value changes. As such, deselection in its current state would not work,
+     * since clicking on the same course object twice would not change the value of CourseViewControler.selectedCourse and therefore
+     * not trigger the listener.
+     *
+     */
     private boolean selected;
 
 

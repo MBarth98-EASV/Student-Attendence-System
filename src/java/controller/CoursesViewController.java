@@ -62,17 +62,18 @@ public class CoursesViewController implements Initializable {
 
         initButton();
 
-        btnNextDay.setOnAction(event -> attendLeaveBtn(selectedCourse.get(), selectedCourse.get()));
+        btnNextDay.setOnAction(event -> attendLeaveBtn(selectedCourse.get()));
         btnPrevDay.setOnAction(event -> {attendButton.getAsNode().setPrefSize(0,0); attendButton.getAsNode().setMinSize(0, 0); attendButton.getAsNode().setMaxSize(0,0);});
     }
 
-    //TODO: Make deselection happen if the same course is selected twice
     //TODO: Make a dynamic attend/leave button, that functions similarly to Toast.java
+            //TODO: Set button style, center it, set opactiy or size to zero on hidden. Get a default size to fall back to on showing. 
+
     //TODO: Indicator for currently active course
 
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));
-        selectedCourse.addListener((observable, oldValue, newValue) -> attendLeaveBtn(oldValue, newValue));
+        selectedCourse.addListener((observable, oldValue, newValue) -> attendLeaveBtn(newValue));
     }
 
     public void initButton(){
@@ -103,7 +104,7 @@ public class CoursesViewController implements Initializable {
         }
     }
 
-    private void attendLeaveBtn(CourseEntity oldValue, CourseEntity newValue) {
+    private void attendLeaveBtn(CourseEntity newValue) {
         if (newValue.isSelected()) {
             attendButton.showButton(1000, newValue);
         }
@@ -147,6 +148,7 @@ public class CoursesViewController implements Initializable {
                 return;
             }
             deselectAll(this.selectedCourse.get(), selectedCourse);
+            attendLeaveBtn(selectedCourse);
         }
         this.selectedCourse.set(selectedCourse);
     }
