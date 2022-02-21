@@ -4,5 +4,7 @@
 
 .slider .thumb{
     -fx-background-color: #f8f8f8;
-    -fx-background-size: 30;
+    -fx-pref-height: 50;
+    -fx-pref-width: 50;
+    -fx-background-radius: 30;
 }

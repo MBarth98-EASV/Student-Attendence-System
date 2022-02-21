@@ -51,6 +51,8 @@ private static final double ATTEND_WIDTH = 300;
         root.setAlignment(Pos.CENTER);
         root.getChildren().add(btn);
         root.getChildren().add(slider);
+        root.getChildren().get(0).translateYProperty().set(-3);
+        root.getChildren().get(1).translateYProperty().set(-3);
         root.setStyle("-fx-background-radius: 20; -fx-background-color: rgba(0, 0, 0, 0); -fx-padding: 10px;");
         root.setOpacity(0);
 
@@ -94,9 +96,9 @@ private static final double ATTEND_WIDTH = 300;
         Timeline fadeInTimeline = new Timeline();
         Timeline btnFadeInTimeLine = new Timeline();
 
-        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), 50));
-        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), 50));
-        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), 50));
+        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), 55));
+        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), 55));
+        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), 55));
         KeyFrame rootOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.opacityProperty(), 1));
         KeyFrame btnOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(btn.opacityProperty(), 1));
         KeyFrame sliderOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(slider.opacityProperty(), 1));

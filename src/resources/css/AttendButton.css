@@ -21,7 +21,7 @@
 
 .button:disabled {
     -fx-font-family: "Roboto";
-    -fx-font-size: 25pt;
+    -fx-font-size: 20pt;
     -fx-text-fill: #f8f8f8;
     -fx-background-color: #20C234;
     -fx-content-display: CENTER;
