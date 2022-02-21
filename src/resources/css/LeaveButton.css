@@ -1,0 +1,29 @@
+.button {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 20pt;
+    -fx-text-fill: #f8f8f8;
+    -fx-background-color: #D82F2A;
+    -fx-content-display: CENTER;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 4, 4, 4);
+    -fx-background-radius: 30;
+}
+
+
+
+.button:hover {
+    -fx-background-color: #D82F2A;
+}
+
+.button:pressed {
+    -fx-background-color: #D82F2A;
+
+}
+
+.button:disabled {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 20pt;
+    -fx-text-fill: #f8f8f8;
+    -fx-background-color: #D82F2A;
+    -fx-content-display: CENTER;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 1, 1, 0, 1.5);
+}

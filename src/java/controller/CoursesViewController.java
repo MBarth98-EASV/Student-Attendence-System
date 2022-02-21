@@ -51,23 +51,18 @@ public class CoursesViewController implements Initializable {
         coursePane.setHgap(10);
         coursePane.setVgap(10);
 
-        //courseBorderPaneRoot.setBottom(attendButton);
-
         List<CourseEntity> courses = new ArrayList<>(DataManager.getInstance().getUserCourses());
 
         coursePane.getChildren().addAll(courses);
         scrollPaneCourses.setContent(coursePane);
         selectedCourse = new SimpleObjectProperty<>(courses.get(0));
         initListeners();
-
         initButton();
+        initButtonFunctionListener();
 
         btnNextDay.setOnAction(event -> attendLeaveBtn(selectedCourse.get()));
         btnPrevDay.setOnAction(event -> {attendButton.getAsNode().setPrefSize(0,0); attendButton.getAsNode().setMinSize(0, 0); attendButton.getAsNode().setMaxSize(0,0);});
     }
-
-    //TODO: Make a dynamic attend/leave button, that functions similarly to Toast.java
-            //TODO: Set button style, center it, set opactiy or size to zero on hidden. Get a default size to fall back to on showing.
 
     //TODO: Indicator for currently active course
 
@@ -76,9 +71,27 @@ public class CoursesViewController implements Initializable {
         selectedCourse.addListener((observable, oldValue, newValue) -> attendLeaveBtn(newValue));
     }
 
-    public void initButton(){
+    private void initButton(){
         this.attendButton = new AttendButton();
         courseBorderPaneRoot.setBottom(attendButton.getAsNode());
+    }
+
+    private void initButtonFunctionListener(){
+        selectedCourse.get().getStatusProperty().addListener((observable, oldValue, newValue)
+                -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
+    }
+
+    private void onSliderFull(){
+        attendButton.getSlider().valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() == attendButton.getSlider().getMax()){
+                if (attendButton.isButtonAttendFunction()){
+                    //START QR READER
+                }
+                else {
+                    //DATAMANAGER SET COURSE STATUS
+                }
+            }
+        });
     }
     
     private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){
@@ -105,12 +118,13 @@ public class CoursesViewController implements Initializable {
     }
 
     private void attendLeaveBtn(CourseEntity newValue) {
-        if (newValue.isSelected()) {
+        if (newValue.getStatus() != EnumCourseStatus.NONE) {
+            if (newValue.isSelected()) {
             attendButton.showButton(300, newValue);
-        }
-        if (!newValue.isSelected()) {
+            }
+            if (!newValue.isSelected()) {
             attendButton.hideButton(300);
-        }
+        }   }
     }
 
 
@@ -151,6 +165,7 @@ public class CoursesViewController implements Initializable {
             attendLeaveBtn(selectedCourse);
         }
         this.selectedCourse.set(selectedCourse);
+        attendButton.setAttendOrLeave(selectedCourse.getStatus());
     }
 
 

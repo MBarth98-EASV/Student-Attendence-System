@@ -20,6 +20,8 @@ private Button btn;
 private GridPane root;
 private Slider slider;
 
+private boolean buttonAttendFunction;
+
 private static final double BTN_PREF_HEIGHT = 50;
 private static final double SLIDER_PREF_HEIGHT = 50;
 private static final double ATTEND_WIDTH = 300;
@@ -149,11 +151,25 @@ private static final double ATTEND_WIDTH = 300;
             sliderTimeline.getKeyFrames().add(slideDown);
             sliderTimeline.play();
         }
-
     }
 
-    private void setAttendOrLeave(boolean courseAttended){
+    public boolean isButtonAttendFunction(){
+        return buttonAttendFunction;
+    }
 
+    public void setAttendOrLeave(EnumCourseStatus courseStatus){
+        if (courseStatus == EnumCourseStatus.ATTENDED || courseStatus == EnumCourseStatus.PARTIAL) {
+            btn.getStylesheets().clear();
+            btn.getStylesheets().add(this.getClass().getResource("/css/LeaveButton.css").toExternalForm());
+            btn.setText("Leave");
+            buttonAttendFunction = false;
+        }
+        else {
+            btn.getStylesheets().clear();
+            btn.getStylesheets().add(this.getClass().getResource("/css/AttendButton.css").toExternalForm());
+            btn.setText("Attend");
+            buttonAttendFunction = true;
+        }
     }
 
 

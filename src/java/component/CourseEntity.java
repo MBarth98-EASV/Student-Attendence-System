@@ -24,15 +24,15 @@ public class CourseEntity extends Pane
      *
      */
     private BooleanProperty selected;
-    private IntegerProperty status;
+    private IntegerProperty statusProperty;
 
 
 
     public CourseEntity(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
     {
         selected = new SimpleBooleanProperty();
-        this.status = new SimpleIntegerProperty();
-        this.status.set(status.ordinal());
+        this.statusProperty = new SimpleIntegerProperty();
+        this.statusProperty.set(status.ordinal());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
 
@@ -73,6 +73,15 @@ public class CourseEntity extends Pane
             case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: grey;     -fx-stroke-width: 0;");
             default -> controller.getCircleStatus().setOpacity(0);
         }
+        this.statusProperty.set(status.ordinal());
+    }
+
+    public EnumCourseStatus getStatus(){
+        return EnumCourseStatus.values()[statusProperty.get()];
+    }
+
+    public IntegerProperty getStatusProperty(){
+        return statusProperty;
     }
 
     public CourseEntityController getController(){
