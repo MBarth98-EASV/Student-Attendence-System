@@ -40,7 +40,7 @@ public class StatisticsP1Controller implements Initializable {
     {
         ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList(
                 new PieChart.Data("Absence", DataManager.getInstance().getTotalAbsence()),
-                new PieChart.Data("Attendence", DataManager.getInstance().getTotalAttendence())
+                new PieChart.Data("Attendance", DataManager.getInstance().getTotalAttendence())
         );
 
         statsPie.setData(pieData);
