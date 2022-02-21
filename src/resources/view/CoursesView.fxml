@@ -40,12 +40,12 @@
                <Insets top="4.0" />
             </GridPane.margin>
           </Label>
-          <Button fx:id="btnPrevDay" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" styleClass="BackButton" stylesheets="@../css/CourseViewButtons.css" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+          <Button fx:id="btnPrevDay" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" styleClass="AttendButton" stylesheets="@../css/CourseViewButtons.css" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
               <GridPane.margin>
                   <Insets left="10.0" />
               </GridPane.margin>
           </Button>
-          <Button fx:id="btnNextDay" mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" styleClass="BackButton" stylesheets="@../css/CourseViewButtons.css" text="&gt;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+          <Button fx:id="btnNextDay" mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" styleClass="AttendButton" stylesheets="@../css/CourseViewButtons.css" text="&gt;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
               <GridPane.margin>
                   <Insets right="10.0" />
               </GridPane.margin>

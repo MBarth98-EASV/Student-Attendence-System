@@ -4,11 +4,14 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -23,7 +26,9 @@ public final class AttendButton {
 
 private EnumCourseStatus status;
 private Button btn;
-private AnchorPane root;
+private GridPane root;
+private Slider slider;
+
 
 
     public AttendButton(){
@@ -31,17 +36,22 @@ private AnchorPane root;
         btn.setFont(Font.font("Roboto", 40));
         btn.setTextFill(Color.WHITE);
 
-        root = new AnchorPane(btn);
+        slider = new Slider(0, 100, 0);
+        slider.getStylesheets().add(this.getClass().getResource("/css/AttendSlider.css").toExternalForm());
+
+        root = new GridPane();
+        root.setAlignment(Pos.CENTER);
+        root.getChildren().add(btn);
+        root.getChildren().add(slider);
         root.setStyle("-fx-background-radius: 20; -fx-background-color: rgba(0, 0, 0, 0.1); -fx-padding: 10px;");
         root.setOpacity(0);
-
     }
 
     public Button getBtn(){
         return btn;
     }
 
-    public AnchorPane getAsNode(){
+    public GridPane getAsNode(){
         return root;
     }
 

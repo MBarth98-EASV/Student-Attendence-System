@@ -1,0 +1,28 @@
+.AttendButton {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 25pt;
+    -fx-text-fill: #f8f8f8;
+    -fx-background-color: #20C234;
+    -fx-content-display: CENTER;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 0, 4, 4, 0);
+}
+
+
+
+.AttendButton:hover {
+    -fx-background-color: #0FB300;
+}
+
+.AttendButton:pressed {
+    -fx-background-color: #0FB300;
+
+}
+
+.AttendButton:disabled {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 25pt;
+    -fx-text-fill: #f8f8f8;
+    -fx-background-color: #20C234;
+    -fx-content-display: CENTER;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 0, 4, 4, 0);
+}
