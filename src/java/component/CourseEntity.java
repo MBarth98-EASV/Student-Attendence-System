@@ -1,7 +1,9 @@
 package component;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -22,12 +24,15 @@ public class CourseEntity extends Pane
      *
      */
     private BooleanProperty selected;
+    private IntegerProperty status;
 
 
 
     public CourseEntity(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
     {
         selected = new SimpleBooleanProperty();
+        this.status = new SimpleIntegerProperty();
+        this.status.set(status.ordinal());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
 
@@ -58,6 +63,16 @@ public class CourseEntity extends Pane
     private URL getResource(String s)
     {
         return getClass().getClassLoader().getResource(s);
+    }
+
+    public void setStatus(EnumCourseStatus status){
+        switch (status){
+            case ATTENDED -> controller.getCircleStatus().setStyle("    -fx-fill: green;    -fx-stroke-width: 0;");
+            case ABSENT -> controller.getCircleStatus().setStyle("      -fx-fill: red;      -fx-stroke-width: 0;");
+            case PARTIAL -> controller.getCircleStatus().setStyle("     -fx-fill: yellow;   -fx-stroke-width: 0;");
+            case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: grey;     -fx-stroke-width: 0;");
+            default -> controller.getCircleStatus().setOpacity(0);
+        }
     }
 
     public CourseEntityController getController(){
