@@ -54,31 +54,37 @@
                <children>
                   <FlowPane alignment="CENTER" prefHeight="33.0" prefWidth="348.0">
                      <children>
-                        <Label text="Attendance: ">
+                        <Label text="Attendance: " textFill="#f8f8f8">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Text fx:id="textAttendance" strokeType="OUTSIDE" strokeWidth="0.0" text="text" />
+                        <Text fx:id="textAttendance" fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Text>
                      </children>
                   </FlowPane>
                   <FlowPane alignment="CENTER" prefHeight="34.0" prefWidth="345.0">
                      <children>
-                        <Label text="Absence: ">
+                        <Label text="Absence: " textFill="#f8f8f8">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Text fx:id="textAbsence" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="textAbsence" fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Text>
                      </children>
                   </FlowPane>
                </children>
             </FlowPane>
             <FlowPane alignment="CENTER" prefHeight="76.0" prefWidth="358.0">
                <children>
-                  <Label text="Attendance for ">
+                  <Label text="Attendance for " textFill="#f8f8f8">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <ChoiceBox fx:id="selectionBox" prefHeight="25.0" prefWidth="116.0" />

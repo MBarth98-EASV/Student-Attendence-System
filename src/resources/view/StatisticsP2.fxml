@@ -59,9 +59,9 @@
          <children>
             <FlowPane alignment="BOTTOM_LEFT" prefHeight="79.0" prefWidth="324.0">
                <children>
-                  <Label alignment="BOTTOM_LEFT" text="Absence Per Course">
+                  <Label alignment="BOTTOM_LEFT" text="Absence Per Course" textFill="#f8f8f8">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
