@@ -65,6 +65,8 @@ private static final double ATTEND_WIDTH = 300;
         slider.setPrefHeight(SLIDER_PREF_HEIGHT);
         slider.setMinHeight(SLIDER_PREF_HEIGHT);
         slider.setMaxHeight(SLIDER_PREF_HEIGHT);
+
+        slider.setOnMouseReleased(event -> sliderReturnAnimation());
     }
 
     public Button getBtn(){
@@ -114,9 +116,9 @@ private static final double ATTEND_WIDTH = 300;
         Timeline fadeOutTimeline = new Timeline();
         Timeline btnFadeOutTimeline = new Timeline();
 
-        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.prefHeightProperty(), 0));
-        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.minHeightProperty(), 0));
-        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.maxHeightProperty(), 0));
+        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeOutDelayMs-100), new KeyValue(root.prefHeightProperty(), 0));
+        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeOutDelayMs-100), new KeyValue(root.minHeightProperty(), 0));
+        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeOutDelayMs-100), new KeyValue(root.maxHeightProperty(), 0));
         KeyFrame rootOpacity = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.opacityProperty(), 0));
         KeyFrame btnOpacity = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(btn.opacityProperty(), 0));
         KeyFrame sliderOpacity = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(slider.opacityProperty(), 0));
@@ -136,17 +138,18 @@ private static final double ATTEND_WIDTH = 300;
         btnFadeOutTimeline.play();
     }
 
-    private void sliderFullListener(){
-        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.doubleValue() == slider.getMax()){
+    private void sliderReturnAnimation(){
+        if (slider.getValue() == slider.getMax()){
+            return;
+        }
+        else {
+            Timeline sliderTimeline = new Timeline();
 
-            }
-            else {
-                Timeline sliderTimeline = new Timeline();
+            KeyFrame slideDown = new KeyFrame(Duration.millis(30), new KeyValue(slider.valueProperty(), 0));
+            sliderTimeline.getKeyFrames().add(slideDown);
+            sliderTimeline.play();
+        }
 
-                KeyFrame prefHeight = new KeyFrame(Duration.millis(400), new KeyValue(slider.valueProperty(), 0));
-            }
-        });
     }
 
     private void setAttendOrLeave(boolean courseAttended){

@@ -1,5 +1,7 @@
 package component;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -19,12 +21,14 @@ public class CourseEntity extends Pane
      * not trigger the listener.
      *
      */
-    private boolean selected;
+    private BooleanProperty selected;
 
 
 
     public CourseEntity(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
     {
+        selected = new SimpleBooleanProperty();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
 
         fxmlLoader.setControllerFactory(param -> controller = new CourseEntityController());
@@ -61,11 +65,15 @@ public class CourseEntity extends Pane
     }
 
     public boolean isSelected() {
-        return selected;
+        return selected.get();
     }
 
     public void setSelected(boolean selected) {
-        this.selected = selected;
+        this.selected.set(selected);
+    }
+
+    public BooleanProperty getSelectedProperty(){
+        return selected;
     }
 
 }

@@ -29,7 +29,9 @@ public class DataManager {
     }
 
     public void changeCourseStatus(CourseEntity course){
+        if (course != null){
 
+        }
     }
 
 
