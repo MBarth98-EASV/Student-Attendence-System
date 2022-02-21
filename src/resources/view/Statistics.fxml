@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Shadow?>
@@ -42,20 +41,15 @@
                   <Insets top="4.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" styleClass="button" stylesheets="@../css/CourseViewButtons.css" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Button>
          </children>
       </GridPane>
    </top>
    <center>
       <ScrollPane fx:id="scollStats" hbarPolicy="NEVER" pannable="true" stylesheets="@../css/ScrollPane.css" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="statsPane" alignment="TOP_CENTER" hgap="10.0" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="728.0" prefWidth="358.0" vgap="10.0">
+            <FlowPane fx:id="statsPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="728.0" prefWidth="358.0" rowValignment="TOP" vgap="10.0">
                <children>
-                  <PieChart fx:id="statsPie" prefHeight="246.0" prefWidth="308.0" />
+                  <PieChart fx:id="statsPie" animated="false" clockwise="false" legendVisible="false" prefHeight="286.0" prefWidth="358.0" />
                </children></FlowPane>
          </content>
       </ScrollPane>

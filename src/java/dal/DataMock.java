@@ -49,4 +49,14 @@ public class DataMock {
           return courseEntityList;
       }
 
+      public int attendance()
+    {
+        return 8;
+    }
+
+    public int absence()
+    {
+        return 2;
+    }
+
 }

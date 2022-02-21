@@ -53,5 +53,14 @@ public class DataManager {
         return data.User();
     }
 
+    public int getTotalAbsence()
+    {
+        return data.absence();
+    }
+
+    public int getTotalAttendence()
+    {
+        return data.attendance();
+    }
 
 }
