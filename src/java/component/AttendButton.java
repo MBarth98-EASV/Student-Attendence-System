@@ -155,7 +155,7 @@ private static final double ATTEND_WIDTH = 300;
             else {
                 Timeline sliderTimeline = new Timeline();
 
-                KeyFrame prefHeight = new KeyFrame(Duration.millis(400), new KeyValue(slider.valueProperty()));
+               KeyFrame prefHeight = new KeyFrame(Duration.millis(400), new KeyValue(slider.valueProperty()));
             }
         });
     }

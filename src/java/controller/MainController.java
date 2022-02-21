@@ -63,7 +63,7 @@ public class MainController implements Initializable {
 
     public void onShowStats(ActionEvent event) {
         try {
-            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/Statistics.fxml")));
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP1.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

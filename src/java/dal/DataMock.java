@@ -59,4 +59,25 @@ public class DataMock {
         return 2;
     }
 
+    public int weekAttendance()
+    {
+        return 12;
+    }
+
+    public int weekAbsence()
+    {
+        return 4;
+    }
+
+    public int monthAttendance()
+    {
+        return 34;
+    }
+
+    public int monthAbsence()
+    {
+        return 14;
+    }
+
+
 }
