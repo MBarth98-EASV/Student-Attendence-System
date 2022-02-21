@@ -67,7 +67,7 @@ public class CoursesViewController implements Initializable {
     }
 
     //TODO: Make a dynamic attend/leave button, that functions similarly to Toast.java
-            //TODO: Set button style, center it, set opactiy or size to zero on hidden. Get a default size to fall back to on showing. 
+            //TODO: Set button style, center it, set opactiy or size to zero on hidden. Get a default size to fall back to on showing.
 
     //TODO: Indicator for currently active course
 
