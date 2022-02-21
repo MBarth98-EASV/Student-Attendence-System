@@ -1,27 +1,16 @@
 package component;
 
-import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import util.EnumCourseStatus;
-
-import java.sql.Time;
 
 public final class AttendButton {
 
@@ -155,7 +144,7 @@ private static final double ATTEND_WIDTH = 300;
             else {
                 Timeline sliderTimeline = new Timeline();
 
-               KeyFrame prefHeight = new KeyFrame(Duration.millis(400), new KeyValue(slider.valueProperty()));
+                KeyFrame prefHeight = new KeyFrame(Duration.millis(400), new KeyValue(slider.valueProperty(), 0));
             }
         });
     }
