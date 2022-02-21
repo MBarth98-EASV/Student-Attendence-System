@@ -42,7 +42,7 @@
                   <Insets top="4.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" styleClass="AttendButton" stylesheets="@../css/CourseViewButtons.css" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="50.0" prefWidth="61.0" styleClass="button" stylesheets="@../css/CourseViewButtons.css" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>

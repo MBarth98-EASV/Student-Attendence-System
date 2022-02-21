@@ -29,12 +29,20 @@ private Button btn;
 private GridPane root;
 private Slider slider;
 
+private static final double BTN_PREF_HEIGHT = 50;
+private static final double SLIDER_PREF_HEIGHT = 50;
+private static final double ATTEND_WIDTH = 300;
+
+
 
 
     public AttendButton(){
         btn = new Button();
-        btn.setFont(Font.font("Roboto", 40));
-        btn.setTextFill(Color.WHITE);
+        btn.setFont(Font.font("Roboto", 20));
+        btn.setText("Attend");
+
+        btn.getStylesheets().add(this.getClass().getResource("/css/AttendButton.css").toExternalForm());
+        btn.setDisable(true);
 
         slider = new Slider(0, 100, 0);
         slider.getStylesheets().add(this.getClass().getResource("/css/AttendSlider.css").toExternalForm());
@@ -43,12 +51,35 @@ private Slider slider;
         root.setAlignment(Pos.CENTER);
         root.getChildren().add(btn);
         root.getChildren().add(slider);
-        root.setStyle("-fx-background-radius: 20; -fx-background-color: rgba(0, 0, 0, 0.1); -fx-padding: 10px;");
+        root.setStyle("-fx-background-radius: 20; -fx-background-color: rgba(0, 0, 0, 0); -fx-padding: 10px;");
         root.setOpacity(0);
+
+        root.setMaxHeight(0);
+        root.setMinHeight(0);
+        root.setPrefHeight(0);
+
+        btn.setPrefWidth(ATTEND_WIDTH);
+        btn.setMinWidth(ATTEND_WIDTH);
+        btn.setMaxWidth(ATTEND_WIDTH);
+        btn.setPrefHeight(BTN_PREF_HEIGHT);
+        btn.setMinHeight(BTN_PREF_HEIGHT);
+        btn.setMaxHeight(BTN_PREF_HEIGHT);
+
+
+        slider.setPrefWidth(ATTEND_WIDTH);
+        slider.setMinWidth(ATTEND_WIDTH);
+        slider.setMaxWidth(ATTEND_WIDTH);
+        slider.setPrefHeight(SLIDER_PREF_HEIGHT);
+        slider.setMinHeight(SLIDER_PREF_HEIGHT);
+        slider.setMaxHeight(SLIDER_PREF_HEIGHT);
     }
 
     public Button getBtn(){
         return btn;
+    }
+
+    public Slider getSlider() {
+        return slider;
     }
 
     public GridPane getAsNode(){
@@ -61,33 +92,55 @@ private Slider slider;
         root.setOpacity(1);
 
         Timeline fadeInTimeline = new Timeline();
+        Timeline btnFadeInTimeLine = new Timeline();
 
-        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), 40));
-        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), 40));
-        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), 40));
+        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), 50));
+        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), 50));
+        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), 50));
+        KeyFrame rootOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.opacityProperty(), 1));
+        KeyFrame btnOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(btn.opacityProperty(), 1));
+        KeyFrame sliderOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(slider.opacityProperty(), 1));
+
 
         fadeInTimeline.getKeyFrames().add(prefHeight);
         fadeInTimeline.getKeyFrames().add(minHeight);
         fadeInTimeline.getKeyFrames().add(maxHeight);
+        btnFadeInTimeLine.getKeyFrames().add(btnOpacity);
+        btnFadeInTimeLine.getKeyFrames().add(sliderOpacity);
+        btnFadeInTimeLine.getKeyFrames().add(rootOpacity);
+
+        fadeInTimeline.setOnFinished(event -> btnFadeInTimeLine.play());
 
         fadeInTimeline.play();
 
 
     }
 
-    public void hideButton(int fadeOutDelayMs, int toastDelay){
+    public void hideButton(int fadeOutDelayMs){
 
         Timeline fadeOutTimeline = new Timeline();
+        Timeline btnFadeOutTimeline = new Timeline();
+
         KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.prefHeightProperty(), 0));
         KeyFrame minHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.minHeightProperty(), 0));
         KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.maxHeightProperty(), 0));
+        KeyFrame rootOpacity = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(root.opacityProperty(), 0));
+        KeyFrame btnOpacity = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(btn.opacityProperty(), 0));
+        KeyFrame sliderOpacity = new KeyFrame(Duration.millis(fadeOutDelayMs), new KeyValue(slider.opacityProperty(), 0));
 
         fadeOutTimeline.getKeyFrames().add(prefHeight);
         fadeOutTimeline.getKeyFrames().add(minHeight);
         fadeOutTimeline.getKeyFrames().add(maxHeight);
+        btnFadeOutTimeline.getKeyFrames().add(btnOpacity);
+        btnFadeOutTimeline.getKeyFrames().add(sliderOpacity);
+        btnFadeOutTimeline.getKeyFrames().add(rootOpacity);
 
-        fadeOutTimeline.setOnFinished((aeb) -> root.setOpacity(0));
-        fadeOutTimeline.play();
+        root.setOpacity(0);
+        btnFadeOutTimeline.setOnFinished((aeb) -> {
+            fadeOutTimeline.play();
+        });
+
+        btnFadeOutTimeline.play();
 
     }
 

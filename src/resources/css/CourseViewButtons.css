@@ -1,5 +1,5 @@
 
-.AttendButton {
+.button {
     -fx-font-family: "Roboto";
     -fx-font-size: 25pt;
     -fx-font-weight: bold;
@@ -11,17 +11,17 @@
 
 
 
-.AttendButton:hover {
+.button:hover {
     -fx-background-color: transparent;
     -fx-text-fill: derive(#5145AD, 10%);
 }
 
-.AttendButton:pressed {
+.button:pressed {
     -fx-background-color: transparent;
     -fx-text-fill: #5145AD;
 
 }
 
-.AttendButton:disabled {
+.button:disabled {
     -fx-opacity: 0.4;
 }

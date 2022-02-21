@@ -106,10 +106,10 @@ public class CoursesViewController implements Initializable {
 
     private void attendLeaveBtn(CourseEntity newValue) {
         if (newValue.isSelected()) {
-            attendButton.showButton(1000, newValue);
+            attendButton.showButton(300, newValue);
         }
         if (!newValue.isSelected()) {
-            attendButton.hideButton(100, 100);
+            attendButton.hideButton(300);
         }
     }
 
