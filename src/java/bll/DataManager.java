@@ -28,6 +28,11 @@ public class DataManager {
         return instance;
     }
 
+    public void changeCourseStatus(CourseEntity course){
+
+    }
+
+
 
     public List<CourseEntity> getUserCourses() {
         return data.getUserCourses(getUser());

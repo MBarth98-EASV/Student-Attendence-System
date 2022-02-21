@@ -21,6 +21,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import util.EnumCourseStatus;
 
+import java.sql.Time;
+
 public final class AttendButton {
 
 
@@ -143,6 +145,22 @@ private static final double ATTEND_WIDTH = 300;
         });
 
         btnFadeOutTimeline.play();
+    }
+
+    private void sliderFullListener(){
+        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() == slider.getMax()){
+
+            }
+            else {
+                Timeline sliderTimeline = new Timeline();
+
+                KeyFrame prefHeight = new KeyFrame(Duration.millis(400), new KeyValue(slider.valueProperty()));
+            }
+        });
+    }
+
+    private void setAttendOrLeave(boolean courseAttended){
 
     }
 
