@@ -3,6 +3,7 @@ package component;
 import controller.ControllerPassthroughModel;
 import controller.CoursesViewController;
 import controller.MainController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -42,6 +43,7 @@ public class CourseEntityController implements Initializable
             CoursesViewController.getInstance().setSelectedCourse(course);
         });
         initStyle();
+        Platform.runLater(this::initSelectionListener);
     }
 
     private void initStyle(){
@@ -66,6 +68,35 @@ public class CourseEntityController implements Initializable
                 "    -fx-border-color: #f8f8f8;");
         rootHBox.setStyle("-fx-background-color: transparent;");
 
+    }
+
+    private void initSelectionListener(){
+        course.getSelectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (course.isSelected()){
+                courseVBox.setStyle("-fx-background-color: rgba(248, 248, 248, 0.8);\n" +
+                        "    -fx-background-radius: 10;");
+                lblCourseName.setStyle("-fx-font-size: 18;\n" +
+                        "    -fx-font-family: \"Roboto\";\n" +
+                        "    -fx-text-fill: #5145AD;\n" +
+                        "    -fx-font-weight: bold;");
+                lblLocation.setStyle("    -fx-font-size: 14;\n" +
+                        "    -fx-font-family: \"Roboto\";\n" +
+                        "    -fx-text-fill: #5145AD;");
+            }
+            else {
+                courseVBox.setStyle("-fx-background-color: rgba(248, 248, 248, 0.5);\n" +
+                        "    -fx-background-radius: 10;");
+                lblCourseName.setFont(Font.font("roboto"));
+                lblCourseName.setStyle("-fx-font-size: 18;\n" +
+                        "    -fx-font-family: \"Roboto\";\n" +
+                        "    -fx-text-fill: #f8f8f8;\n" +
+                        "    -fx-font-weight: bold;");
+                lblLocation.setStyle("    -fx-font-size: 14;\n" +
+                        "    -fx-font-family: \"Roboto\";\n" +
+                        "    -fx-text-fill: #f8f8f8;");
+            }
+
+        });
     }
 
     public VBox getCourseVBox() {
