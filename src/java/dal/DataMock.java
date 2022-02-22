@@ -57,6 +57,10 @@ public class DataMock {
         return 1565;
     }
 
+    public void updateCourseStatus(CourseEntity course, EnumCourseStatus status){
+        course.setStatus(status);
+    }
+
     public int totalAbsence()
     {
         return 74;

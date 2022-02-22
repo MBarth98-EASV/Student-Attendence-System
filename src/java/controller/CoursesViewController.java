@@ -60,7 +60,9 @@ public class CoursesViewController implements Initializable {
         btnPrevDay.setOnAction(event -> {attendButton.getAsNode().setPrefSize(0,0); attendButton.getAsNode().setMinSize(0, 0); attendButton.getAsNode().setMaxSize(0,0);});
     }
 
-    //TODO: Indicator for currently active course
+    //TODO: Indicator for currently active course.
+    //TODO: Check for whether course is applicable for status change.
+    //TODO: Course for multiple days.
 
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));

@@ -31,7 +31,7 @@ public class DataManager {
 
     public void changeCourseStatus(CourseEntity course, EnumCourseStatus status){
         if (course != null){
-
+        data.updateCourseStatus(course, status);
         }
     }
 

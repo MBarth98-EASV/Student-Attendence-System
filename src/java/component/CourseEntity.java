@@ -60,7 +60,6 @@ public class CourseEntity extends Pane
         controller.setLblEndTime(endTime.getHour(), endTime.getMinute());
         controller.setCourseName(courseName);
         controller.setLocation(courseLocation);
-
         controller.setCourse(this);
 
 
