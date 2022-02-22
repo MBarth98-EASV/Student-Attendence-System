@@ -1,3 +1,7 @@
+/**
+ * @Author Philip E. Zadeh
+ */
+
 package controller;
 
 import bll.DataManager;
@@ -9,11 +13,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,8 +58,8 @@ public class StatisticsP1Controller implements Initializable {
 
             statsPie.setData(pieDataWeek);
 
-            textAbsence.setText(percent(DataManager.getInstance().getAbsenceWeek(), DataManager.getInstance().getAttendanceWeek()) + "%");
-            textAttendance.setText(percent(DataManager.getInstance().getAttendanceWeek(),DataManager.getInstance().getAbsenceWeek()) + "%");
+            textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceWeek(), DataManager.getInstance().getAttendanceWeek()) + "%");
+            textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceWeek(),DataManager.getInstance().getAbsenceWeek()) + "%");
 
         }
 
@@ -95,8 +97,8 @@ public class StatisticsP1Controller implements Initializable {
 
                     statsPie.setData(pieDataWeek);
 
-                    textAbsence.setText(percent(DataManager.getInstance().getAbsenceWeek(), DataManager.getInstance().getAttendanceWeek()) + "%");
-                    textAttendance.setText(percent(DataManager.getInstance().getAttendanceWeek(),DataManager.getInstance().getAbsenceWeek()) + "%");
+                    textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceWeek(), DataManager.getInstance().getAttendanceWeek()) + "%");
+                    textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceWeek(),DataManager.getInstance().getAbsenceWeek()) + "%");
 
                     break;
                 case "month":
@@ -107,8 +109,8 @@ public class StatisticsP1Controller implements Initializable {
 
                     statsPie.setData(pieDataMonth);
 
-                    textAbsence.setText(percent(DataManager.getInstance().getAbsenceMonth(), DataManager.getInstance().getAttendanceMonth()) + "%");
-                    textAttendance.setText(percent(DataManager.getInstance().getAttendanceMonth(),DataManager.getInstance().getAbsenceMonth()) + "%");
+                    textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceMonth(), DataManager.getInstance().getAttendanceMonth()) + "%");
+                    textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceMonth(),DataManager.getInstance().getAbsenceMonth()) + "%");
                     break;
                 case "year":
                     ObservableList<PieChart.Data> pieDataYear = FXCollections.observableArrayList(
@@ -118,8 +120,8 @@ public class StatisticsP1Controller implements Initializable {
 
                     statsPie.setData(pieDataYear);
 
-                    textAbsence.setText(percent(DataManager.getInstance().getAbsenceYear(), DataManager.getInstance().getAttendanceYear()) + "%");
-                    textAttendance.setText(percent(DataManager.getInstance().getAttendanceYear(),DataManager.getInstance().getAbsenceYear()) + "%");
+                    textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceYear(), DataManager.getInstance().getAttendanceYear()) + "%");
+                    textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceYear(),DataManager.getInstance().getAbsenceYear()) + "%");
                     break;
 
                 case "total":
@@ -130,20 +132,10 @@ public class StatisticsP1Controller implements Initializable {
 
                     statsPie.setData(pieDataTotal);
 
-                    textAbsence.setText(percent(DataManager.getInstance().getAbsenceTotal(), DataManager.getInstance().getAttendanceTotal()) + "%");
-                    textAttendance.setText(percent(DataManager.getInstance().getAttendanceTotal(),DataManager.getInstance().getAbsenceTotal()) + "%");
+                    textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceTotal(), DataManager.getInstance().getAttendanceTotal()) + "%");
+                    textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceTotal(),DataManager.getInstance().getAbsenceTotal()) + "%");
                     break;
             }
         }
-    }
-
-    private int percent(int a, int b)
-    {
-        float result = 0;
-        float total = a + b;
-
-        result = a / total * 100;
-
-        return (int)result;
     }
 }

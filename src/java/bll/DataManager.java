@@ -100,4 +100,13 @@ public class DataManager {
         return data.yearAttendance();
     }
 
+    public int percent(int a, int b)
+    {
+        float result = 0;
+        float total = a + b;
+
+        result = a / total * 100;
+
+        return (int)result;
+    }
 }
