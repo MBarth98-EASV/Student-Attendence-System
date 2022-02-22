@@ -27,6 +27,7 @@ public class CourseEntity extends Pane
     private BooleanProperty selected;
     private IntegerProperty statusProperty;
 
+
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private LocalDateTime date;
@@ -55,19 +56,24 @@ public class CourseEntity extends Pane
         } catch (IOException ignored) {}
 
         getChildren().add(view);
-        controller.setLblStartTime(startTime.getHour() + ":" + startTime.getMinute());
-        controller.setLblEndTime(endTime.getHour() + ":" + endTime.getMinute());
+        controller.setLblStartTime(startTime.getHour(),startTime.getMinute());
+        controller.setLblEndTime(endTime.getHour(), endTime.getMinute());
         controller.setCourseName(courseName);
         controller.setLocation(courseLocation);
 
         controller.setCourse(this);
 
-        switch (status){
-            case ATTENDED -> controller.getCircleStatus().setStyle("    -fx-fill: green;    -fx-stroke-width: 0;");
-            case ABSENT -> controller.getCircleStatus().setStyle("      -fx-fill: red;      -fx-stroke-width: 0;");
-            case PARTIAL -> controller.getCircleStatus().setStyle("     -fx-fill: yellow;   -fx-stroke-width: 0;");
-            case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: grey;     -fx-stroke-width: 0;");
-            default -> controller.getCircleStatus().setOpacity(0);
+
+        switch (status) {
+            case ATTENDED -> setStatus(EnumCourseStatus.ATTENDED);
+            case ABSENT -> setStatus(EnumCourseStatus.ABSENT);
+            case PARTIAL -> setStatus(EnumCourseStatus.PARTIAL);
+            case NOT_STARTED -> setStatus(EnumCourseStatus.NOT_STARTED);
+            default -> setStatus(EnumCourseStatus.NONE);
+        }
+
+        if (statusProperty.get() == EnumCourseStatus.NONE.ordinal() && startTime.isAfter(LocalDateTime.now())) {
+            setStatus(EnumCourseStatus.NOT_STARTED);
         }
 
     }
@@ -79,10 +85,10 @@ public class CourseEntity extends Pane
 
     public void setStatus(EnumCourseStatus status){
         switch (status){
-            case ATTENDED -> controller.getCircleStatus().setStyle("    -fx-fill: green;    -fx-stroke-width: 0;");
-            case ABSENT -> controller.getCircleStatus().setStyle("      -fx-fill: red;      -fx-stroke-width: 0;");
-            case PARTIAL -> controller.getCircleStatus().setStyle("     -fx-fill: yellow;   -fx-stroke-width: 0;");
-            case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: grey;     -fx-stroke-width: 0;");
+            case ATTENDED -> controller.getCircleStatus().setStyle("    -fx-fill: #0FB300;    -fx-stroke-width: 0;");
+            case ABSENT -> controller.getCircleStatus().setStyle("      -fx-fill: #D82F2A;      -fx-stroke-width: 0;");
+            case PARTIAL -> controller.getCircleStatus().setStyle("     -fx-fill: #ecf005;   -fx-stroke-width: 0;");
+            case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: #6b6868;     -fx-stroke-width: 0;");
             default -> controller.getCircleStatus().setOpacity(0);
         }
         this.statusProperty.set(status.ordinal());
