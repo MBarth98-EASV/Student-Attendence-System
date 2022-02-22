@@ -23,14 +23,13 @@ import java.util.ResourceBundle;
 
 public class QRMockController implements Initializable {
 
-    private CourseEntity courseToAttend;
-
     @FXML public Button scanButton;
     @FXML public ImageView imgViewQR;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        courseToAttend = ControllerPassthroughModel.getInstance().getSelectedCourse();
+    public void initialize(URL location, ResourceBundle resources)
+    {
+
     }
 
     public void onScanQRCode(ActionEvent event) {

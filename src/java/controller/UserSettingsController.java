@@ -1,4 +1,6 @@
 package controller;
 
-public class UserSettingsController {
+public class UserSettingsController
+{
+
 }

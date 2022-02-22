@@ -81,9 +81,7 @@ public class CoursesViewController implements Initializable {
         attendButton.getSlider().valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() == attendButton.getSlider().getMax()){
                 if (attendButton.isButtonAttendFunction()){
-                    ControllerPassthroughModel.getInstance().setSelectedCourse(selectedCourse.get());
                     MainController.getInstance().showQR();
-
                 }
                 else {
                     //DATAMANAGER SET COURSE STATUS
@@ -92,37 +90,40 @@ public class CoursesViewController implements Initializable {
         });
     }
     
-    private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){
-        if (oldValue != null){
+    private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue)
+    {
             oldValue.getController().getCourseVBox().setStyle("" +
                     "-fx-border-width: 0; " +
                     "-fx-border-color: transparent; " +
                     "-fx-background-color: rgba(248, 248, 248, 0.5); " +
                     "-fx-background-radius: 10; " +
                     "-fx-border-radius: 10;");
-            oldValue.setSelected(false);
 
-        }
-        if (newValue != null) {
             newValue.getController().getCourseVBox().setStyle("" +
                     "-fx-border-width: 2; " +
                     "-fx-border-color: #5145AD; " +
                     "-fx-background-color: rgba(248, 248, 248, 0.5); " +
                     "-fx-background-radius: 10; " +
                     "-fx-border-radius: 10;");
-            newValue.setSelected(true);
-            return;
-        }
+
+        oldValue.setSelected(false);
+        newValue.setSelected(true);
+
     }
 
-    private void attendBtnShowHide(CourseEntity newValue) {
-        if (newValue.getStatus() != EnumCourseStatus.NONE) {
-            if (newValue.isSelected()) {
-            attendButton.showButton(300, newValue);
+    private void attendBtnShowHide(CourseEntity newValue)
+    {
+        if (newValue.getStatus() != EnumCourseStatus.NONE)
+        {
+            if (newValue.isSelected())
+            {
+                attendButton.showButton(300, newValue);
             }
-            if (!newValue.isSelected()) {
-            attendButton.hideButton(300);
-        }   }
+            else
+            {
+                attendButton.hideButton(300);
+            }
+        }
     }
 
 

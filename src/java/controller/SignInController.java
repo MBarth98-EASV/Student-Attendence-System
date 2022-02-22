@@ -1,6 +1,7 @@
 package controller;
 
 import bll.DataManager;
+import com.sun.tools.javac.Main;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -24,39 +25,10 @@ public class SignInController {
     @FXML TextInputControl usernameField;
     @FXML TextInputControl passwordField;
 
-    private ControllerPassthroughModel passthroughModel;
-
-    public SignInController(){
-        passthroughModel = new ControllerPassthroughModel();
-    }
-
-    public void onSignIn(ActionEvent event) {
-        try {
-            //if (usernameField.getText().equals(DataManager.getInstance().getUserLogin()) && passwordField.getText().equals(DataManager.getInstance().getUserPassword())) {
-                loadNext();
-            //}
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private void loadNext() throws IOException
+    public void onSignIn(ActionEvent event)
     {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/CoursesView.fxml"));
-        Scene scene = btnSignIn.getScene();
-        root.translateYProperty().set(scene.getHeight());
+        // (not really) todo: future -> authentication
 
-        passthroughModel.getViewContainer().getChildren().add(root);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.LINEAR);
-        KeyFrame kf = new KeyFrame(Duration.seconds(0.35), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            passthroughModel.getViewContainer().getChildren().remove(signInRoot);
-        });
-        timeline.play();
+        MainController.getInstance().onMainView(event);
     }
-
 }
