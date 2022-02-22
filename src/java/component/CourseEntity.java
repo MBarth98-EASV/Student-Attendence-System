@@ -11,6 +11,8 @@ import util.EnumCourseStatus;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CourseEntity extends Pane
 {
@@ -21,15 +23,24 @@ public class CourseEntity extends Pane
      * controller, will not respond unless the actual value changes. As such, deselection in its current state would not work,
      * since clicking on the same course object twice would not change the value of CourseViewControler.selectedCourse and therefore
      * not trigger the listener.
-     *
      */
     private BooleanProperty selected;
     private IntegerProperty statusProperty;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private LocalDateTime date;
 
 
 
-    public CourseEntity(String startTime, String endTime, String courseName, String courseLocation, EnumCourseStatus status)
+    public CourseEntity(LocalDateTime date, int startHour, int startMin, int endHour, int endMin, String courseName, String courseLocation, EnumCourseStatus status)
     {
+        if (date == null) {
+            this.date = LocalDateTime.now();
+        }
+        startTime = LocalDateTime.now().toLocalDate().atTime(startHour, startMin);
+        endTime = LocalDateTime.now().toLocalDate().atTime(endHour, endMin);
+
+
         selected = new SimpleBooleanProperty();
         this.statusProperty = new SimpleIntegerProperty();
         this.statusProperty.set(status.ordinal());
@@ -43,8 +54,8 @@ public class CourseEntity extends Pane
         } catch (IOException ignored) {}
 
         getChildren().add(view);
-        controller.setLblStartTime(startTime);
-        controller.setLblEndTime(endTime);
+        controller.setLblStartTime(startTime.getHour() + ":" + startTime.getMinute());
+        controller.setLblEndTime(endTime.getHour() + ":" + endTime.getMinute());
         controller.setCourseName(courseName);
         controller.setLocation(courseLocation);
 

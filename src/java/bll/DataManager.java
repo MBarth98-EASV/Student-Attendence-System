@@ -7,6 +7,7 @@ package bll;
 import be.User;
 import component.CourseEntity;
 import dal.DataMock;
+import util.EnumCourseStatus;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class DataManager {
         return instance;
     }
 
-    public void changeCourseStatus(CourseEntity course){
+    public void changeCourseStatus(CourseEntity course, EnumCourseStatus status){
         if (course != null){
 
         }

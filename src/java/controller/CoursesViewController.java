@@ -1,12 +1,11 @@
 package controller;
 
 import bll.DataManager;
+import com.sun.tools.javac.Main;
 import component.AttendButton;
 import component.CourseEntity;
-import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
@@ -14,13 +13,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.TilePane;
-import javafx.stage.Stage;
 import util.EnumCourseStatus;
-import util.Toast;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,8 +54,9 @@ public class CoursesViewController implements Initializable {
         initListeners();
         initButton();
         initButtonFunctionListener();
+        initOnSliderFull();
 
-        btnNextDay.setOnAction(event -> attendLeaveBtn(selectedCourse.get()));
+        btnNextDay.setOnAction(event -> attendBtnShowHide(selectedCourse.get()));
         btnPrevDay.setOnAction(event -> {attendButton.getAsNode().setPrefSize(0,0); attendButton.getAsNode().setMinSize(0, 0); attendButton.getAsNode().setMaxSize(0,0);});
     }
 
@@ -68,7 +64,7 @@ public class CoursesViewController implements Initializable {
 
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));
-        selectedCourse.addListener((observable, oldValue, newValue) -> attendLeaveBtn(newValue));
+        selectedCourse.addListener((observable, oldValue, newValue) -> attendBtnShowHide(newValue));
     }
 
     private void initButton(){
@@ -81,11 +77,13 @@ public class CoursesViewController implements Initializable {
                 -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
     }
 
-    private void onSliderFull(){
+    private void initOnSliderFull(){
         attendButton.getSlider().valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() == attendButton.getSlider().getMax()){
                 if (attendButton.isButtonAttendFunction()){
-                    //START QR READER
+                    ControllerPassthroughModel.getInstance().setSelectedCourse(selectedCourse.get());
+                    MainController.getInstance().showQR();
+
                 }
                 else {
                     //DATAMANAGER SET COURSE STATUS
@@ -117,7 +115,7 @@ public class CoursesViewController implements Initializable {
         }
     }
 
-    private void attendLeaveBtn(CourseEntity newValue) {
+    private void attendBtnShowHide(CourseEntity newValue) {
         if (newValue.getStatus() != EnumCourseStatus.NONE) {
             if (newValue.isSelected()) {
             attendButton.showButton(300, newValue);
@@ -162,7 +160,7 @@ public class CoursesViewController implements Initializable {
                 return;
             }
             deselectAll(this.selectedCourse.get(), selectedCourse);
-            attendLeaveBtn(selectedCourse);
+            attendBtnShowHide(selectedCourse);
         }
         this.selectedCourse.set(selectedCourse);
         attendButton.setAttendOrLeave(selectedCourse.getStatus());

@@ -43,8 +43,12 @@ public class ControllerPassthroughModel {
         return viewContainer;
     }
 
-    public ObjectProperty<CourseEntity> getSelectedCourse() {
+    public ObjectProperty<CourseEntity> getSelectedCourseProperty() {
         return new SimpleObjectProperty<>(selectedCourse);
+    }
+
+    public CourseEntity getSelectedCourse(){
+        return selectedCourse;
     }
 
     public void setSelectedCourse(CourseEntity newSelectedCourse) {

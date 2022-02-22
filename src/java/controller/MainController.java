@@ -104,6 +104,36 @@ public class MainController implements Initializable {
         }
     }
 
+    public void showQR(){
+        try {
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/qrMock.fxml")));
+            tglBtnMainView.setDisable(true);
+            tglBtnMainView.setOpacity(0);
+            tglBtnStats.setDisable(true);
+            tglBtnStats.setOpacity(0);
+            tglBtnUser.setDisable(true);
+            tglBtnUser.setOpacity(0);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void endQR(){
+        try {
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/CoursesView.fxml")));
+            tglBtnMainView.setDisable(false);
+            tglBtnMainView.setOpacity(1);
+            tglBtnStats.setDisable(false);
+            tglBtnStats.setOpacity(1);
+            tglBtnUser.setDisable(false);
+            tglBtnUser.setOpacity(1);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Pane getViewPane() {
         return viewPane;
     }

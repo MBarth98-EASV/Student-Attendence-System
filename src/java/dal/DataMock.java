@@ -8,6 +8,8 @@ import be.User;
 import component.CourseEntity;
 import util.EnumCourseStatus;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +31,13 @@ public class DataMock {
       }
 
       public List<CourseEntity> getUserCourses(User user) {
-          CourseEntity course1 = new CourseEntity("08:15", "09:15", "SCO", "Room 30C", EnumCourseStatus.ABSENT);
-          CourseEntity course2 = new CourseEntity("09:15", "12:00", "Playtime", "Room 12", EnumCourseStatus.NOT_STARTED);
-          CourseEntity course3 = new CourseEntity("12:00", "13:10", "SDE", "Room 5", EnumCourseStatus.NONE);
-          CourseEntity course4 = new CourseEntity("13:10", "14:00", "SCO 1", "Room 15K", EnumCourseStatus.PARTIAL);
-          CourseEntity course5 = new CourseEntity("14:00", "15:00", "DBOS 1", "Room 8", EnumCourseStatus.ATTENDED);
-          CourseEntity course6 = new CourseEntity("15:00", "16:00", "ITO", "Room 99", EnumCourseStatus.ATTENDED);
+          LocalDateTime.now();
+          CourseEntity course1 = new CourseEntity(null,8, 15, 9, 15, "SCO", "Room 30C", EnumCourseStatus.ABSENT);
+          CourseEntity course2 = new CourseEntity(null,0, 15, 12, 00, "Playtime", "Room 12", EnumCourseStatus.NOT_STARTED);
+          CourseEntity course3 = new CourseEntity(null,12, 00, 13, 10, "SDE", "Room 5", EnumCourseStatus.NONE);
+          CourseEntity course4 = new CourseEntity(null,13, 10, 14, 00, "SCO 1", "Room 15K", EnumCourseStatus.PARTIAL);
+          CourseEntity course5 = new CourseEntity(null,14, 00, 9, 15, "DBOS 1", "Room 8", EnumCourseStatus.ATTENDED);
+          CourseEntity course6 = new CourseEntity(null,15, 15, 16, 15, "ITO", "Room 99", EnumCourseStatus.ATTENDED);
 
           ArrayList<CourseEntity> courseEntityList = new ArrayList<>();
           courseEntityList.add(course1);

@@ -1,0 +1,68 @@
+package controller;
+
+import bll.DataManager;
+import component.CourseEntity;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
+import util.EnumCourseStatus;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class QRMockController implements Initializable {
+
+    private CourseEntity courseToAttend;
+
+    @FXML public Button scanButton;
+    @FXML public ImageView imgViewQR;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        courseToAttend = ControllerPassthroughModel.getInstance().getSelectedCourse();
+    }
+
+    public void onScanQRCode(ActionEvent event) {
+        Image baseImage = imgViewQR.getImage();
+        Image whiteImage = generateWhiteImage();
+        Timeline timeline = new Timeline();
+
+        KeyFrame qrToWhite = new KeyFrame(Duration.millis(100), new KeyValue(imgViewQR.imageProperty(), whiteImage));
+        KeyFrame whiteToQR = new KeyFrame(Duration.millis(1000), new KeyValue(imgViewQR.imageProperty(), baseImage));
+
+        timeline.getKeyFrames().add(qrToWhite);
+        timeline.getKeyFrames().add(whiteToQR);
+        timeline.setOnFinished(event1 -> {
+            //if (courseToAttend.getStartTime - endtime date.now - 5mins)
+            //DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);
+            //else DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.PARTIAL);
+            MainController.getInstance().endQR();
+        });
+
+        timeline.play();
+
+    }
+
+    private Image generateWhiteImage() {
+        Double width = imgViewQR.getImage().getWidth();
+        Double height = imgViewQR.getImage().getHeight();
+
+        WritableImage img = new WritableImage(1, 1);
+        PixelWriter pw = img.getPixelWriter();
+
+        Color color = Color.WHITE;
+        pw.setColor(0, 0, color);
+        return img ;
+    }
+}
