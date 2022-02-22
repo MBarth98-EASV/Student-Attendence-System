@@ -22,8 +22,10 @@ import util.EnumCourseStatus;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CoursesViewController implements Initializable {
@@ -40,10 +42,12 @@ public class CoursesViewController implements Initializable {
     private AttendButton attendButton;
     private boolean btnShowing;
     private BooleanProperty isActiveCourse;
+    private LocalDate day;
 
     public CoursesViewController() {
         instance = this;
         isActiveCourse = new SimpleBooleanProperty();
+        day = LocalDate.now();
     }
 
     @Override
@@ -53,21 +57,18 @@ public class CoursesViewController implements Initializable {
         coursePane.setHgap(10);
         coursePane.setVgap(10);
 
-        ArrayList<CourseEntity> initCourseList = setCourses(LocalDate.now());
+        ArrayList<CourseEntity> initCourseList = setCourses(day);
         scrollPaneCourses.setContent(coursePane);
         selectedCourse = new SimpleObjectProperty<>(initCourseList.get(0));
         initListeners();
         initButton();
         initButtonFunctionListener();
         initOnSliderFull();
-
-        btnNextDay.setOnAction(event -> attendBtnShowHide(selectedCourse.get()));
-        btnPrevDay.setOnAction(event -> {attendButton.getAsNode().setPrefSize(0,0); attendButton.getAsNode().setMinSize(0, 0); attendButton.getAsNode().setMaxSize(0,0);});
+        initNextPrevDay();
     }
 
     //TODO: Indicator for currently active course.
     //TODO: Check for whether course is applicable for status change.
-    //TODO: Course for multiple days.
 
 
     private ArrayList<CourseEntity> setCourses(LocalDate day){
@@ -76,6 +77,33 @@ public class CoursesViewController implements Initializable {
         coursePane.getChildren().addAll(courses);
 
         return courses;
+    }
+
+    private void initNextPrevDay(){
+        btnNextDay.setOnAction(event -> {
+            day = day.plusDays(1);
+            setCourses(day);
+            setLblDay(day);
+        });
+
+        btnPrevDay.setOnAction(event -> {
+            day = day.minusDays(1);
+            setCourses(day);
+            setLblDay(day);
+        });
+    }
+
+    private void setLblDay(LocalDate date){
+        Locale locale = Locale.getDefault();
+        if (LocalDate.now().equals(date)) {
+            lblDay.setText("Today");
+        } else if (LocalDate.now().minusDays(1).equals(date)) {
+            lblDay.setText("Yesterday");
+        } else if (LocalDate.now().plusDays(1).equals(date)) {
+            lblDay.setText("Tomorrow");
+        } else {
+            lblDay.setText(date.getDayOfWeek().getDisplayName(TextStyle.SHORT, locale) + " " + date.getDayOfMonth());
+        }
     }
 
     private void initListeners(){
@@ -133,12 +161,14 @@ public class CoursesViewController implements Initializable {
 
     private void attendBtnShowHide(CourseEntity newValue) {
         //if (btnShowing)
-        if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
+        /*if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
         newValue.getEndTime().isAfter(LocalDateTime.now())){
             return;
         }
 
-        else if (newValue.getStatus() != EnumCourseStatus.NONE) {
+
+
+        else*/ if (newValue.getStatus() != EnumCourseStatus.NONE) {
             if (newValue.isSelected()) {
             attendButton.showButton(300, newValue);
             btnShowing = true;
@@ -146,7 +176,8 @@ public class CoursesViewController implements Initializable {
             if (!newValue.isSelected()) {
             attendButton.hideButton(300);
             btnShowing = false;
-        }   }
+            }
+        }
     }
 
 

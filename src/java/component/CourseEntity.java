@@ -39,6 +39,9 @@ public class CourseEntity extends Pane
         if (date == null) {
             this.date = LocalDate.now();
         }
+        else {
+            this.date = date;
+        }
         startTime = this.date.atTime(startHour, startMin);
         endTime = this.date.atTime(endHour, endMin);
 
