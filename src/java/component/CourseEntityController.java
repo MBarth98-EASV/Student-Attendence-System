@@ -129,21 +129,37 @@ public class CourseEntityController implements Initializable
 
 
     public void setLblStartTime(int startHour, int startMin) {
-        String strHour = "";
-        String strMin = "";
+        String strHour = new String();
+        String strMin = new String();
 
         if (startHour < 10){
-            //startTimeStr = "0" + startTime.getHour();
+            strHour = "0" + startHour;
         }
+        else strHour = String.valueOf(startHour);
+
         if (startMin < 10) {
-            //startTimeStr = startTimeStr
+            strMin = "0" + startMin;
         }
+        else strMin = String.valueOf(startMin);
 
         lblStartTime.setText(strHour + ":" + strMin);
     }
 
     public void setLblEndTime(int endHour, int endMin) {
-        lblEndTime.setText(endTime);
+        String strHour = new String();
+        String strMin = new String();
+
+        if (endHour < 10){
+            strHour = "0" + endHour;
+        }
+        else strHour = String.valueOf(endHour);
+
+        if (endMin < 10) {
+            strMin = "0" + endMin;
+        }
+        else strMin = String.valueOf(endMin);
+
+        lblEndTime.setText(strHour + ":" + strMin);
     }
 
     public void setCourseName(String name){
