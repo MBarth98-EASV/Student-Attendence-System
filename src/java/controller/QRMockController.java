@@ -19,6 +19,7 @@ import javafx.util.Duration;
 import util.EnumCourseStatus;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class QRMockController implements Initializable {
@@ -44,9 +45,14 @@ public class QRMockController implements Initializable {
         timeline.getKeyFrames().add(qrToWhite);
         timeline.getKeyFrames().add(whiteToQR);
         timeline.setOnFinished(event1 -> {
-            //if (courseToAttend.getStartTime - endtime date.now - 5mins)
-            //DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);
-            //else DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.PARTIAL);
+            if (LocalDateTime.now().isBefore(courseToAttend.getStartTime().minusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
+            {
+                DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);
+            }
+            else if (LocalDateTime.now().isAfter(courseToAttend.getStartTime().minusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
+            {
+                DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.PARTIAL);
+            }
             MainController.getInstance().endQR();
         });
 

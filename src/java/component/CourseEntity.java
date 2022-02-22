@@ -26,6 +26,7 @@ public class CourseEntity extends Pane
      */
     private BooleanProperty selected;
     private IntegerProperty statusProperty;
+
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private LocalDateTime date;
@@ -110,5 +111,31 @@ public class CourseEntity extends Pane
     public BooleanProperty getSelectedProperty(){
         return selected;
     }
+
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
 
 }
