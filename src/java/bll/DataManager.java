@@ -4,13 +4,11 @@
 
 package bll;
 
-import be.User;
 import component.CourseEntity;
 import dal.DataMock;
 import util.EnumCourseStatus;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class DataManager {
@@ -40,7 +38,7 @@ public class DataManager {
 
 
     public List<CourseEntity> getUserCourses(LocalDate day) {
-        return data.getUserCourses(getUser(), day);
+        return data.getCourses(day);
     }
 
     public DataManager()
@@ -58,10 +56,6 @@ public class DataManager {
         return data.userPassword();
     }
 
-    public User getUser()
-    {
-        return data.User();
-    }
 
     public int getAbsenceTotal()
     {

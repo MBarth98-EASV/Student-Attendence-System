@@ -20,6 +20,7 @@ import javafx.scene.layout.FlowPane;
 import util.EnumCourseStatus;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,11 +53,9 @@ public class CoursesViewController implements Initializable {
         coursePane.setHgap(10);
         coursePane.setVgap(10);
 
-        List<CourseEntity> courses = new ArrayList<>(DataManager.getInstance().getUserCourses());
-
-        coursePane.getChildren().addAll(courses);
+        ArrayList<CourseEntity> initCourseList = setCourses(LocalDate.now());
         scrollPaneCourses.setContent(coursePane);
-        selectedCourse = new SimpleObjectProperty<>(courses.get(0));
+        selectedCourse = new SimpleObjectProperty<>(initCourseList.get(0));
         initListeners();
         initButton();
         initButtonFunctionListener();
@@ -69,6 +68,15 @@ public class CoursesViewController implements Initializable {
     //TODO: Indicator for currently active course.
     //TODO: Check for whether course is applicable for status change.
     //TODO: Course for multiple days.
+
+
+    private ArrayList<CourseEntity> setCourses(LocalDate day){
+        ArrayList<CourseEntity> courses = new ArrayList<>(DataManager.getInstance().getUserCourses(day));
+        coursePane.getChildren().clear();
+        coursePane.getChildren().addAll(courses);
+
+        return courses;
+    }
 
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));
