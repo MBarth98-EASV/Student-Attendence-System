@@ -33,7 +33,7 @@
       <children>
          <Group>
             <children>
-               <VBox maxWidth="1.7976931348623157E308">
+               <VBox maxWidth="1.7976931348623157E308" spacing="10.0">
                   <children>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                         <children>
@@ -51,12 +51,12 @@
                </VBox>
             </children>
             <VBox.margin>
-               <Insets bottom="15.0" />
+               <Insets bottom="30.0" />
             </VBox.margin>
          </Group>
          <Group>
             <children>
-               <VBox maxWidth="1.7976931348623157E308">
+               <VBox maxWidth="1.7976931348623157E308" spacing="10.0">
                   <children>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                         <children>
@@ -74,12 +74,12 @@
                </VBox>
             </children>
             <VBox.margin>
-               <Insets bottom="15.0" />
+               <Insets bottom="30.0" />
             </VBox.margin>
          </Group>
          <Group>
             <children>
-               <VBox maxWidth="1.7976931348623157E308">
+               <VBox maxWidth="1.7976931348623157E308" spacing="10.0">
                   <children>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                         <children>
@@ -96,6 +96,9 @@
                   </children>
                </VBox>
             </children>
+            <VBox.margin>
+               <Insets bottom="60.0" />
+            </VBox.margin>
          </Group>
          <Group>
             <children>
