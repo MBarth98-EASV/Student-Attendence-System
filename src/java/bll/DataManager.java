@@ -9,6 +9,8 @@ import component.CourseEntity;
 import dal.DataMock;
 import util.EnumCourseStatus;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class DataManager {
@@ -37,8 +39,8 @@ public class DataManager {
 
 
 
-    public List<CourseEntity> getUserCourses() {
-        return data.getUserCourses(getUser());
+    public List<CourseEntity> getUserCourses(LocalDate day) {
+        return data.getUserCourses(getUser(), day);
     }
 
     public DataManager()

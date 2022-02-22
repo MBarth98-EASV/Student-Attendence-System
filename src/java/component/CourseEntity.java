@@ -30,17 +30,17 @@ public class CourseEntity extends Pane
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private LocalDateTime date;
+    private LocalDate date;
 
 
 
-    public CourseEntity(LocalDateTime date, int startHour, int startMin, int endHour, int endMin, String courseName, String courseLocation, EnumCourseStatus status)
+    public CourseEntity(LocalDate date, int startHour, int startMin, int endHour, int endMin, String courseName, String courseLocation, EnumCourseStatus status)
     {
         if (date == null) {
-            this.date = LocalDateTime.now();
+            this.date = LocalDate.now();
         }
-        startTime = this.date.toLocalDate().atTime(startHour, startMin);
-        endTime = this.date.toLocalDate().atTime(endHour, endMin);
+        startTime = this.date.atTime(startHour, startMin);
+        endTime = this.date.atTime(endHour, endMin);
 
 
         selected = new SimpleBooleanProperty();
@@ -134,11 +134,11 @@ public class CourseEntity extends Pane
         this.endTime = endTime;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
