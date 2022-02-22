@@ -43,7 +43,6 @@ public class StatisticsP1Controller implements Initializable {
         selectionBox.getItems().add("week");
         selectionBox.getItems().add("month");
         selectionBox.getItems().add("year");
-        selectionBox.getItems().add("total");
 
         if (selectionBox.getSelectionModel().getSelectedItem() == null)
         {
@@ -116,18 +115,6 @@ public class StatisticsP1Controller implements Initializable {
 
                     textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceYear(), DataManager.getInstance().getAttendanceYear()) + "%");
                     textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceYear(),DataManager.getInstance().getAbsenceYear()) + "%");
-                    break;
-
-                case "total":
-                    ObservableList<PieChart.Data> pieDataTotal = FXCollections.observableArrayList(
-                            new PieChart.Data("Absence", DataManager.getInstance().getAbsenceTotal()),
-                            new PieChart.Data("Attendance", DataManager.getInstance().getAttendanceTotal())
-                    );
-
-                    statsPie.setData(pieDataTotal);
-
-                    textAbsence.setText(DataManager.getInstance().percent(DataManager.getInstance().getAbsenceTotal(), DataManager.getInstance().getAttendanceTotal()) + "%");
-                    textAttendance.setText(DataManager.getInstance().percent(DataManager.getInstance().getAttendanceTotal(),DataManager.getInstance().getAbsenceTotal()) + "%");
                     break;
             }
         }
