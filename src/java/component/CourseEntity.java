@@ -37,8 +37,8 @@ public class CourseEntity extends Pane
         if (date == null) {
             this.date = LocalDateTime.now();
         }
-        startTime = LocalDateTime.now().toLocalDate().atTime(startHour, startMin);
-        endTime = LocalDateTime.now().toLocalDate().atTime(endHour, endMin);
+        startTime = this.date.toLocalDate().atTime(startHour, startMin);
+        endTime = this.date.toLocalDate().atTime(endHour, endMin);
 
 
         selected = new SimpleBooleanProperty();
