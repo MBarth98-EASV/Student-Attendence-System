@@ -31,8 +31,6 @@ public class StatisticsP1Controller implements Initializable {
    @FXML Text textAttendance;
    @FXML Text textAbsence;
 
-   private ObservableList<PieChart.Data> pieData;
-
    public StatisticsP1Controller()
    {
 
@@ -71,16 +69,12 @@ public class StatisticsP1Controller implements Initializable {
 
     public void switchPage2(ActionEvent actionEvent)
     {
-        try {
-           FXMLLoader.load(getClass().getResource("/view/StatisticsP2.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        MainController.getInstance().showStatsPage2();
     }
 
     public void switchPage3(ActionEvent actionEvent)
     {
-
+        MainController.getInstance().showStatsPage3();
     }
 
     public void comboBoxChoice(ActionEvent actionEvent)

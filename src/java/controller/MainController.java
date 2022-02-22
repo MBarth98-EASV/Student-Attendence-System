@@ -69,6 +69,33 @@ public class MainController implements Initializable {
         }
     }
 
+    public void showStatsPage1()
+    {
+        try {
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP1.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showStatsPage2()
+    {
+        try {
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP2.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showStatsPage3()
+    {
+        try {
+            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP3.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void onShowUser(ActionEvent event) {
         try {
             loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/UserSettings.fxml")));
