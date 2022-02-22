@@ -135,9 +135,21 @@ private static final double ATTEND_WIDTH = 300;
         root.setOpacity(0);
         btnFadeOutTimeline.setOnFinished((aeb) -> {
             fadeOutTimeline.play();
+            slider.setValue(0);
         });
 
         btnFadeOutTimeline.play();
+    }
+
+    public void resetSlider(){
+        new Thread(() -> {
+            try {
+                Thread.sleep(300);
+                hideButton(250);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private void sliderReturnAnimation(){
@@ -159,12 +171,16 @@ private static final double ATTEND_WIDTH = 300;
 
     public void setAttendOrLeave(EnumCourseStatus courseStatus){
         if (courseStatus == EnumCourseStatus.ATTENDED || courseStatus == EnumCourseStatus.PARTIAL) {
+            btn.setOpacity(1);
+            slider.setOpacity(1);
             btn.getStylesheets().clear();
             btn.getStylesheets().add(this.getClass().getResource("/css/LeaveButton.css").toExternalForm());
             btn.setText("Leave");
             buttonAttendFunction = false;
         }
         else {
+            btn.setOpacity(1);
+            slider.setOpacity(1);
             btn.getStylesheets().clear();
             btn.getStylesheets().add(this.getClass().getResource("/css/AttendButton.css").toExternalForm());
             btn.setText("Attend");

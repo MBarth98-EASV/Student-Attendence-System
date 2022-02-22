@@ -130,7 +130,8 @@ public class CoursesViewController implements Initializable {
 
                 }
                 else {
-                    //DATAMANAGER SET COURSE STATUS
+                    DataManager.getInstance().changeCourseStatus(selectedCourse.get(), EnumCourseStatus.PARTIAL);
+                    attendButton.resetSlider();
                 }
             }
         });
@@ -168,16 +169,24 @@ public class CoursesViewController implements Initializable {
 
 
 
-        else*/ if (newValue.getStatus() != EnumCourseStatus.NONE) {
-            if (newValue.isSelected()) {
+        else*/
+            /*if (newValue.getStatus() != EnumCourseStatus.NONE){
+                attendButton.hideButton(300);
+                btnShowing = false;
+            }
+
+             */
+
+            if (newValue.isSelected() && newValue.getAttendable() && !btnShowing) {
             attendButton.showButton(300, newValue);
             btnShowing = true;
             }
-            if (!newValue.isSelected()) {
+
+            if (!newValue.isSelected() && btnShowing) {
             attendButton.hideButton(300);
             btnShowing = false;
             }
-        }
+
     }
 
 

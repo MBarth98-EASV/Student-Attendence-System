@@ -44,7 +44,7 @@ public class QRMockController implements Initializable {
 
         timeline.getKeyFrames().add(qrToWhite);
         timeline.getKeyFrames().add(whiteToQR);
-        timeline.setOnFinished(event1 -> {
+        timeline.setOnFinished(event1 -> { DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);
             if (LocalDateTime.now().isBefore(courseToAttend.getStartTime().minusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
             {
                 DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);

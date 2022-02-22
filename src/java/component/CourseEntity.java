@@ -26,7 +26,7 @@ public class CourseEntity extends Pane
      */
     private BooleanProperty selected;
     private IntegerProperty statusProperty;
-
+    private boolean attendable;
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -49,6 +49,11 @@ public class CourseEntity extends Pane
         selected = new SimpleBooleanProperty();
         this.statusProperty = new SimpleIntegerProperty();
         this.statusProperty.set(status.ordinal());
+        this.statusProperty.addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() == EnumCourseStatus.NONE.ordinal() || newValue.intValue() == EnumCourseStatus.NOT_STARTED.ordinal()) {
+                attendable = false;
+            } else attendable = true;
+        });
 
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
 
@@ -74,13 +79,20 @@ public class CourseEntity extends Pane
             default -> setStatus(EnumCourseStatus.NONE);
         }
 
-        if (statusProperty.get() == EnumCourseStatus.NONE.ordinal() && startTime.isAfter(LocalDateTime.now())) {
+        if (startTime.isAfter(LocalDateTime.now().plusDays(1))) {
             setStatus(EnumCourseStatus.NOT_STARTED);
         }
 
+        if (status == EnumCourseStatus.NONE || status == EnumCourseStatus.NOT_STARTED) {
+            attendable = false;
+        } else attendable = true;
+
     }
 
-    private URL getResource(String s)
+    private void setAttendable(CourseEntity course) {
+    }
+
+        private URL getResource(String s)
     {
         return getClass().getClassLoader().getResource(s);
     }
@@ -143,6 +155,10 @@ public class CourseEntity extends Pane
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public boolean getAttendable(){
+        return attendable;
     }
 
 
