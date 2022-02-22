@@ -4,7 +4,9 @@ import bll.DataManager;
 import com.sun.tools.javac.Main;
 import component.AttendButton;
 import component.CourseEntity;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import javafx.scene.layout.FlowPane;
 import util.EnumCourseStatus;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -34,9 +37,12 @@ public class CoursesViewController implements Initializable {
     private ObjectProperty<CourseEntity> selectedCourse;
     private static CoursesViewController instance;
     private AttendButton attendButton;
+    private boolean btnShowing;
+    private BooleanProperty isActiveCourse;
 
     public CoursesViewController() {
         instance = this;
+        isActiveCourse = new SimpleBooleanProperty();
     }
 
     @Override
@@ -118,12 +124,20 @@ public class CoursesViewController implements Initializable {
     }
 
     private void attendBtnShowHide(CourseEntity newValue) {
-        if (newValue.getStatus() != EnumCourseStatus.NONE) {
+        //if (btnShowing)
+        if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
+        newValue.getEndTime().isAfter(LocalDateTime.now())){
+            return;
+        }
+
+        else if (newValue.getStatus() != EnumCourseStatus.NONE) {
             if (newValue.isSelected()) {
             attendButton.showButton(300, newValue);
+            btnShowing = true;
             }
             if (!newValue.isSelected()) {
             attendButton.hideButton(300);
+            btnShowing = false;
         }   }
     }
 
