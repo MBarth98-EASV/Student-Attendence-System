@@ -60,14 +60,44 @@ public class DataManager {
         return data.User();
     }
 
-    public int getTotalAbsence()
+    public int getAbsenceTotal()
     {
-        return data.absence();
+        return data.totalAbsence();
     }
 
-    public int getTotalAttendence()
+    public int getAttendanceTotal()
     {
-        return data.attendance();
+        return data.totalAttendance();
+    }
+
+    public int getAbsenceWeek()
+    {
+        return data.weekAbsence();
+    }
+
+    public int getAttendanceWeek()
+    {
+        return data.weekAttendance();
+    }
+
+    public int getAttendanceMonth()
+    {
+    return data.monthAttendance();
+    }
+
+    public int getAbsenceMonth()
+    {
+        return data.monthAbsence();
+    }
+
+    public int getAbsenceYear()
+    {
+        return data.yearAbsence();
+    }
+
+    public int getAttendanceYear()
+    {
+        return data.yearAttendance();
     }
 
 }

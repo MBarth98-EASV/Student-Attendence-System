@@ -49,24 +49,24 @@ public class DataMock {
           return courseEntityList;
       }
 
-      public int attendance()
+      public int totalAttendance()
     {
-        return 8;
+        return 1565;
     }
 
-    public int absence()
+    public int totalAbsence()
     {
-        return 2;
+        return 74;
     }
 
     public int weekAttendance()
     {
-        return 12;
+        return 7;
     }
 
     public int weekAbsence()
     {
-        return 4;
+        return 2;
     }
 
     public int monthAttendance()
@@ -76,8 +76,16 @@ public class DataMock {
 
     public int monthAbsence()
     {
-        return 14;
+        return 6;
     }
 
+    public int yearAttendance()
+    {
+        return 554;
+    }
 
+    public int yearAbsence()
+    {
+        return 44;
+    }
 }
