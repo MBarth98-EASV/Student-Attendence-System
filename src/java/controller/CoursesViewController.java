@@ -58,7 +58,6 @@ public class CoursesViewController implements Initializable {
         selectedCourse = new SimpleObjectProperty<>(initCourseList.get(0)); //Required to avoid NullPointerEx
         initListeners();
         initButton();
-        initButtonFunctionListener();
         initOnSliderFull();
         initNextPrevDay();
     }
@@ -112,17 +111,13 @@ public class CoursesViewController implements Initializable {
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectCourse(oldValue, newValue));
         selectedCourse.addListener((observable, oldValue, newValue) -> setIsActiveCourse(oldValue, newValue));
         selectedCourse.addListener((observable, oldValue, newValue) -> attendBtnShowHide(newValue));
-        selectedCourse.addListener((observable, oldValue, newValue) -> attendButton.setAttendOrLeave(newValue.getStatus()));
+        selectedCourse.get().getStatusProperty().addListener((observable, oldValue, newValue)
+                -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
     }
 
     private void initButton(){
         this.attendButton = new AttendButton();
         courseBorderPaneRoot.setBottom(attendButton.getAsNode());
-    }
-
-    private void initButtonFunctionListener(){
-        selectedCourse.get().getStatusProperty().addListener((observable, oldValue, newValue)
-                -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
     }
 
     /**
@@ -157,8 +152,6 @@ public class CoursesViewController implements Initializable {
         if (oldValue != null){
             oldValue.setSelected(false);
                 oldValue.setIsActiveCourse(false);
-
-
         }
         if (newValue != null) {
             newValue.setSelected(true);
@@ -192,7 +185,7 @@ public class CoursesViewController implements Initializable {
      * @param newValue - The given course, that decides whether the button should be shown or hidden.
      */
     private void attendBtnShowHide(CourseEntity newValue) {
-        /*if (btnShowing)
+        /*if (btnShowing)    Real-world time sensitive code, meant for real-world use.
         if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
         newValue.getEndTime().isAfter(LocalDateTime.now())){
             return;
@@ -208,7 +201,7 @@ public class CoursesViewController implements Initializable {
                 if (!newValue.getPerformableAction()){
                     return;
                 }
-            attendButton.showButton(300, newValue);
+            attendButton.showButton(300);
             btnShowing = true;
             }
 

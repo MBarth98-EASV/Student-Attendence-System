@@ -38,6 +38,12 @@ public class QRMockController implements Initializable {
         courseToAttend = ControllerPassthroughModel.getInstance().getSelectedCourse();
     }
 
+    /**
+     * Plays a small animation on the ImageView to simulate the scanning of a QR code.
+     * When done, the course selected in CourseView will either be set to Attend if it has not ended and it started
+     * less than five minutes ago. Otherwise, it will be set to partial, meaning partial attendance.
+     * @param event
+     */
     public void onScanQRCode(ActionEvent event) {
         Image baseImage = imgViewQR.getImage();
         Image whiteImage = generateWhiteImage();
@@ -48,12 +54,14 @@ public class QRMockController implements Initializable {
 
         timeline.getKeyFrames().add(qrToWhite);
         timeline.getKeyFrames().add(whiteToQR);
-        timeline.setOnFinished(event1 -> { DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);
-            if (LocalDateTime.now().isBefore(courseToAttend.getStartTime().minusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
+        timeline.setOnFinished(event1 -> {
+
+            if (LocalDateTime.now().isBefore(courseToAttend.getStartTime().plusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
             {
                 DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.ATTENDED);
             }
-            else if (LocalDateTime.now().isAfter(courseToAttend.getStartTime().minusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
+
+            else if (LocalDateTime.now().isAfter(courseToAttend.getStartTime().plusMinutes(5)) && LocalDateTime.now().isBefore(courseToAttend.getEndTime()))
             {
                 DataManager.getInstance().changeCourseStatus(courseToAttend, EnumCourseStatus.PARTIAL);
             }
