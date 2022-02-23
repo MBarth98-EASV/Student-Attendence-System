@@ -64,6 +64,10 @@ public class QRMockController implements Initializable {
 
     }
 
+    /**
+     * Generates a completely white image of 1x1 pixel, which can then be scaled to the size of the ImageView.
+     * @return a white image.
+     */
     private Image generateWhiteImage() {
         Double width = imgViewQR.getImage().getWidth();
         Double height = imgViewQR.getImage().getHeight();
