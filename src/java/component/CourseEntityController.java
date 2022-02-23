@@ -41,8 +41,15 @@ public class CourseEntityController implements Initializable
     {
         courseVBox.setOnMouseClicked(event -> {
             CoursesViewController.getInstance().setSelectedCourse(course);
+            if (course.isActiveCourse()){
+                course.setIsActiveCourse(false);
+            }
+            else if (!course.isActiveCourse()){
+                course.setIsActiveCourse(true);
+            }
         });
         initStyle();
+        Platform.runLater(this::initActiveCourseListener);
         Platform.runLater(this::initSelectionListener);
     }
 
@@ -96,6 +103,15 @@ public class CourseEntityController implements Initializable
                         "    -fx-text-fill: #f8f8f8;");
             }
 
+        });
+    }
+
+    private void initActiveCourseListener(){
+        course.isActiveCourseProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == true){
+                rootHBox.setStyle("-fx-border-width: 0 0 0 4; -fx-border-color: #0FB300;");
+            }
+            else rootHBox.setStyle("-fx-border-width: 0; -fx-border-color: transparent;");
         });
     }
 

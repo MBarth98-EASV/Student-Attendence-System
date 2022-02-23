@@ -26,6 +26,7 @@ public class CourseEntity extends Pane
      */
     private BooleanProperty selected;
     private IntegerProperty statusProperty;
+    private BooleanProperty isActiveCourse;
     private boolean performableAction;
 
     private LocalDateTime startTime;
@@ -47,6 +48,7 @@ public class CourseEntity extends Pane
 
 
         selected = new SimpleBooleanProperty();
+        isActiveCourse = new SimpleBooleanProperty();
         this.statusProperty = new SimpleIntegerProperty();
         this.statusProperty.set(status.ordinal());
         this.statusProperty.addListener((observable, oldValue, newValue) -> {
@@ -162,6 +164,20 @@ public class CourseEntity extends Pane
     public boolean getPerformableAction(){
         return performableAction;
     }
+
+
+    public boolean isActiveCourse() {
+        return isActiveCourse.get();
+    }
+
+    public BooleanProperty isActiveCourseProperty() {
+        return isActiveCourse;
+    }
+
+    public void setIsActiveCourse(boolean isActiveCourse) {
+        this.isActiveCourse.set(isActiveCourse);
+    }
+
 
 
 }

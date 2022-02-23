@@ -38,12 +38,10 @@ public class CoursesViewController implements Initializable {
     private static CoursesViewController instance;
     private AttendButton attendButton;
     private boolean btnShowing;
-    private BooleanProperty isActiveCourse;
     private LocalDate day;
 
     public CoursesViewController() {
         instance = this;
-        isActiveCourse = new SimpleBooleanProperty();
         day = LocalDate.now();
     }
 
