@@ -2,14 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -49,7 +51,7 @@
    <center>
       <FlowPane fx:id="statsPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="728.0" prefWidth="358.0" rowValignment="TOP" vgap="10.0" BorderPane.alignment="CENTER">
          <children>
-            <PieChart fx:id="statsPie" animated="false" clockwise="false" labelsVisible="false" legendVisible="false" prefHeight="324.0" prefWidth="358.0" />
+            <PieChart fx:id="statsPie" animated="false" clockwise="false" labelsVisible="false" legendVisible="false" prefHeight="324.0" prefWidth="358.0" stylesheets="@../css/PieChart.css" />
             <FlowPane alignment="TOP_CENTER" prefHeight="56.0" prefWidth="358.0">
                <children>
                   <FlowPane alignment="CENTER" prefHeight="33.0" prefWidth="348.0">
@@ -59,7 +61,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Text fx:id="textAttendance" fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
+                        <Text fx:id="textAttendance" fill="#20c234" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Text>
@@ -72,7 +74,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Text fx:id="textAbsence" fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
+                        <Text fx:id="textAbsence" fill="#d82f2a" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Text>
@@ -96,9 +98,25 @@
    <bottom>
       <FlowPane alignment="CENTER" prefHeight="111.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="p1Btn" mnemonicParsing="false" onAction="#switchPage1" text="P1" />
-            <Button fx:id="p2Btn" mnemonicParsing="false" onAction="#switchPage2" text="P2" />
-            <Button fx:id="p3Btn" mnemonicParsing="false" onAction="#switchPage3" text="P3" />
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="113.0" spacing="5">
+               <children>
+                  <ImageView fx:id="imgBtn1" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/buttonselected.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgBtn2" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/buttonunselected.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgBtn3" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage3" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/buttonunselected.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
       </FlowPane>
    </bottom>

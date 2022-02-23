@@ -3,9 +3,9 @@ Colours of Pie Chart slices.
  */
 
 .data0.chart-pie {
-    -fx-pie-color: green;
+    -fx-pie-color: #D82F2A;
 }
 
 .data1.chart-pie {
-    -fx-pie-color: red;
+    -fx-pie-color: #20C234;
 }

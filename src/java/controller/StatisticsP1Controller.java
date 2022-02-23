@@ -14,8 +14,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,9 +26,6 @@ import java.util.ResourceBundle;
 public class StatisticsP1Controller implements Initializable {
 
    @FXML private PieChart statsPie;
-   @FXML Button p1Btn;
-   @FXML Button p2Btn;
-   @FXML Button p3Btn;
    @FXML ComboBox<String> selectionBox;
    @FXML Text textAttendance;
    @FXML Text textAbsence;
@@ -61,20 +60,6 @@ public class StatisticsP1Controller implements Initializable {
 
         }
 
-    }
-
-    public void switchPage1(ActionEvent actionEvent)
-    {
-    }
-
-    public void switchPage2(ActionEvent actionEvent)
-    {
-        MainController.getInstance().showStatsPage2();
-    }
-
-    public void switchPage3(ActionEvent actionEvent)
-    {
-        MainController.getInstance().showStatsPage3();
     }
 
     public void comboBoxChoice(ActionEvent actionEvent)
@@ -131,5 +116,19 @@ public class StatisticsP1Controller implements Initializable {
                     break;
             }
         }
+    }
+
+    public void switchPage1(MouseEvent mouseEvent)
+    {
+    }
+
+    public void switchPage2(MouseEvent mouseEvent)
+    {
+        MainController.getInstance().showStatsPage2();
+    }
+
+    public void switchPage3(MouseEvent mouseEvent)
+    {
+        MainController.getInstance().showStatsPage3();
     }
 }
