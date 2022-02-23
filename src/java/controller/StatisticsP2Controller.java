@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
 public class StatisticsP2Controller {
