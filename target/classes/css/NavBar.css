@@ -1,0 +1,191 @@
+
+.CourseTglButton {
+    -fx-background-image: url(../img/courseicon1.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: transparent;
+    -fx-background-size: 25;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10;
+    -fx-background-radius: 30;
+}
+
+.CourseTglButton:hover {
+    -fx-background-color: #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
+
+}
+
+.CourseTglButton:pressed {
+    -fx-background-color:  #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+}
+
+.CourseTglButton:disabled {
+    -fx-opacity: 0.4;
+
+}
+
+.CourseTglButton:selected {
+    -fx-background-color: #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color:#7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
+}
+
+.CourseTglButton:selected:focused {
+    -fx-background-color: #1D193F4C;
+    -fx-background-image: url(../img/courseicon3.png);;
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+
+}
+
+
+/* ----------------------------------------------------------------- */
+
+
+
+
+.StatTglButton {
+    -fx-background-image: url(../img/staticon1.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: transparent;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8;
+    -fx-background-radius: 30;
+}
+
+.StatTglButton:hover {
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.StatTglButton:pressed {
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.StatTglButton:disabled {
+    -fx-opacity: 0.4;
+
+}
+
+.StatTglButton:selected {
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.StatTglButton:selected:focused {
+    -fx-background-image: url(../img/staticon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+
+}
+
+
+/* ----------------------------------------------------------------- */
+
+
+.UserTglButton {
+    -fx-background-image: url(../img/usericon1.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: transparent;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8;
+    -fx-background-radius: 30;
+}
+
+.UserTglButton:hover {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.UserTglButton:pressed {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.UserTglButton:disabled {
+    -fx-opacity: 0.4;
+
+}
+
+.UserTglButton:selected {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+}
+
+.UserTglButton:selected:focused {
+    -fx-background-image: url(../img/usericon3.png);
+    -fx-content-display: CENTER;
+    -fx-border-color: #7261f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    -fx-background-color: #1D193F4C;
+    -fx-background-radius: 30;
+
+}
+
