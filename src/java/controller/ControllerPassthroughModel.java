@@ -6,7 +6,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-
+/**
+ * Author: @Rasmus Scherning Sandbæk
+ */
 public class ControllerPassthroughModel {
 
     private MainController mainController;

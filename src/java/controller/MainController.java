@@ -20,7 +20,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Author: @Rasmus Scherning Sandbæk
+ */
 public class MainController implements Initializable {
     
     @FXML Pane viewPane;

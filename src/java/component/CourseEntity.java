@@ -14,6 +14,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * Author: @Rasmus Scherning Sandbæk
+ */
 public class CourseEntity extends Pane
 {
     private Node view;

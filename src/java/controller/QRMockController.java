@@ -22,6 +22,10 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
+/**
+ * Author: @Rasmus Scherning Sandbæk
+ */
+
 public class QRMockController implements Initializable {
 
     private CourseEntity courseToAttend;

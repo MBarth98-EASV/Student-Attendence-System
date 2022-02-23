@@ -11,11 +11,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import util.EnumCourseStatus;
-
+/**
+ * Author: @Rasmus Scherning Sandbæk, alcoolis
+ */
 public final class AttendButton {
 
 
-private EnumCourseStatus status;
 private Button btn;
 private GridPane root;
 private Slider slider;

@@ -16,7 +16,9 @@ import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Author: @Rasmus Scherning Sandbæk
+ */
 public class CourseEntityController implements Initializable
 {
 
