@@ -33,7 +33,7 @@ public class DataMock {
 
         CourseEntity course13 = new CourseEntity(LocalDate.now().plusDays(1),8, 15, 9, 15, "CO2", "Room 305C", EnumCourseStatus.ABSENT);
         CourseEntity course14 = new CourseEntity(LocalDate.now().plusDays(1),0, 15, 12, 00, "Playtime", "Room 121", EnumCourseStatus.NOT_STARTED);
-        CourseEntity course15 = new CourseEntity(LocalDate.now().plusDays(1),12, 00, 13, 10, "H2O", "Room 53", EnumCourseStatus.NONE);
+        CourseEntity course15 = new CourseEntity(LocalDate.now().plusDays(1),12, 00, 13, 10, "H2O", "Room 53", EnumCourseStatus.NOT_STARTED);
         CourseEntity course16 = new CourseEntity(LocalDate.now().plusDays(1),13, 10, 14, 00, "SCO3", "Room 15fK", EnumCourseStatus.PARTIAL);
         CourseEntity course17 = new CourseEntity(LocalDate.now().plusDays(1),14, 00, 9, 15, "MAT2", "Room 81", EnumCourseStatus.ATTENDED);
         CourseEntity course18 = new CourseEntity(LocalDate.now().plusDays(1),15, 15, 16, 15, "VR1", "Room 99F", EnumCourseStatus.ATTENDED);
