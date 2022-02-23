@@ -106,7 +106,7 @@ public class CoursesViewController implements Initializable {
     }
 
     private void initListeners(){
-        selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectStyle(oldValue, newValue));
+        selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectCourse(oldValue, newValue));
         selectedCourse.addListener((observable, oldValue, newValue) -> attendBtnShowHide(newValue));
     }
 
@@ -136,44 +136,30 @@ public class CoursesViewController implements Initializable {
         });
     }
     
-    private void selectDeselectStyle(CourseEntity oldValue, CourseEntity newValue){
+    private void selectDeselectCourse(CourseEntity oldValue, CourseEntity newValue){
         if (oldValue != null){
-            oldValue.getController().getCourseVBox().setStyle("" +
-                    "-fx-border-width: 0; " +
-                    "-fx-border-color: transparent; " +
-                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                    "-fx-background-radius: 10; " +
-                    "-fx-border-radius: 10;");
             oldValue.setSelected(false);
 
         }
         if (newValue != null) {
-            newValue.getController().getCourseVBox().setStyle("" +
-                    "-fx-border-width: 2; " +
-                    "-fx-border-color: #5145AD; " +
-                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                    "-fx-background-radius: 10; " +
-                    "-fx-border-radius: 10;");
             newValue.setSelected(true);
-            return;
         }
     }
 
+
+
     private void attendBtnShowHide(CourseEntity newValue) {
-        //if (btnShowing)
-        /*if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
+        /* For real-world time usage.
+        if (btnShowing)
+        if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
         newValue.getEndTime().isAfter(LocalDateTime.now())){
             return;
         }
-
-
-
         else*/
             /*if (newValue.getStatus() != EnumCourseStatus.NONE){
                 attendButton.hideButton(300);
                 btnShowing = false;
             }
-
              */
 
             if (newValue.isSelected() && newValue.getPerformableAction() && !btnShowing) {
@@ -226,8 +212,9 @@ public class CoursesViewController implements Initializable {
         if (selectedCourse.equals(getSelectedCourse())){
             if (!selectedCourse.isSelected())
             {
-                selectDeselectStyle(null, this.selectedCourse.get());
+                selectDeselectCourse(null, this.selectedCourse.get());
                 this.selectedCourse.set(selectedCourse);
+                attendBtnShowHide(selectedCourse);
                 return;
             }
             deselectAll(this.selectedCourse.get(), selectedCourse);
