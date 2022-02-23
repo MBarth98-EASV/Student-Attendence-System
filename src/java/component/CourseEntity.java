@@ -81,7 +81,7 @@ public class CourseEntity extends Pane
             default -> setStatus(EnumCourseStatus.NONE);
         }
 
-        if (startTime.isAfter(LocalDateTime.now().plusDays(1))) {
+        if (this.date.isAfter(LocalDate.now())) {
             setStatus(EnumCourseStatus.NOT_STARTED);
         }
 
