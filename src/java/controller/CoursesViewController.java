@@ -81,12 +81,14 @@ public class CoursesViewController implements Initializable {
             day = day.plusDays(1);
             setCourses(day);
             setLblDay(day);
+            attendButton.hideButton(300);
         });
 
         btnPrevDay.setOnAction(event -> {
             day = day.minusDays(1);
             setCourses(day);
             setLblDay(day);
+            attendButton.hideButton(300);
         });
     }
 
@@ -153,9 +155,10 @@ public class CoursesViewController implements Initializable {
         if (oldValue != null){
             oldValue.setIsActiveCourse(false);
         }
-        if (newValue != null) {
+        if (newValue != null && newValue.getStartTime().toLocalDate().isEqual(LocalDate.now())) {
             newValue.setIsActiveCourse(true);
         }
+        else newValue.setIsActiveCourse(false);
     }
 
 
@@ -173,7 +176,7 @@ public class CoursesViewController implements Initializable {
             }
              */
 
-            if (newValue.isSelected() && newValue.getPerformableAction() && !btnShowing) {
+            if (newValue.isSelected() && newValue.getPerformableAction() && !btnShowing && newValue.isActiveCourse()) {
                 if (!newValue.getPerformableAction()){
                     return;
                 }
