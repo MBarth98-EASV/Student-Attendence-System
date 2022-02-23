@@ -1,7 +1,6 @@
 package controller;
 
 import bll.DataManager;
-import com.sun.tools.javac.Main;
 import component.AttendButton;
 import component.CourseEntity;
 import javafx.beans.property.BooleanProperty;
@@ -21,10 +20,8 @@ import util.EnumCourseStatus;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -68,6 +65,8 @@ public class CoursesViewController implements Initializable {
     }
 
     //TODO: Indicator for currently active course.
+    //          Report = real-time
+    //          Debug = Mouse Select
     //TODO: Check for whether course is applicable for status change.
 
 
@@ -177,9 +176,17 @@ public class CoursesViewController implements Initializable {
 
              */
 
-            if (newValue.isSelected() && newValue.getAttendable() && !btnShowing) {
+            if (newValue.isSelected() && newValue.getPerformableAction() && !btnShowing) {
+                if (!newValue.getPerformableAction()){
+                    return;
+                }
             attendButton.showButton(300, newValue);
             btnShowing = true;
+            }
+
+            if (!newValue.getPerformableAction()){
+                attendButton.hideButton(300);
+                btnShowing = false;
             }
 
             if (!newValue.isSelected() && btnShowing) {

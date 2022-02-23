@@ -26,7 +26,7 @@ public class CourseEntity extends Pane
      */
     private BooleanProperty selected;
     private IntegerProperty statusProperty;
-    private boolean attendable;
+    private boolean performableAction;
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -51,8 +51,8 @@ public class CourseEntity extends Pane
         this.statusProperty.set(status.ordinal());
         this.statusProperty.addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() == EnumCourseStatus.NONE.ordinal() || newValue.intValue() == EnumCourseStatus.NOT_STARTED.ordinal()) {
-                attendable = false;
-            } else attendable = true;
+                performableAction = false;
+            } else performableAction = true;
         });
 
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
@@ -83,16 +83,17 @@ public class CourseEntity extends Pane
             setStatus(EnumCourseStatus.NOT_STARTED);
         }
 
+        setPerformableAction(status);
+
+    }
+
+    private void setPerformableAction(EnumCourseStatus status) {
         if (status == EnumCourseStatus.NONE || status == EnumCourseStatus.NOT_STARTED) {
-            attendable = false;
-        } else attendable = true;
-
+            performableAction = false;
+        } else performableAction = true;
     }
 
-    private void setAttendable(CourseEntity course) {
-    }
-
-        private URL getResource(String s)
+    private URL getResource(String s)
     {
         return getClass().getClassLoader().getResource(s);
     }
@@ -105,6 +106,7 @@ public class CourseEntity extends Pane
             case NOT_STARTED -> controller.getCircleStatus().setStyle(" -fx-fill: #6b6868;     -fx-stroke-width: 0;");
             default -> controller.getCircleStatus().setOpacity(0);
         }
+        setPerformableAction(status);
         this.statusProperty.set(status.ordinal());
     }
 
@@ -157,8 +159,8 @@ public class CourseEntity extends Pane
         this.date = date;
     }
 
-    public boolean getAttendable(){
-        return attendable;
+    public boolean getPerformableAction(){
+        return performableAction;
     }
 
 
