@@ -48,36 +48,36 @@ public class StatisticsP3Controller implements Initializable {
 
         XYChart.Series attendance = new XYChart.Series();
 
-        attendance.getData().add(new XYChart.Data<>(50, "January"));
-        attendance.getData().add(new XYChart.Data<>(50, "February"));
-        attendance.getData().add(new XYChart.Data<>(50, "March"));
-        attendance.getData().add(new XYChart.Data<>(50, "April"));
-        attendance.getData().add(new XYChart.Data<>(50, "May"));
-        attendance.getData().add(new XYChart.Data<>(50, "June"));
-        attendance.getData().add(new XYChart.Data<>(50, "July"));
-        attendance.getData().add(new XYChart.Data<>(50, "August"));
-        attendance.getData().add(new XYChart.Data<>(50, "September"));
-        attendance.getData().add(new XYChart.Data<>(50, "October"));
-        attendance.getData().add(new XYChart.Data<>(50, "November"));
-        attendance.getData().add(new XYChart.Data<>(50, "December"));
+        attendance.getData().add(new XYChart.Data<>(60, "January"));
+        attendance.getData().add(new XYChart.Data<>(60, "February"));
+        attendance.getData().add(new XYChart.Data<>(60, "March"));
+        attendance.getData().add(new XYChart.Data<>(60, "April"));
+        attendance.getData().add(new XYChart.Data<>(60, "May"));
+        attendance.getData().add(new XYChart.Data<>(60, "June"));
+        attendance.getData().add(new XYChart.Data<>(60, "July"));
+        attendance.getData().add(new XYChart.Data<>(60, "August"));
+        attendance.getData().add(new XYChart.Data<>(60, "September"));
+        attendance.getData().add(new XYChart.Data<>(60, "October"));
+        attendance.getData().add(new XYChart.Data<>(60, "November"));
+        attendance.getData().add(new XYChart.Data<>(60, "December"));
 
         monthsBar.getData().addAll(attendance);
 
 
 
         XYChart.Series abense = new XYChart.Series();
-        abense.getData().add(new XYChart.Data<>(50, "January"));
-        abense.getData().add(new XYChart.Data<>(50, "February"));
-        abense.getData().add(new XYChart.Data<>(50, "March"));
-        abense.getData().add(new XYChart.Data<>(50, "April"));
-        abense.getData().add(new XYChart.Data<>(50, "May"));
-        abense.getData().add(new XYChart.Data<>(50, "June"));
-        abense.getData().add(new XYChart.Data<>(50, "July"));
-        abense.getData().add(new XYChart.Data<>(50, "August"));
-        abense.getData().add(new XYChart.Data<>(50, "September"));
-        abense.getData().add(new XYChart.Data<>(50, "October"));
-        abense.getData().add(new XYChart.Data<>(50, "November"));
-        abense.getData().add(new XYChart.Data<>(50, "December"));
+        abense.getData().add(new XYChart.Data<>(40, "January"));
+        abense.getData().add(new XYChart.Data<>(40, "February"));
+        abense.getData().add(new XYChart.Data<>(40, "March"));
+        abense.getData().add(new XYChart.Data<>(40, "April"));
+        abense.getData().add(new XYChart.Data<>(40, "May"));
+        abense.getData().add(new XYChart.Data<>(40, "June"));
+        abense.getData().add(new XYChart.Data<>(40, "July"));
+        abense.getData().add(new XYChart.Data<>(40, "August"));
+        abense.getData().add(new XYChart.Data<>(40, "September"));
+        abense.getData().add(new XYChart.Data<>(40, "October"));
+        abense.getData().add(new XYChart.Data<>(40, "November"));
+        abense.getData().add(new XYChart.Data<>(40, "December"));
 
         monthsBar.getData().addAll(abense);
     }
