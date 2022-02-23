@@ -105,6 +105,7 @@ public class CoursesViewController implements Initializable {
 
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectCourse(oldValue, newValue));
+        selectedCourse.addListener((observable, oldValue, newValue) -> setIsActiveCourse(oldValue, newValue));
         selectedCourse.addListener((observable, oldValue, newValue) -> attendBtnShowHide(newValue));
     }
 
@@ -137,13 +138,25 @@ public class CoursesViewController implements Initializable {
     private void selectDeselectCourse(CourseEntity oldValue, CourseEntity newValue){
         if (oldValue != null){
             oldValue.setSelected(false);
+                oldValue.setIsActiveCourse(false);
+
 
         }
         if (newValue != null) {
             newValue.setSelected(true);
+            newValue.setIsActiveCourse(true);
         }
     }
 
+
+    private void setIsActiveCourse(CourseEntity oldValue, CourseEntity newValue){
+        if (oldValue != null){
+            oldValue.setIsActiveCourse(false);
+        }
+        if (newValue != null) {
+            newValue.setIsActiveCourse(true);
+        }
+    }
 
 
     private void attendBtnShowHide(CourseEntity newValue) {
@@ -211,6 +224,7 @@ public class CoursesViewController implements Initializable {
             if (!selectedCourse.isSelected())
             {
                 selectDeselectCourse(null, this.selectedCourse.get());
+                setIsActiveCourse(null, this.selectedCourse.get());
                 this.selectedCourse.set(selectedCourse);
                 attendBtnShowHide(selectedCourse);
                 return;
@@ -219,6 +233,7 @@ public class CoursesViewController implements Initializable {
             attendBtnShowHide(selectedCourse);
         }
         this.selectedCourse.set(selectedCourse);
+
         attendButton.setAttendOrLeave(selectedCourse.getStatus());
     }
 

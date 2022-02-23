@@ -41,12 +41,6 @@ public class CourseEntityController implements Initializable
     {
         courseVBox.setOnMouseClicked(event -> {
             CoursesViewController.getInstance().setSelectedCourse(course);
-            if (course.isActiveCourse()){
-                course.setIsActiveCourse(false);
-            }
-            else if (!course.isActiveCourse()){
-                course.setIsActiveCourse(true);
-            }
         });
         initStyle();
         Platform.runLater(this::initActiveCourseListener);
