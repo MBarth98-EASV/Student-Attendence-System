@@ -8,7 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticsTeacherController">
+<BorderPane prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticsTeacherP2Controller">
     <top>
         <GridPane fx:id="mainViewBody" alignment="CENTER" hgap="10.0" prefHeight="65.0" prefWidth="360.0" vgap="10.0" BorderPane.alignment="CENTER">
             <columnConstraints>
