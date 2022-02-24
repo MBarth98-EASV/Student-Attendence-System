@@ -21,15 +21,20 @@ private Button btn;
 private GridPane root;
 private Slider slider;
 
+    /**Determines whether the button should be set to Leave or Attend mode.
+     */
 private boolean buttonAttendFunction;
 
 private static final double BTN_PREF_HEIGHT = 50;
 private static final double SLIDER_PREF_HEIGHT = 50;
 private static final double ATTEND_WIDTH = 300;
+private static final double ROOT_PREF_HEIGHT = 55;
 
 
-
-
+    /**
+     * Creates the object while also creating all the visual components/nodes associated with the object.
+     * Sets the size of the components to the preferred sizes specified as constants/private static final above.
+     */
     public AttendButton(){
         btn = new Button();
         btn.setFont(Font.font("Roboto", 20));
@@ -72,19 +77,25 @@ private static final double ATTEND_WIDTH = 300;
         slider.setOnMouseReleased(event -> sliderReturnAnimation());
     }
 
-    public Button getBtn(){
-        return btn;
-    }
-
     public Slider getSlider() {
         return slider;
     }
 
+    /**
+     * The root of the attendButton, containing all other components.
+     * @return
+     */
     public GridPane getAsNode(){
         return root;
     }
 
-    public void showButton(int fadeInDelay, CourseEntity selectedCourse) {
+    /**
+     * A two part animation, which first expands the root GridPane containing the button components,
+     * and then plays a button fade-in animation, tied to the opacityProperty.
+     * Shows the button and makes it clickable.
+     * @param fadeInDelay
+     */
+    public void showButton(int fadeInDelay) {
         Double height = root.getHeight();
         height.intValue();
         root.setOpacity(1);
@@ -92,9 +103,9 @@ private static final double ATTEND_WIDTH = 300;
         Timeline fadeInTimeline = new Timeline();
         Timeline btnFadeInTimeLine = new Timeline();
 
-        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), 55));
-        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), 55));
-        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), 55));
+        KeyFrame prefHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.prefHeightProperty(), ROOT_PREF_HEIGHT));
+        KeyFrame minHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.minHeightProperty(), ROOT_PREF_HEIGHT));
+        KeyFrame maxHeight = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.maxHeightProperty(), ROOT_PREF_HEIGHT));
         KeyFrame rootOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(root.opacityProperty(), 1));
         KeyFrame btnOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(btn.opacityProperty(), 1));
         KeyFrame sliderOpacity = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue(slider.opacityProperty(), 1));
@@ -110,10 +121,14 @@ private static final double ATTEND_WIDTH = 300;
         fadeInTimeline.setOnFinished(event -> btnFadeInTimeLine.play());
 
         fadeInTimeline.play();
-
-
     }
 
+    /**
+     * A two part animation, inverse of the showButton method.
+     * First plays the button fade-out animation, and then animates the root GridPane's height to zero, so that it is hidden.
+     * Also sets the slider's value to zero, to avoid it already being at 100 when the button reappears.
+     * @param fadeOutDelayMs
+     */
     public void hideButton(int fadeOutDelayMs){
 
         Timeline fadeOutTimeline = new Timeline();
@@ -142,6 +157,10 @@ private static final double ATTEND_WIDTH = 300;
         btnFadeOutTimeline.play();
     }
 
+    /**
+     * A delayed hideButton method, encased in a sleeping Thread.
+     * User for leaving as Course, as that would not change the current scene.
+     */
     public void resetSlider(){
         new Thread(() -> {
             try {
@@ -153,6 +172,9 @@ private static final double ATTEND_WIDTH = 300;
         }).start();
     }
 
+    /**
+     * Animates the resetting of the slider value to 0, should the user not have made it to 100.
+     */
     private void sliderReturnAnimation(){
         if (slider.getValue() == slider.getMax()){
             return;
@@ -170,6 +192,10 @@ private static final double ATTEND_WIDTH = 300;
         return buttonAttendFunction;
     }
 
+    /**
+     * Sets the style of the button, depending on the status of the status of the selectedCourse
+     * @param courseStatus
+     */
     public void setAttendOrLeave(EnumCourseStatus courseStatus){
         if (courseStatus == EnumCourseStatus.ATTENDED || courseStatus == EnumCourseStatus.PARTIAL) {
             btn.setOpacity(1);

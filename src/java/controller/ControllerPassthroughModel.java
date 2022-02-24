@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 /**
+ * A dirty fix for getting necessary objects from one controller to another, without them
+ * interacting directly. Gone in refactored version.
  * Author: @Rasmus Scherning Sandbæk
  */
 public class ControllerPassthroughModel {

@@ -28,8 +28,8 @@ public class CourseEntity extends Pane
      * not trigger the listener.
      */
     private BooleanProperty selected;
-    private IntegerProperty statusProperty;
-    private BooleanProperty isActiveCourse;
+    private IntegerProperty statusProperty; //Determines button functionality and availability
+    private BooleanProperty isActiveCourse; //When true, a green bar appears to the left of the course to indicate it is ongoing.
     private boolean performableAction;
 
     private LocalDateTime startTime;
@@ -61,14 +61,13 @@ public class CourseEntity extends Pane
         });
 
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("view\\CourseObject.fxml"));
-
         fxmlLoader.setControllerFactory(param -> controller = new CourseEntityController());
-
         try {
             view = fxmlLoader.load();
         } catch (IOException ignored) {}
-
         getChildren().add(view);
+
+
         controller.setLblStartTime(startTime.getHour(),startTime.getMinute());
         controller.setLblEndTime(endTime.getHour(), endTime.getMinute());
         controller.setCourseName(courseName);
@@ -92,6 +91,10 @@ public class CourseEntity extends Pane
 
     }
 
+    /**
+     * Ensures courses that hasn't yet started or don't have a status cannot be Attended or left.
+     * @param status
+     */
     private void setPerformableAction(EnumCourseStatus status) {
         if (status == EnumCourseStatus.NONE || status == EnumCourseStatus.NOT_STARTED) {
             performableAction = false;
@@ -103,6 +106,10 @@ public class CourseEntity extends Pane
         return getClass().getClassLoader().getResource(s);
     }
 
+    /**
+     * Sets the graphical status indicator colour, as well the statusProperty. Also calls setPerformableAction.
+     * @param status
+     */
     public void setStatus(EnumCourseStatus status){
         switch (status){
             case ATTENDED -> controller.getCircleStatus().setStyle("    -fx-fill: #0FB300;    -fx-stroke-width: 0;");

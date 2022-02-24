@@ -31,12 +31,9 @@ public class CourseEntityController implements Initializable
     @FXML private Label lblLocation;
     @FXML Circle circleStatus;
 
-    /** The Course tied to this instance of a controller. */
+    /** The CourseEntity tied to this instance of a controller. */
     private CourseEntity course;
 
-    public CourseEntityController() {
-        
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -45,10 +42,13 @@ public class CourseEntityController implements Initializable
             CoursesViewController.getInstance().setSelectedCourse(course);
         });
         initStyle();
-        Platform.runLater(this::initActiveCourseListener);
-        Platform.runLater(this::initSelectionListener);
+        Platform.runLater(this::initActiveCourseListener); //Throws nullpointer otherwise
+        Platform.runLater(this::initSelectionListener); //Throws nullpointer otherwise
     }
 
+    /**
+     * Has to be hardcoded, as the compiler cannot find the accompanying stylesheet when set in FXML or code.
+     */
     private void initStyle(){
         lblCourseName.setFont(Font.font("roboto"));
         lblCourseName.setStyle("-fx-font-size: 18;\n" +
@@ -73,6 +73,9 @@ public class CourseEntityController implements Initializable
 
     }
 
+    /**
+     * Changes the style to be highlighted if selected, or back to default if deselected.
+     */
     private void initSelectionListener(){
         course.getSelectedProperty().addListener((observable, oldValue, newValue) -> {
             if (course.isSelected()){
@@ -102,6 +105,9 @@ public class CourseEntityController implements Initializable
         });
     }
 
+    /**
+     * Displays the green border on the left of the rootHBox, indicating an ongoing course.
+     */
     private void initActiveCourseListener(){
         course.isActiveCourseProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == true){
@@ -111,38 +117,15 @@ public class CourseEntityController implements Initializable
         });
     }
 
-    public VBox getCourseVBox() {
-        return courseVBox;
-    }
-
-    public VBox getTimeVBox() {
-        return timeVBox;
-    }
-
-    public HBox getRootHBox() {
-        return rootHBox;
-    }
-
-    public Label getLblStartTime() {
-        return lblStartTime;
-    }
-
-    public Label getLblEndTime() {
-        return lblEndTime;
-    }
-
-    public Label getLblCourseName() {
-        return lblCourseName;
-    }
-
-    public Label getLblLocation() {
-        return lblLocation;
-    }
-
-
+    /**
+     * Sets the label startTime to the Courses starttime, but adds a "0" where necessary to
+     * retain coherency of the 00:00 format
+     * @param startHour
+     * @param startMin
+     */
     public void setLblStartTime(int startHour, int startMin) {
-        String strHour = new String();
-        String strMin = new String();
+        String strHour;
+        String strMin;
 
         if (startHour < 10){
             strHour = "0" + startHour;
@@ -157,9 +140,15 @@ public class CourseEntityController implements Initializable
         lblStartTime.setText(strHour + ":" + strMin);
     }
 
+    /**
+     * Sets the label endTime to the Courses endTime, but adds a "0" where necessary to
+     * retain coherency of the 00:00 format
+     * @param endHour
+     * @param endMin
+     */
     public void setLblEndTime(int endHour, int endMin) {
-        String strHour = new String();
-        String strMin = new String();
+        String strHour;
+        String strMin;
 
         if (endHour < 10){
             strHour = "0" + endHour;
@@ -184,14 +173,6 @@ public class CourseEntityController implements Initializable
 
     public Circle getCircleStatus() {
         return circleStatus;
-    }
-
-    public void setCircleStatus(Circle circleStatus) {
-        this.circleStatus = circleStatus;
-    }
-
-    public CourseEntity getCourse() {
-        return course;
     }
 
     public void setCourse(CourseEntity course) {

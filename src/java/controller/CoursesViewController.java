@@ -52,20 +52,15 @@ public class CoursesViewController implements Initializable {
         coursePane.setHgap(10);
         coursePane.setVgap(10);
 
+
         ArrayList<CourseEntity> initCourseList = setCourses(day);
         scrollPaneCourses.setContent(coursePane);
-        selectedCourse = new SimpleObjectProperty<>(initCourseList.get(0));
+        selectedCourse = new SimpleObjectProperty<>(initCourseList.get(0)); //Required to avoid NullPointerEx
         initListeners();
         initButton();
-        initButtonFunctionListener();
         initOnSliderFull();
         initNextPrevDay();
     }
-
-    //TODO: Indicator for currently active course.
-    //          Report = real-time
-    //          Debug = Mouse Select
-    //TODO: Check for whether course is applicable for status change.
 
 
     private ArrayList<CourseEntity> setCourses(LocalDate day){
@@ -92,6 +87,10 @@ public class CoursesViewController implements Initializable {
         });
     }
 
+    /**
+     * Sets the top-center label, or lblDay, depending on the day the user is currently viewing.
+     * @param date
+     */
     private void setLblDay(LocalDate date){
         Locale locale = Locale.getDefault();
         if (LocalDate.now().equals(date)) {
@@ -105,10 +104,16 @@ public class CoursesViewController implements Initializable {
         }
     }
 
+    /**
+     * Listeners for the selectedCourse variable.
+     */
     private void initListeners(){
         selectedCourse.addListener((observable, oldValue, newValue) -> selectDeselectCourse(oldValue, newValue));
         selectedCourse.addListener((observable, oldValue, newValue) -> setIsActiveCourse(oldValue, newValue));
         selectedCourse.addListener((observable, oldValue, newValue) -> attendBtnShowHide(newValue));
+        selectedCourse.get().getStatusProperty().addListener((observable, oldValue, newValue)
+                -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
+        selectedCourse.addListener((observable, oldValue, newValue) -> attendButton.setAttendOrLeave(newValue.getStatus()));
     }
 
     private void initButton(){
@@ -116,11 +121,11 @@ public class CoursesViewController implements Initializable {
         courseBorderPaneRoot.setBottom(attendButton.getAsNode());
     }
 
-    private void initButtonFunctionListener(){
-        selectedCourse.get().getStatusProperty().addListener((observable, oldValue, newValue)
-                -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
-    }
-
+    /**
+     * When the slider reaches its max value of 100, the selectedCourse will either be set to Partial if the
+     * AttendButton's current function is to leave a course. Otherwise, it set the scene to qrMock, which intends to simulate
+     * the scanning of a QR code.
+     */
     private void initOnSliderFull(){
         attendButton.getSlider().valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() == attendButton.getSlider().getMax()){
@@ -136,13 +141,18 @@ public class CoursesViewController implements Initializable {
             }
         });
     }
-    
+
+    /**
+     * Deselects both values.
+     * CourseEntity's isSelected is a BooleanProperty with an associated listener, which will then handle setting
+     * the CourseEntity's style to the default style.
+     * @param oldValue
+     * @param newValue
+     */
     private void selectDeselectCourse(CourseEntity oldValue, CourseEntity newValue){
         if (oldValue != null){
             oldValue.setSelected(false);
                 oldValue.setIsActiveCourse(false);
-
-
         }
         if (newValue != null) {
             newValue.setSelected(true);
@@ -151,6 +161,13 @@ public class CoursesViewController implements Initializable {
     }
 
 
+    /**
+     * Sets the newValue to the Active course via the BooleanProperty present in CourseEntity objects.
+     * When isActiveCourse is true, a green bar will appear to the left of the course, signaling that it is ongoing.
+     * In deployment, this would be handled by real-world time, rather than clicks.
+     * @param oldValue
+     * @param newValue
+     */
     private void setIsActiveCourse(CourseEntity oldValue, CourseEntity newValue){
         if (oldValue != null){
             oldValue.setIsActiveCourse(false);
@@ -162,9 +179,14 @@ public class CoursesViewController implements Initializable {
     }
 
 
+
+    /**
+     * Shows and hides the button depending on the current selected course. Also sets btnShowing,
+     * which exists solely to prevent errors.
+     * @param newValue - The given course, that decides whether the button should be shown or hidden.
+     */
     private void attendBtnShowHide(CourseEntity newValue) {
-        /* For real-world time usage.
-        if (btnShowing)
+        /*if (btnShowing)    Real-world time sensitive code, meant for real-world use.
         if (newValue.getStartTime().minusMinutes(10).isBefore(LocalDateTime.now()) ||
         newValue.getEndTime().isAfter(LocalDateTime.now())){
             return;
@@ -180,7 +202,7 @@ public class CoursesViewController implements Initializable {
                 if (!newValue.getPerformableAction()){
                     return;
                 }
-            attendButton.showButton(300, newValue);
+            attendButton.showButton(300);
             btnShowing = true;
             }
 
@@ -196,23 +218,16 @@ public class CoursesViewController implements Initializable {
 
     }
 
-
+    /**
+     * Sets the isSelected value of the former and current selected course to false. Used
+     * for allowing to deselect the already selected course.
+     * Makes sure the former selected course is also not selected.
+     * @param oldValue - The former selected course
+     * @param newValue - The new selected course
+     */
     private void deselectAll(CourseEntity oldValue, CourseEntity newValue){
         if (newValue.isSelected() == true) {
-            oldValue.getController().getCourseVBox().setStyle("" +
-                    "-fx-border-width: 0; " +
-                    "-fx-border-color: transparent; " +
-                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                    "-fx-background-radius: 10; " +
-                    "-fx-border-radius: 10;");
             oldValue.setSelected(false);
-
-            newValue.getController().getCourseVBox().setStyle("" +
-                    "-fx-border-width: 0; " +
-                    "-fx-border-color: transparent; " +
-                    "-fx-background-color: rgba(248, 248, 248, 0.5); " +
-                    "-fx-background-radius: 10; " +
-                    "-fx-border-radius: 10;");
             newValue.setSelected(false);
         }
     }
@@ -222,12 +237,20 @@ public class CoursesViewController implements Initializable {
         return selectedCourse.get();
     }
 
+    /**
+     * Called by the course with onMouseClicked. Sets the selectedCourse variable in the CourseViewController.
+     * If the user clicks the same Course twice, the course will either be reselected if it's isSelected = false, or
+     * it will be deselected if it's already selected, meaning the user meant to deselect it.
+     *
+     * Also calls attendBtnShowHide and setIsActiveCourse, as the associated Listeners wouldn't call them as the selectedCourse value hasn't changed.
+     * @param selectedCourse
+     */
     public void setSelectedCourse(CourseEntity selectedCourse) {
         if (selectedCourse.equals(getSelectedCourse())){
             if (!selectedCourse.isSelected())
             {
-                selectDeselectCourse(null, this.selectedCourse.get());
-                setIsActiveCourse(null, this.selectedCourse.get());
+                selectDeselectCourse(null, selectedCourse);
+                setIsActiveCourse(null, selectedCourse);
                 this.selectedCourse.set(selectedCourse);
                 attendBtnShowHide(selectedCourse);
                 return;
@@ -236,8 +259,6 @@ public class CoursesViewController implements Initializable {
             attendBtnShowHide(selectedCourse);
         }
         this.selectedCourse.set(selectedCourse);
-
-        attendButton.setAttendOrLeave(selectedCourse.getStatus());
     }
 
 
