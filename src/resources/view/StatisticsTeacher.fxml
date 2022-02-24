@@ -57,7 +57,7 @@
         <children>
             <FlowPane alignment="BOTTOM_LEFT" prefHeight="79.0" prefWidth="324.0">
                 <children>
-                    <Label alignment="BOTTOM_LEFT" text="class attendance" textFill="#f8f8f8">
+                    <Label fx:id="class_info" alignment="BOTTOM_LEFT" text="class attendance" textFill="#f8f8f8">
                         <font>
                             <Font name="System Bold" size="20.0" />
                         </font>

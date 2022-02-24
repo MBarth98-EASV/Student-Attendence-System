@@ -25,6 +25,9 @@ import java.util.function.Function;
 public class StatisticsTeacherController implements Initializable {
 
 
+    public Label class_info;
+    public Label lblDay;
+
     public class TableModel
     {
         public TableModel(String name, int absence)
@@ -66,11 +69,15 @@ public class StatisticsTeacherController implements Initializable {
         name.setCellValueFactory(param -> param.getValue().nameProperty());
         absence.setCellValueFactory(param -> param.getValue().absenceProperty());
 
+        this.lblDay.textProperty().bind(CoursesViewController.getInstance().lblDay.textProperty());
+        this.class_info.setText(CoursesViewController.getInstance().getSelectedCourse().getController().getCourseInfo());
 
         courseTable.itemsProperty().set(FXCollections.observableArrayList());
         courseTable.itemsProperty().get().setAll(
-                new TableModel("John Wick", 75),
-                new TableModel("John Wick 2", 75)
+                new TableModel("John Wick", 0),
+                new TableModel("Rey ?", 100),
+                new TableModel("Luke Skywalker", 80),
+                new TableModel("Anakin Skywalker", 20)
         );
     }
 

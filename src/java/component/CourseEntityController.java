@@ -117,6 +117,11 @@ public class CourseEntityController implements Initializable
         });
     }
 
+    public String getCourseInfo()
+    {
+        return this.lblCourseName.getText() + " - " + this.lblLocation.getText();
+    }
+
     /**
      * Sets the label startTime to the Courses starttime, but adds a "0" where necessary to
      * retain coherency of the 00:00 format
