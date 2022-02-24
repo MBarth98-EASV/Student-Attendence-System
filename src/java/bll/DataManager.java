@@ -38,7 +38,7 @@ public class DataManager {
 
 
     public List<CourseEntity> getUserCourses(LocalDate day) {
-        return data.getCourses(day);
+        return data.getUserCourses(day);
     }
 
     public DataManager()
