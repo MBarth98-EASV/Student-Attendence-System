@@ -65,7 +65,7 @@
    <center>
       <FlowPane alignment="TOP_CENTER" prefHeight="523.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <FlowPane alignment="BOTTOM_LEFT" prefHeight="79.0" prefWidth="324.0">
+            <FlowPane alignment="BOTTOM_LEFT" prefHeight="79.0" prefWidth="314.0">
                <children>
                   <Label alignment="BOTTOM_LEFT" text="Absence Per Course" textFill="#f8f8f8">
                      <font>
@@ -74,10 +74,10 @@
                   </Label>
                </children>
             </FlowPane>
-            <TableView fx:id="courseTable" fixedCellSize="35.0" prefHeight="482.0" prefWidth="326.0" stylesheets="@../css/TableView.css">
+            <TableView fx:id="courseTable" fixedCellSize="35.0" prefHeight="482.0" prefWidth="320.0" stylesheets="@../css/TableView.css">
               <columns>
-                <TableColumn fx:id="courseColumn" editable="false" prefWidth="222.0" sortable="false" text="Course" />
-                <TableColumn fx:id="courseAttendance" editable="false" minWidth="1.0" prefWidth="110.0" sortable="false" text="Attendance %" />
+                <TableColumn fx:id="courseColumn" editable="false" prefWidth="222.0" sortable="false" style="-fx-alignment: CENTER-LEFT;" text="Course" />
+                <TableColumn fx:id="courseAttendance" editable="false" minWidth="1.0" prefWidth="110.0" sortable="false" style="-fx-alignment: CENTER;" text="Attendance %" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
