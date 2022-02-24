@@ -113,6 +113,7 @@ public class CoursesViewController implements Initializable {
         selectedCourse.addListener((observable, oldValue, newValue) -> attendBtnShowHide(newValue));
         selectedCourse.get().getStatusProperty().addListener((observable, oldValue, newValue)
                 -> attendButton.setAttendOrLeave(EnumCourseStatus.values()[newValue.intValue()]));
+        selectedCourse.addListener((observable, oldValue, newValue) -> attendButton.setAttendOrLeave(newValue.getStatus()));
     }
 
     private void initButton(){
