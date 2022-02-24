@@ -6,7 +6,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,7 +14,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="statisticsRoot" prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticsP3Controller">
@@ -47,17 +45,17 @@
          <children>
             <HBox alignment="CENTER" prefHeight="27.0" prefWidth="113.0" spacing="5">
                <children>
-                  <ImageView fx:id="imgBtn1" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage1" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgBtn1" fitHeight="18.0" fitWidth="18.0" onMouseEntered="#onMouseHoverBtn1" onMouseExited="#onMouseRemoveBtn1" onMouseReleased="#switchPage1" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/buttonunselected.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="imgBtn2" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage2" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgBtn2" fitHeight="18.0" fitWidth="18.0" onMouseEntered="#onMouseHoverBtn2" onMouseExited="#onMouseRemoveBtn2" onMouseReleased="#switchPage2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/buttonunselected.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="imgBtn3" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage3" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgBtn3" fitHeight="18.0" fitWidth="18.0" onMouseEntered="#onMouseHoverBtn3" onMouseExited="#onMouseRemoveBtn3" onMouseReleased="#switchPage3" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/buttonselected.png" />
                      </image>

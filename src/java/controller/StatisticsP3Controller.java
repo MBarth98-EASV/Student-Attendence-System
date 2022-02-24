@@ -60,12 +60,12 @@ public class StatisticsP3Controller implements Initializable {
 
     public void onMouseHoverBtn1(MouseEvent mouseEvent)
     {
-        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonselectedhover.png")));
+        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselectedhover.png")));
     }
 
     public void onMouseRemoveBtn1(MouseEvent mouseEvent)
     {
-        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonselected.png")));
+        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselected.png")));
     }
 
     public void onMouseHoverBtn2(MouseEvent mouseEvent)
@@ -80,11 +80,11 @@ public class StatisticsP3Controller implements Initializable {
 
     public void onMouseHoverBtn3(MouseEvent mouseEvent)
     {
-        imgBtn3.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselectedhover.png")));
+        imgBtn3.setImage(new Image(getClass().getResourceAsStream("/img/buttonselectedhover.png")));
     }
 
     public void onMouseRemoveBtn3(MouseEvent mouseEvent)
     {
-        imgBtn3.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselected.png")));
+        imgBtn3.setImage(new Image(getClass().getResourceAsStream("/img/buttonselected.png")));
     }
 }

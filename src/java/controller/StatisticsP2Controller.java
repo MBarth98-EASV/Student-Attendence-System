@@ -57,22 +57,22 @@ public class StatisticsP2Controller implements Initializable {
 
     public void onMouseHoverBtn1(MouseEvent mouseEvent)
     {
-        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonselectedhover.png")));
+        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselectedhover.png")));
     }
 
     public void onMouseRemoveBtn1(MouseEvent mouseEvent)
     {
-        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonselected.png")));
+        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselected.png")));
     }
 
     public void onMouseHoverBtn2(MouseEvent mouseEvent)
     {
-        imgBtn2.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselectedhover.png")));
+        imgBtn2.setImage(new Image(getClass().getResourceAsStream("/img/buttonselectedhover.png")));
     }
 
     public void onMouseRemoveBtn2(MouseEvent mouseEvent)
     {
-        imgBtn2.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselected.png")));
+        imgBtn2.setImage(new Image(getClass().getResourceAsStream("/img/buttonselected.png")));
     }
 
     public void onMouseHoverBtn3(MouseEvent mouseEvent)
