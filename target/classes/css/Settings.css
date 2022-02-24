@@ -1,12 +1,67 @@
 
 .logout-button {
-    -fx-background-color: red;
+    -fx-background-color: #D82F2A;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: #f8f8f8;
     -fx-font-size: 2em;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 .logout-button:hover {
     -fx-background-color: red;
 }
 .update-button
 {
+    -fx-background-color: #5145AD;
+    -fx-border-radius: 25pt;
+    -fx-background-radius: 25pt;
     -fx-font-size: 1.5em;
+    -fx-text-fill: #f8f8f8;
+}
+
+.update-button:hover
+{
+    -fx-background-color: #6c5ce3;
+    -fx-border-radius: 25pt;
+    -fx-background-radius: 25pt;
+    -fx-font-size: 1.5em;
+    -fx-text-fill: #f8f8f8;
+}
+
+
+.misc-button {
+    -fx-background-color: #5145AD;
+    -fx-border-radius: 25pt;
+    -fx-background-radius: 25pt;
+    -fx-font-size: 1em;
+    -fx-text-fill: #f8f8f8;
+}
+
+.misc-button:hover
+{
+    -fx-background-color: #6c5ce3;
+    -fx-border-radius: 25pt;
+    -fx-background-radius: 25pt;
+    -fx-font-size: 1.5em;
+    -fx-text-fill: #f8f8f8;
+}
+
+.toggle .thumb-area {
+    -fx-background-color: rgba(248, 248, 248, 0.5);
+    -fx-border-width: 2;
+    -fx-border-color: #f8f8f8;
+    -fx-border-radius: 30;
+}
+
+.toggle .thumb {
+    -fx-background-color: white;
+    -fx-border-width: 1;
+    -fx-border-color: #f8f8f8;
+    -fx-border-radius: 30;
+    -fx-pref-height: 18;
+    -fx-pref-width: 18;
+}
+
+.toggle:selected .thumb-area {
+    -fx-background-color: #20C234;
 }

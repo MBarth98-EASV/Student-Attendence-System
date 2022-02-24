@@ -4,8 +4,11 @@
 
 package bll;
 
+import be.CourseModel;
 import component.CourseEntity;
 import dal.DataMock;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 import util.EnumCourseStatus;
 
 import java.time.LocalDate;
@@ -105,5 +108,20 @@ public class DataManager {
         result = a / total * 100;
 
         return (int)result;
+    }
+
+    public XYChart.Series getAttendanceBarData()
+    {
+        return data.barChartAttendance();
+    }
+
+    public XYChart.Series getAbsenceBarData()
+    {
+        return data.barChartAbsence();
+    }
+
+    public ObservableList<CourseModel> getCourses()
+    {
+        return data.TableViewCourses();
     }
 }

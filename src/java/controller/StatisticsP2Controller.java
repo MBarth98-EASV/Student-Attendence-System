@@ -5,8 +5,7 @@
 package controller;
 
 import be.CourseModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import bll.DataManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -34,7 +33,7 @@ public class StatisticsP2Controller implements Initializable {
         courseAttendance.setCellValueFactory(new PropertyValueFactory<CourseModel, String>("courseAttendance"));
 
         //MocksData
-        courseTable.setItems(getCourses());
+        courseTable.setItems(DataManager.getInstance().getCourses());
     }
 
     public void switchPage1(MouseEvent mouseEvent)
@@ -51,20 +50,4 @@ public class StatisticsP2Controller implements Initializable {
         MainController.getInstance().showStatsPage3();
     }
 
-    /**
-     *Populates the table with courses
-     *
-     */
-    public ObservableList<CourseModel> getCourses()
-    {
-        ObservableList<CourseModel> courses = FXCollections.observableArrayList();
-
-        courses.add(new CourseModel("SCO", "97%"));
-        courses.add(new CourseModel("SDE", "81%"));
-        courses.add(new CourseModel("ITO", "32%"));
-        courses.add(new CourseModel("DBOS", "95%"));
-        courses.add(new CourseModel("MEANING", "42%"));
-
-        return courses;
-    }
 }

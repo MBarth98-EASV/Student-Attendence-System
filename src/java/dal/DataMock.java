@@ -4,7 +4,11 @@
 
 package dal;
 
+import be.CourseModel;
 import component.CourseEntity;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 import util.EnumCourseStatus;
 
 import java.time.LocalDate;
@@ -95,7 +99,7 @@ public class DataMock {
         return returnList;
       }
 
-      public int totalAttendance()
+    public int totalAttendance()
     {
         return 1565;
     }
@@ -138,4 +142,60 @@ public class DataMock {
     {
         return 44;
     }
+
+
+    public XYChart.Series barChartAttendance()
+    {
+
+    XYChart.Series attendance = new XYChart.Series();
+
+
+    attendance.getData().add(new XYChart.Data<>(70, "January"));
+    attendance.getData().add(new XYChart.Data<>(40, "February"));
+    attendance.getData().add(new XYChart.Data<>(45, "March"));
+    attendance.getData().add(new XYChart.Data<>(80, "April"));
+    attendance.getData().add(new XYChart.Data<>(91, "May"));
+    attendance.getData().add(new XYChart.Data<>(95, "June"));
+    attendance.getData().add(new XYChart.Data<>(100, "July"));
+    attendance.getData().add(new XYChart.Data<>(100, "August"));
+    attendance.getData().add(new XYChart.Data<>(100, "September"));
+    attendance.getData().add(new XYChart.Data<>(100, "October"));
+    attendance.getData().add(new XYChart.Data<>(97, "November"));
+    attendance.getData().add(new XYChart.Data<>(95, "December"));
+
+    return attendance;
+    }
+
+    public XYChart.Series barChartAbsence()
+    {
+        XYChart.Series absence = new XYChart.Series();
+        absence.getData().add(new XYChart.Data<>(30, "January"));
+        absence.getData().add(new XYChart.Data<>(60, "February"));
+        absence.getData().add(new XYChart.Data<>(55, "March"));
+        absence.getData().add(new XYChart.Data<>(20, "April"));
+        absence.getData().add(new XYChart.Data<>(9, "May"));
+        absence.getData().add(new XYChart.Data<>(5, "June"));
+        absence.getData().add(new XYChart.Data<>(0, "July"));
+        absence.getData().add(new XYChart.Data<>(0, "August"));
+        absence.getData().add(new XYChart.Data<>(0, "September"));
+        absence.getData().add(new XYChart.Data<>(0, "October"));
+        absence.getData().add(new XYChart.Data<>(3, "November"));
+        absence.getData().add(new XYChart.Data<>(5, "December"));
+
+        return absence;
+    }
+
+    public ObservableList<CourseModel> TableViewCourses()
+    {
+        ObservableList<CourseModel> courses = FXCollections.observableArrayList();
+
+        courses.add(new CourseModel("SCO", "97%"));
+        courses.add(new CourseModel("SDE", "81%"));
+        courses.add(new CourseModel("ITO", "32%"));
+        courses.add(new CourseModel("DBOS", "95%"));
+        courses.add(new CourseModel("MEANING OF LIFE", "42%"));
+
+        return courses;
+    }
+
 }
