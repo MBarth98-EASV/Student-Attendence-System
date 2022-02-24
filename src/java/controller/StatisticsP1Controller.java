@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -25,6 +27,9 @@ public class StatisticsP1Controller implements Initializable {
    @FXML ComboBox<String> selectionBox;
    @FXML Text textAttendance;
    @FXML Text textAbsence;
+   @FXML ImageView imgBtn1;
+   @FXML ImageView imgBtn2;
+   @FXML ImageView imgBtn3;
 
    public StatisticsP1Controller()
    {
@@ -126,5 +131,35 @@ public class StatisticsP1Controller implements Initializable {
     public void switchPage3(MouseEvent mouseEvent)
     {
         MainController.getInstance().showStatsPage3();
+    }
+
+    public void onMouseHoverBtn1(MouseEvent mouseEvent)
+    {
+        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonselectedhover.png")));
+    }
+
+    public void onMouseRemoveBtn1(MouseEvent mouseEvent)
+    {
+        imgBtn1.setImage(new Image(getClass().getResourceAsStream("/img/buttonselected.png")));
+    }
+
+    public void onMouseHoverBtn2(MouseEvent mouseEvent)
+    {
+        imgBtn2.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselectedhover.png")));
+    }
+
+    public void onMouseRemoveBtn2(MouseEvent mouseEvent)
+    {
+        imgBtn2.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselected.png")));
+    }
+
+    public void onMouseHoverBtn3(MouseEvent mouseEvent)
+    {
+        imgBtn3.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselectedhover.png")));
+    }
+
+    public void onMouseRemoveBtn3(MouseEvent mouseEvent)
+    {
+        imgBtn3.setImage(new Image(getClass().getResourceAsStream("/img/buttonunselected.png")));
     }
 }
