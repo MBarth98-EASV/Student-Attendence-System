@@ -35,6 +35,8 @@ public class StatisticsP2Controller implements Initializable {
 
         //MocksData
         courseTable.setItems(getCourses());
+
+        courseAttendance.getStyleClass().add("my-special-column-style");
     }
 
     public void switchPage1(MouseEvent mouseEvent)
