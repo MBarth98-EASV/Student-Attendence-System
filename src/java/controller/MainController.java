@@ -35,8 +35,6 @@ public class MainController implements Initializable {
 
     private static MainController instance = null;
 
-
-
     public MainController(){
         instance = this;
     }
@@ -67,17 +65,21 @@ public class MainController implements Initializable {
     }
 
     public void onShowStats(ActionEvent event) {
-        try {
-            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP1.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+            showStatsPage1();
     }
 
     public void showStatsPage1()
     {
         try {
-            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP1.fxml")));
+            if (Authentication.getInstance().getUserType() == Authentication.TYPE.TEACHER)
+            {
+                loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsTeacher.fxml")));
+            }
+            else
+            {
+                loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP1.fxml")));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,7 +88,14 @@ public class MainController implements Initializable {
     public void showStatsPage2()
     {
         try {
-            loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP2.fxml")));
+            if (Authentication.getInstance().getUserType() == Authentication.TYPE.TEACHER)
+            {
+                loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsTeacher2.fxml")));
+            }
+            else
+            {
+                loadSecond((Parent) FXMLLoader.load(getClass().getResource("/view/StatisticsP2.fxml")));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
