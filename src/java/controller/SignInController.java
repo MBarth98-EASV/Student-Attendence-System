@@ -28,6 +28,7 @@ public class SignInController {
 
     public SignInController(){
         passthroughModel = new ControllerPassthroughModel();
+        //TODO: Disable navButtons while on Sign In
     }
 
     public void onSignIn(ActionEvent event) {
