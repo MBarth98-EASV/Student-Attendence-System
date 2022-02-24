@@ -1,5 +1,6 @@
 package component;
 
+import bll.Authentication;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -35,7 +36,8 @@ private static final double ROOT_PREF_HEIGHT = 55;
      * Creates the object while also creating all the visual components/nodes associated with the object.
      * Sets the size of the components to the preferred sizes specified as constants/private static final above.
      */
-    public AttendButton(){
+    public AttendButton()
+    {
         btn = new Button();
         btn.setFont(Font.font("Roboto", 20));
         btn.setText("Attend");
@@ -75,6 +77,20 @@ private static final double ROOT_PREF_HEIGHT = 55;
         slider.setMaxHeight(SLIDER_PREF_HEIGHT);
 
         slider.setOnMouseReleased(event -> sliderReturnAnimation());
+
+        if (Authentication.getInstance().getUserType() == Authentication.TYPE.TEACHER)
+        {
+            btn.getStylesheets().clear();
+            btn.getStylesheets().add(this.getClass().getResource("/css/AttendButton.css").toExternalForm());
+            btn.setDisable(false);
+
+            btn.setOnMouseReleased(event -> {
+                hideButton(100);
+            });
+
+            root.getChildren().remove(slider);
+        }
+
     }
 
     public Slider getSlider() {
@@ -196,19 +212,28 @@ private static final double ROOT_PREF_HEIGHT = 55;
      * Sets the style of the button, depending on the status of the status of the selectedCourse
      * @param courseStatus
      */
-    public void setAttendOrLeave(EnumCourseStatus courseStatus){
+    public void setAttendOrLeave(EnumCourseStatus courseStatus)
+    {
+        btn.setOpacity(1);
+        btn.getStylesheets().clear();
+
+        if (Authentication.getInstance().getUserType() == Authentication.TYPE.TEACHER)
+        {
+            btn.getStylesheets().add(this.getClass().getResource("/css/AttendButton.css").toExternalForm());
+            btn.setText("Create QR");
+
+            return;
+        }
+
         if (courseStatus == EnumCourseStatus.ATTENDED || courseStatus == EnumCourseStatus.PARTIAL) {
-            btn.setOpacity(1);
             slider.setOpacity(1);
-            btn.getStylesheets().clear();
             btn.getStylesheets().add(this.getClass().getResource("/css/LeaveButton.css").toExternalForm());
             btn.setText("Leave");
             buttonAttendFunction = false;
         }
         else {
-            btn.setOpacity(1);
+
             slider.setOpacity(1);
-            btn.getStylesheets().clear();
             btn.getStylesheets().add(this.getClass().getResource("/css/AttendButton.css").toExternalForm());
             btn.setText("Attend");
             buttonAttendFunction = true;

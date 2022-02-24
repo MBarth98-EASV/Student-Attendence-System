@@ -55,7 +55,7 @@ public class CourseEntity extends Pane
         this.statusProperty = new SimpleIntegerProperty();
         this.statusProperty.set(status.ordinal());
         this.statusProperty.addListener((observable, oldValue, newValue) -> {
-            if (newValue.intValue() == EnumCourseStatus.NONE.ordinal() || newValue.intValue() == EnumCourseStatus.NOT_STARTED.ordinal()) {
+            if (newValue.intValue() == EnumCourseStatus.NOT_STARTED.ordinal()) {
                 performableAction = false;
             } else performableAction = true;
         });
@@ -80,7 +80,6 @@ public class CourseEntity extends Pane
             case ABSENT -> setStatus(EnumCourseStatus.ABSENT);
             case PARTIAL -> setStatus(EnumCourseStatus.PARTIAL);
             case NOT_STARTED -> setStatus(EnumCourseStatus.NOT_STARTED);
-            default -> setStatus(EnumCourseStatus.NONE);
         }
 
         if (this.date.isAfter(LocalDate.now())) {
@@ -96,7 +95,7 @@ public class CourseEntity extends Pane
      * @param status
      */
     private void setPerformableAction(EnumCourseStatus status) {
-        if (status == EnumCourseStatus.NONE || status == EnumCourseStatus.NOT_STARTED) {
+        if (status == EnumCourseStatus.NOT_STARTED) {
             performableAction = false;
         } else performableAction = true;
     }

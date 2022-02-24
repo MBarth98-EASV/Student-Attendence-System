@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="statisticsRoot" prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticsP3Controller">
+   <top>
+      <GridPane fx:id="mainViewBody" alignment="CENTER" hgap="10.0" prefHeight="65.0" prefWidth="360.0" vgap="10.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="72.00000610351563" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label fx:id="lblDay" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="230.0" text="Statistics" textAlignment="CENTER" textFill="#f8f8f8" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="4.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </top>
+   <bottom>
+      <FlowPane alignment="CENTER" prefHeight="111.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="113.0" spacing="5">
+               <children>
+                  <ImageView fx:id="imgBtn1" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/buttonunselected.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgBtn2" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/buttonunselected.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgBtn3" fitHeight="18.0" fitWidth="18.0" onMouseReleased="#switchPage3" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/buttonselected.png" />
+                     </image>
+                  </ImageView>
+               </children></HBox>
+         </children>
+      </FlowPane>
+   </bottom>
+   <center>
+      <ScrollPane hbarPolicy="NEVER" pannable="true" stylesheets="@../css/ScrollPane.css" BorderPane.alignment="CENTER">
+         <content>
+            <FlowPane alignment="CENTER" prefHeight="-Infinity" prefWidth="321.0">
+            <FlowPane alignment="BOTTOM_LEFT" prefHeight="72.0" prefWidth="321.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" contentDisplay="TOP" prefHeight="79.0" prefWidth="324.0" text="Yearly Overview" textFill="#f8f8f8">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <BarChart fx:id="monthsBar" alternativeRowFillVisible="false" barGap="2.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="647.0" prefWidth="341.0" stylesheets="@../css/BarChart.css">
+              <xAxis>
+                <NumberAxis side="LEFT" />
+              </xAxis>
+              <yAxis>
+                <CategoryAxis side="BOTTOM" />
+              </yAxis>
+            </BarChart>
+            </FlowPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

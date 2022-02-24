@@ -1,5 +1,6 @@
 package controller;
 
+import bll.Authentication;
 import bll.DataManager;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -33,6 +34,15 @@ public class SignInController {
 
     public void onSignIn(ActionEvent event) {
         try {
+            if (usernameField.getText().contains("teacher"))
+            {
+                Authentication.getInstance().setUserType(Authentication.TYPE.TEACHER);
+            }
+            else
+            {
+                Authentication.getInstance().setUserType(Authentication.TYPE.STUDENT);
+            }
+
             //if (usernameField.getText().equals(DataManager.getInstance().getUserLogin()) && passwordField.getText().equals(DataManager.getInstance().getUserPassword())) {
                 loadNext();
             //}

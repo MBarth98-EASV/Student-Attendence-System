@@ -1,0 +1,63 @@
+.Title
+{
+    -fx-font-family: Roboto;
+    -fx-font-style: normal;
+    -fx-font-size: 32pt;
+}
+
+.Subtitle
+{
+    -fx-font-family: Roboto;
+    -fx-font-style: normal;
+    -fx-font-size: 22pt;
+}
+
+.InputHeader
+{
+    -fx-font-family: Roboto;
+    -fx-font-style: normal;
+    -fx-font-size: 12pt;
+}
+
+.TextInput
+{
+    -fx-background-color: white;
+    -fx-border-radius: 5pt;
+    -fx-background-radius: 5pt;
+    -fx-font-size: 14pt;
+}
+
+.RememberCheck
+{
+
+}
+
+.check-box .box {
+
+    -fx-background-color: transparent;
+    -fx-border-color:#f8f8f8;
+    -fx-border-width: 2;
+    -fx-border-radius:4px;
+
+}
+
+.check-box:selected .mark {
+
+    -fx-background-color: #f8f8f8;
+
+}
+
+.check-box:selected .box {
+
+    -fx-background-color: transparent;
+}
+
+.SubmitButton
+{
+    -fx-background-color: #5145AD;
+    -fx-border-radius: 25pt;
+    -fx-background-radius: 25pt;
+    -fx-font-size: 20pt;
+    -fx-min-height: 50pt;
+    -fx-min-width: 100pt;
+}

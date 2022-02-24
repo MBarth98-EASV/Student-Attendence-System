@@ -1,5 +1,6 @@
 package controller;
 
+import bll.Authentication;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -35,11 +36,13 @@ public class MainController implements Initializable {
     private static MainController instance = null;
 
 
+
     public MainController(){
         instance = this;
     }
 
-    public static MainController getInstance(){
+    public static MainController getInstance()
+    {
 
         if (instance == null)
         {
