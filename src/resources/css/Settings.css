@@ -1,0 +1,12 @@
+
+.logout-button {
+    -fx-background-color: red;
+    -fx-font-size: 2em;
+}
+.logout-button:hover {
+    -fx-background-color: red;
+}
+.update-button
+{
+    -fx-font-size: 1.5em;
+}

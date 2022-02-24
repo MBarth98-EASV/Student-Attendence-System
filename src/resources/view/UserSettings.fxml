@@ -6,13 +6,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.ToggleSwitch?>
 
-<GridPane fx:id="mainViewBody" alignment="CENTER" hgap="10.0" prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserSettingsController">
+<GridPane fx:id="mainViewBody" alignment="CENTER" hgap="10.0" prefHeight="800.0" prefWidth="360.0" styleClass="background" stylesheets="@../css/background.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserSettingsController">
     <columnConstraints>
         <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
     </columnConstraints>
@@ -29,7 +30,7 @@
             <Font size="28.0" />
         </font>
     </Label>
-   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="628.0" prefWidth="297.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
       <children>
          <Group>
             <children>
@@ -37,13 +38,19 @@
                   <children>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                         <children>
-                           <Label text="Notifications" StackPane.alignment="CENTER_LEFT" />
+                           <Label text="Notifications" textFill="#f8f8f8" StackPane.alignment="CENTER_LEFT">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></Label>
                            <ToggleSwitch StackPane.alignment="CENTER_RIGHT" />
                         </children>
                      </StackPane>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                         <children>
-                           <Label text="Sound" StackPane.alignment="CENTER_LEFT" />
+                           <Label text="Sound" textFill="#f8f8f8" StackPane.alignment="CENTER_LEFT">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></Label>
                            <ToggleSwitch StackPane.alignment="CENTER_RIGHT" />
                         </children>
                      </StackPane>
@@ -60,13 +67,19 @@
                   <children>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                         <children>
-                           <Label text="Notifications" StackPane.alignment="CENTER_LEFT" />
+                           <Label text="Fingerprint" textFill="#f8f8f8" StackPane.alignment="CENTER_LEFT">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></Label>
                            <ToggleSwitch StackPane.alignment="CENTER_RIGHT" />
                         </children>
                      </StackPane>
                      <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                         <children>
-                           <Label text="Sound" StackPane.alignment="CENTER_LEFT" />
+                           <Label text="Pincode" textFill="#f8f8f8" StackPane.alignment="CENTER_LEFT">
+                              <font>
+                                 <Font size="16.0" />
+                              </font></Label>
                            <ToggleSwitch StackPane.alignment="CENTER_RIGHT" />
                         </children>
                      </StackPane>
@@ -74,42 +87,31 @@
                </VBox>
             </children>
             <VBox.margin>
-               <Insets bottom="30.0" />
-            </VBox.margin>
-         </Group>
-         <Group>
-            <children>
-               <VBox maxWidth="1.7976931348623157E308" spacing="10.0">
-                  <children>
-                     <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
-                        <children>
-                           <Label text="Notifications" StackPane.alignment="CENTER_LEFT" />
-                           <ToggleSwitch StackPane.alignment="CENTER_RIGHT" />
-                        </children>
-                     </StackPane>
-                     <StackPane alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                        <children>
-                           <Label text="Sound" StackPane.alignment="CENTER_LEFT" />
-                           <ToggleSwitch StackPane.alignment="CENTER_RIGHT" />
-                        </children>
-                     </StackPane>
-                  </children>
-               </VBox>
-            </children>
-            <VBox.margin>
-               <Insets bottom="60.0" />
+               <Insets bottom="50.0" />
             </VBox.margin>
          </Group>
          <Group>
             <children>
                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0">
                   <children>
-                     <Button alignment="CENTER" mnemonicParsing="false" text="Check for updates" VBox.vgrow="ALWAYS" />
-                     <Button alignment="CENTER" mnemonicParsing="false" text="Logout " VBox.vgrow="ALWAYS" />
+                     <Button alignment="CENTER" mnemonicParsing="false" prefHeight="52.0" prefWidth="183.0" styleClass="update-button" stylesheets="@../css/Settings.css" text="Check for updates" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
+                     <Button alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="122.0" styleClass="logout-button" stylesheets="@../css/Settings.css" text="Logout " VBox.vgrow="ALWAYS">
+                        <font>
+                           <Font size="18.0" />
+                        </font></Button>
                   </children>
                </VBox>
             </children>
          </Group>
       </children>
    </VBox>
+   <HBox alignment="CENTER" spacing="150.0" GridPane.rowIndex="2">
+      <children>
+         <Button mnemonicParsing="false" text="Report bugs" />
+         <Button mnemonicParsing="false" text="Help" />
+      </children>
+   </HBox>
 </GridPane>
