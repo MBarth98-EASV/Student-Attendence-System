@@ -1,6 +1,8 @@
+/**
+ * @Author Philip E. Zadeh
+ */
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.Axis;
