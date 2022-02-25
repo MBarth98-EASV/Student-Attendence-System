@@ -76,7 +76,7 @@
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <Label styleClass="Title" text="Attendence" textFill="#f8f8f8">
+                <Label styleClass="Title" text="Attendance" textFill="#f8f8f8">
                     <font>
                         <Font size="34.0" />
                     </font>
