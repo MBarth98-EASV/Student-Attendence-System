@@ -1,0 +1,120 @@
+.combo-box .list-cell
+{
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: #d8d8d8;
+    -fx-cell-size: 2.66667em;
+}
+
+.combo-box-popup .list-view
+{
+    -fx-background-color: #7261F3;
+    -fx-background-insets: 0, 1;
+}
+
+.combo-box-popup .list-view .list-cell
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: rgba(81, 69, 173, 0.5);
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover
+{
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: #f8f8f8;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover
+{
+    -fx-background-color: #5145AD;
+    -fx-text-fill: #f8f8f8;
+}
+
+.combo-box-base
+{
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-radius: 5;
+    -fx-border-color: #f8f8f8;
+    -fx-border-width: 2;
+    -fx-mark-color: #f8f8f8;
+}
+
+.combo-box-base:hover
+{
+    -fx-color: #5145AD;
+    -fx-border-color: #5145AD;
+}
+
+.combo-box-base:showing
+{
+    -fx-color: rgba(81, 69, 173, 0);
+    -fx-border-color: #5145AD;
+    -fx-background-color: transparent;
+    -fx-mark-color: #5145AD;
+}
+
+.combo-box-base:focused {
+    -fx-color: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: #5145AD;
+    -fx-mark-color: #5145AD;
+
+}
+
+.combo-box-base:disabled {
+    -fx-opacity: .4;
+}
+
+.combo-box > .list-view > .placeholder > .label {
+    -fx-text-fill: #f8f8f8;
+    -fx-background-color: transparent;
+    -fx-border-color: #f8f8f8;
+}
+
+.combo-box > .list-view > .placeholder > .label:focused  {
+    -fx-text-fill: #5145AD;
+    -fx-background-color: transparent;
+    -fx-border-color: #5145AD;
+}
+
+.combo-box-base > .list-view > .placeholder:focused {
+    -fx-text-fill: #f8f8f8;
+    -fx-background-color: transparent;
+    -fx-border-color: #f8f8f8;
+}
+
+.combo-box > .text-field {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #f8f8f8;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-border-color: #f8f8f8;
+    -fx-background-radius: 5;
+    -fx-background-color: transparent;
+}
+
+.combo-box > .text-field:focused {
+    -fx-font-family: "Roboto", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #f8f8f8;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-border-color: #f8f8f8;
+    -fx-background-radius: 5;
+    -fx-background-color: transparent;
+}
+
+.combo-box .combo-box-button-container{
+    -fx-background-color: transparent;
+    -fx-border-color: #5145AD;
+
+}
+.combo-box .combo-box-selected-value-container{
+    -fx-background-color: transparent;
+    -fx-border-color: #5145AD;
+}
